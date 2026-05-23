@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">Tour Details | Majestic Morocco Trips</title>
+  <meta name="description" id="pageDesc" content="Detailed Morocco desert tour itinerary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary:#C8702A; --primary-dark:#A0561A; --secondary:#8B1A1A;
+      --gold:#E8A830; --dark:#1C1410; --dark2:#2D2016;
+      --light:#FFF8F0; --cream:#F5ECD8; --text:#3A2E22;
+      --text-light:#7A6A58; --white:#FFFFFF;
+      --shadow:0 4px 24px rgba(28,20,16,.12);
+      --shadow-lg:0 12px 48px rgba(28,20,16,.18);
+      --radius:12px; --radius-lg:20px; --tr:.3s ease;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
+    img{max-width:100%;height:auto;display:block}
+    a{text-decoration:none;color:inherit}
+    ul{list-style:none}
+    button{cursor:pointer;border:none;background:none;font-family:inherit}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:50px;font-weight:600;font-size:.95rem;transition:var(--tr)}
+    .btn-primary{background:var(--primary);color:var(--white)}
+    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,112,42,.4)}
+    .btn-outline-primary{border:2px solid var(--primary);color:var(--primary)}
+    .btn-outline-primary:hover{background:var(--primary);color:var(--white)}
+    .section-tag{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--primary);background:rgba(200,112,42,.1);padding:5px 14px;border-radius:50px;margin-bottom:10px}
+    .star{color:var(--gold)}
+
+    /* NAVBAR */
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:1000;transition:background var(--tr),box-shadow var(--tr);padding:18px 0}
+    #navbar.scrolled{background:rgba(28,20,16,.97);box-shadow:0 2px 20px rgba(0,0,0,.25);padding:12px 0;backdrop-filter:blur(12px)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo-img{height:56px;width:auto;display:block;border-radius:8px;}
+    .nav-links{display:flex;align-items:center;gap:6px}
+    .nav-links a{color:rgba(255,255,255,.88);font-size:.9rem;font-weight:500;padding:8px 14px;border-radius:8px;transition:var(--tr)}
+    .nav-links a:hover{color:var(--white);background:rgba(255,255,255,.12)}
+    .nav-cta{background:var(--primary);color:var(--white)!important;padding:9px 20px!important;border-radius:50px!important}
+    .nav-cta:hover{background:var(--gold)!important;color:var(--dark2)!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;padding:8px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:var(--tr)}
+    .mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(28,20,16,.98);padding:20px;flex-direction:column;gap:4px;backdrop-filter:blur(12px);z-index:999}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{color:var(--white);font-size:1rem;font-weight:500;padding:12px 16px;border-radius:8px;transition:var(--tr)}
+    .mobile-menu a:hover{background:rgba(255,255,255,.1);color:var(--gold)}
+
+    /* HERO */
+    .tour-hero{min-height:70vh;position:relative;display:flex;align-items:flex-end;overflow:hidden}
+    .tour-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 8s ease}
+    .tour-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,20,16,.9) 0%,rgba(28,20,16,.4) 50%,rgba(28,20,16,.2) 100%)}
+    .tour-hero-content{position:relative;z-index:2;padding:60px 0 48px;width:100%}
+    .breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:.85rem;color:rgba(255,255,255,.6)}
+    .breadcrumb a{color:rgba(255,255,255,.6);transition:var(--tr)}
+    .breadcrumb a:hover{color:var(--gold)}
+    .breadcrumb i{font-size:.6rem}
+    .tour-hero-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:50px;font-size:.8rem;font-weight:600;margin-bottom:14px}
+    .badge-hot{background:var(--secondary);color:var(--white)}
+    .badge-popular{background:var(--primary);color:var(--white)}
+    .badge-new{background:var(--gold);color:var(--dark2)}
+    .badge-luxury{background:linear-gradient(135deg,#C8A04A,#E8C870);color:var(--dark2)}
+    .badge-grand{background:var(--dark2);color:var(--white)}
+    .badge-custom{background:#2D6A4F;color:var(--white)}
+    .tour-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:800;color:var(--white);line-height:1.15;margin-bottom:16px}
+    .tour-hero-meta{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:20px}
+    .tour-hero-meta span{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.85);font-size:.9rem}
+    .tour-hero-meta i{color:var(--gold)}
+    .tour-rating-row{display:flex;align-items:center;gap:12px}
+    .stars-display{display:flex;gap:2px}
+    .stars-display i{color:var(--gold);font-size:.9rem}
+    .rating-text{color:rgba(255,255,255,.8);font-size:.9rem}
+
+    /* QUICK FACTS */
+    .quick-facts{background:var(--dark2);padding:0}
+    .facts-inner{display:flex;flex-wrap:wrap}
+    .fact-item{flex:1;min-width:160px;padding:20px 24px;display:flex;align-items:center;gap:14px;border-right:1px solid rgba(255,255,255,.08)}
+    .fact-item:last-child{border-right:none}
+    .fact-icon{width:44px;height:44px;min-width:44px;background:rgba(200,112,42,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.1rem}
+    .fact-info span{display:block;font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+    .fact-info strong{color:var(--white);font-size:.95rem;font-weight:600}
+
+    /* LAYOUT */
+    .tour-body-wrap{padding:60px 0 80px;background:var(--light)}
+    .tour-layout{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start}
+
+    /* TABS */
+    .tabs-nav{display:flex;gap:4px;background:var(--white);padding:6px;border-radius:14px;box-shadow:var(--shadow);margin-bottom:32px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .tab-btn{flex:1;min-width:100px;padding:10px 18px;border-radius:10px;font-size:.9rem;font-weight:600;color:var(--text-light);transition:var(--tr);white-space:nowrap;text-align:center}
+    .tab-btn.active{background:var(--primary);color:var(--white)}
+    .tab-btn:hover:not(.active){background:var(--cream);color:var(--primary)}
+    .tab-panel{display:none}
+    .tab-panel.active{display:block}
+
+    /* OVERVIEW */
+    .overview-text{font-size:1rem;color:var(--text);line-height:1.8;margin-bottom:28px}
+    .highlights-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .highlight-item{display:flex;align-items:flex-start;gap:10px;background:var(--white);padding:14px 16px;border-radius:var(--radius);border-left:3px solid var(--primary)}
+    .highlight-item i{color:var(--primary);margin-top:2px;flex-shrink:0}
+    .highlight-item span{font-size:.9rem;color:var(--text);line-height:1.4}
+
+    /* TIMELINE */
+    .timeline{position:relative;padding-left:0}
+    .timeline::before{content:'';position:absolute;left:28px;top:28px;bottom:28px;width:2px;background:linear-gradient(to bottom,var(--primary),var(--gold));border-radius:2px}
+    .tl-day{position:relative;padding-left:72px;margin-bottom:40px}
+    .tl-day:last-child{margin-bottom:0}
+    .tl-dot{position:absolute;left:0;top:0;width:56px;height:56px;background:var(--primary);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(200,112,42,.4);border:3px solid var(--white);z-index:1}
+    .tl-dot span{font-size:.55rem;font-weight:700;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.5px;line-height:1}
+    .tl-dot strong{font-size:1rem;font-weight:800;color:var(--white);line-height:1}
+    .tl-card{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow)}
+    .tl-card-header{padding:20px 24px 0}
+    .tl-day-label{font-size:.75rem;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+    .tl-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--dark2);margin-bottom:12px}
+    .tl-desc{font-size:.92rem;color:var(--text);line-height:1.7;padding:0 24px 18px}
+    .tl-activities{padding:0 24px 18px;display:flex;flex-direction:column;gap:8px}
+    .tl-activity{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--text)}
+    .tl-activity i{color:var(--primary);margin-top:2px;flex-shrink:0;font-size:.8rem}
+    .tl-footer{display:flex;flex-wrap:wrap;gap:10px;padding:14px 24px;background:var(--light);border-top:1px solid var(--cream)}
+    .tl-tag{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text-light)}
+    .tl-tag i{color:var(--primary);font-size:.75rem}
+
+    /* INCLUDES */
+    .includes-wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .includes-box{background:var(--white);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow)}
+    .includes-box h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+    .includes-box.yes h3{color:#1A6B3A}
+    .includes-box.no h3{color:#8B1A1A}
+    .inc-list{display:flex;flex-direction:column;gap:10px}
+    .inc-item{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:var(--text);line-height:1.4}
+    .inc-item i{flex-shrink:0;margin-top:2px;font-size:.85rem}
+    .inc-item.yes i{color:#2D9E4F}
+    .inc-item.no i{color:#C0392B}
+
+    /* REVIEWS */
+    .reviews-grid{display:flex;flex-direction:column;gap:20px}
+    .review-card{background:var(--white);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--shadow)}
+    .review-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+    .review-avatar{width:52px;height:52px;border-radius:50%;overflow:hidden;border:2px solid var(--primary);flex-shrink:0}
+    .review-avatar img{width:100%;height:100%;object-fit:cover}
+    .review-info{}
+    .review-name{font-weight:700;color:var(--dark2);font-size:.95rem}
+    .review-meta{font-size:.8rem;color:var(--text-light);display:flex;align-items:center;gap:8px;margin-top:2px}
+    .review-stars{display:flex;gap:2px;margin-bottom:6px}
+    .review-stars i{color:var(--gold);font-size:.85rem}
+    .review-text{font-size:.92rem;color:var(--text);line-height:1.7;font-style:italic}
+
+    /* SIDEBAR */
+    .booking-sidebar{position:sticky;top:90px}
+    .sidebar-card{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);overflow:hidden}
+    .sidebar-price-box{background:linear-gradient(135deg,var(--dark2),var(--secondary));padding:24px;text-align:center}
+    .sidebar-price-box span{font-size:.8rem;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:1px}
+    .sidebar-price-box strong{display:block;font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:800;color:var(--white);line-height:1}
+    .sidebar-price-box em{font-size:.85rem;color:rgba(255,255,255,.6);font-style:normal}
+    .sidebar-body{padding:24px}
+    .sidebar-facts{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+    .sf-row{display:flex;justify-content:space-between;align-items:center;font-size:.88rem;padding-bottom:10px;border-bottom:1px solid var(--cream)}
+    .sf-row:last-child{border-bottom:none;padding-bottom:0}
+    .sf-label{color:var(--text-light);display:flex;align-items:center;gap:7px}
+    .sf-label i{color:var(--primary);width:14px}
+    .sf-val{font-weight:600;color:var(--dark2)}
+    .sidebar-btn{width:100%;padding:15px;background:var(--primary);color:var(--white);border-radius:50px;font-size:1rem;font-weight:700;margin-bottom:12px;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:8px}
+    .sidebar-btn:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,112,42,.35)}
+    .sidebar-wa{width:100%;padding:13px;background:#25D366;color:var(--white);border-radius:50px;font-size:.95rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;transition:var(--tr)}
+    .sidebar-wa:hover{background:#1DA851;transform:translateY(-2px)}
+    .sidebar-note{text-align:center;margin-top:14px;font-size:.8rem;color:var(--text-light)}
+    .sidebar-note i{color:var(--primary)}
+
+    /* RELATED */
+    .related-section{padding:60px 0;background:var(--white)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+    .related-card{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);transition:var(--tr)}
+    .related-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .related-img{height:180px;overflow:hidden;position:relative}
+    .related-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .related-card:hover .related-img img{transform:scale(1.06)}
+    .related-body{padding:18px}
+    .related-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--dark2);margin-bottom:8px;line-height:1.3}
+    .related-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:12px;border-top:1px solid var(--cream)}
+    .related-price{font-weight:700;color:var(--primary);font-family:'Playfair Display',serif}
+    .related-link{font-size:.85rem;font-weight:600;color:var(--primary);display:flex;align-items:center;gap:4px}
+    .related-link:hover{gap:8px}
+
+    /* FOOTER (minimal) */
+    .mini-footer{background:var(--dark);color:rgba(255,255,255,.5);text-align:center;padding:20px;font-size:.83rem}
+    .mini-footer a{color:var(--gold)}
+
+    /* WHATSAPP */
+    .whatsapp-float{position:fixed;bottom:28px;right:28px;z-index:999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.6rem;box-shadow:0 4px 20px rgba(37,211,102,.5);animation:pulse 2.5s infinite;transition:transform var(--tr)}
+    .whatsapp-float:hover{transform:scale(1.1)}
+    @keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.5)}50%{box-shadow:0 4px 32px rgba(37,211,102,.8)}}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .tour-layout{grid-template-columns:1fr}
+      .booking-sidebar{position:static}
+      .related-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:768px){
+      .nav-links{display:none}
+      .hamburger{display:flex}
+      .facts-inner{flex-wrap:wrap}
+      .fact-item{min-width:50%;border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+      .highlights-grid{grid-template-columns:1fr}
+      .includes-wrap{grid-template-columns:1fr}
+      .timeline::before{left:22px}
+      .tl-day{padding-left:58px}
+      .tl-dot{width:44px;height:44px}
+      .related-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){
+      .tabs-nav{gap:2px}
+      .tab-btn{padding:9px 12px;font-size:.82rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Majestic Morocco Trips" class="logo-img" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tours">Tours</a></li>
+        <li><a href="index.html#daytrips">Day Trips</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Book Now</a></li>
+      </ul>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMobile()">Home</a>
+  <a href="index.html#tours" onclick="closeMobile()">Tours</a>
+  <a href="index.html#daytrips" onclick="closeMobile()">Day Trips</a>
+  <a href="index.html#about" onclick="closeMobile()">About</a>
+  <a href="index.html#contact" onclick="closeMobile()">Contact</a>
+  <a href="blog.html" onclick="closeMobile()">Blog</a>
+  <a href="index.html#contact" onclick="closeMobile()">Book Now</a>
+</div>
+
+<!-- HERO (populated by JS) -->
+<div class="tour-hero" id="tourHero">
+  <div class="tour-hero-bg" id="tourHeroBg"></div>
+  <div class="container">
+    <div class="tour-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right"></i>
+        <a href="index.html#tours">Tours</a>
+        <i class="fas fa-chevron-right"></i>
+        <span id="breadcrumbTitle">Tour Details</span>
+      </div>
+      <div id="heroBadge" class="tour-hero-badge"></div>
+      <h1 id="heroTitle"></h1>
+      <div class="tour-hero-meta" id="heroMeta"></div>
+      <div class="tour-rating-row">
+        <div class="stars-display" id="heroStars"></div>
+        <span class="rating-text" id="heroRating"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUICK FACTS -->
+<div class="quick-facts">
+  <div class="facts-inner container" id="quickFacts"></div>
+</div>
+
+<!-- MAIN BODY -->
+<div class="tour-body-wrap">
+  <div class="container">
+    <div class="tour-layout">
+      <!-- LEFT: CONTENT -->
+      <div>
+        <!-- TABS NAV -->
+        <div class="tabs-nav">
+          <button class="tab-btn active" onclick="switchTab('overview',this)"><i class="fas fa-info-circle"></i> Overview</button>
+          <button class="tab-btn" onclick="switchTab('itinerary',this)"><i class="fas fa-route"></i> Itinerary</button>
+          <button class="tab-btn" onclick="switchTab('includes',this)"><i class="fas fa-list-check"></i> Includes</button>
+          <button class="tab-btn" onclick="switchTab('reviews',this)"><i class="fas fa-star"></i> Reviews</button>
+        </div>
+
+        <!-- TAB: OVERVIEW -->
+        <div class="tab-panel active" id="tab-overview">
+          <p class="overview-text" id="overviewText"></p>
+          <span class="section-tag">Tour Highlights</span>
+          <div class="highlights-grid" id="highlightsGrid"></div>
+        </div>
+
+        <!-- TAB: ITINERARY -->
+        <div class="tab-panel" id="tab-itinerary">
+          <div class="timeline" id="timeline"></div>
+        </div>
+
+        <!-- TAB: INCLUDES -->
+        <div class="tab-panel" id="tab-includes">
+          <div class="includes-wrap">
+            <div class="includes-box yes">
+              <h3><i class="fas fa-circle-check"></i> What's Included</h3>
+              <div class="inc-list" id="includedList"></div>
+            </div>
+            <div class="includes-box no">
+              <h3><i class="fas fa-circle-xmark"></i> Not Included</h3>
+              <div class="inc-list" id="notIncludedList"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: REVIEWS -->
+        <div class="tab-panel" id="tab-reviews">
+          <div class="reviews-grid" id="reviewsGrid"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: SIDEBAR -->
+      <div class="booking-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-price-box">
+            <span>Starting From</span>
+            <strong id="sidebarPrice"></strong>
+            <em>per person</em>
+          </div>
+          <div class="sidebar-body">
+            <div class="sidebar-facts" id="sidebarFacts"></div>
+            <a href="index.html#contact" class="sidebar-btn">
+              <i class="fas fa-calendar-check"></i> Book This Tour
+            </a>
+            <a href="https://wa.me/212674768328" class="sidebar-wa" target="_blank" rel="noopener">
+              <i class="fab fa-whatsapp"></i> WhatsApp Inquiry
+            </a>
+            <p class="sidebar-note"><i class="fas fa-shield-alt"></i> Free cancellation · No hidden fees</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RELATED TOURS -->
+<div class="related-section">
+  <div class="container">
+    <span class="section-tag">You May Also Like</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--dark2);margin-top:8px">Related Tours</h2>
+    <div class="related-grid" id="relatedGrid"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="mini-footer">
+  © 2026 <a href="index.html">Majestic Morocco Trips</a> · All rights reserved
+</div>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/212674768328" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+// ===================== TOUR DATA =====================
+const TOURS = {
+
+  "3day-marrakech": {
+    title: "3-Day Sahara Desert Adventure",
+    subtitle: "from Marrakech",
+    badge: "Best Seller", badgeClass: "hot",
+    duration: "3 Days / 2 Nights", durationDays: 3,
+    groupSize: "2–16 people", difficulty: "Easy",
+    price: "€299", startCity: "Marrakech", endCity: "Marrakech or Fes",
+    rating: 4.9, reviewCount: 127,
+    hero: "images/camel-caravan.jpg",
+    heroFallback: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1600&q=80",
+    overview: "The ultimate 3-day escape from Marrakech into the heart of the Moroccan Sahara. This tour takes you over the dramatic Tizi N'Tichka mountain pass, past the UNESCO-listed Ait Benhaddou kasbah, through the cinematic Draa Valley, and finally into the golden dunes of Erg Chebbi near Merzouga. You'll spend a magical night in a luxury desert camp under a sky blazing with stars, trek at sunset on camelback, and wake to a Saharan sunrise you'll never forget. Small groups, expert local guides, and all logistics handled for you.",
+    highlights: [
+      "Cross the stunning Tizi N'Tichka mountain pass (2260m)",
+      "Visit UNESCO World Heritage site Ait Benhaddou",
+      "Camel trek into the Erg Chebbi dunes at golden hour",
+      "Overnight in a luxury Berber desert camp",
+      "Stargazing in one of Africa's darkest skies",
+      "Optional sunrise camel ride over the dunes",
+      "Authentic Berber dinner with live music",
+      "Expert English/French-speaking local guide"
+    ],
+    days: [
+      {
+        label: "Day 1",
+        title: "Marrakech → Ait Benhaddou → Dades Valley",
+        desc: "An early morning departure from Marrakech sets the tone for adventure. Your drive south over the High Atlas Mountains rewards you with breathtaking panoramic views as you ascend the Tizi N'Tichka pass at 2,260 metres.",
+        activities: [
+          "07:00 – Pickup from your Marrakech hotel",
+          "Scenic drive over Tizi N'Tichka mountain pass",
+          "Visit Ait Benhaddou — a stunning UNESCO fortified village",
+          "Lunch in Ouarzazate, the 'Hollywood of Africa'",
+          "Visit Kasbah Taourirt and Atlas Film Studios (optional)",
+          "Drive through the lush Draa Valley & date palm oases",
+          "Arrive Dades Valley / Gorges late afternoon",
+          "Dinner and overnight at traditional guesthouse"
+        ],
+        accommodation: "Guesthouse in Dades Valley",
+        meals: "Lunch + Dinner included",
+        distance: "≈ 350 km"
+      },
+      {
+        label: "Day 2",
+        title: "Dades Gorges → Todra → Merzouga → Desert Camp",
+        desc: "Today you descend into two of Morocco's most spectacular gorges before reaching the legendary golden dunes of Erg Chebbi. The afternoon camel trek into the desert as the sun turns everything orange and pink is simply unforgettable.",
+        activities: [
+          "08:00 – Breakfast and depart Dades",
+          "Short walk inside the dramatic Todra Gorges (300m walls)",
+          "Drive through Erfoud and Rissani oasis towns",
+          "Arrive Merzouga — first views of the massive Erg Chebbi dunes",
+          "16:30 – Camel trek departs into the Sahara",
+          "Arrive luxury desert camp as the sun sets",
+          "Traditional Moroccan tagine dinner under the stars",
+          "Berber percussion and music around the campfire",
+          "Stargazing — over 6,000 stars visible to the naked eye"
+        ],
+        accommodation: "Luxury Desert Camp (private tent with en-suite bathroom)",
+        meals: "Breakfast + Dinner included",
+        distance: "≈ 280 km"
+      },
+      {
+        label: "Day 3",
+        title: "Sunrise in the Sahara → Return to Marrakech",
+        desc: "Rise before dawn for an optional sunrise experience over the dunes — one of the most photographed moments in all of Morocco. After breakfast in the desert, the journey back to Marrakech takes you through a different scenic route.",
+        activities: [
+          "06:00 – Optional sunrise camel ride (highly recommended!)",
+          "Traditional Moroccan breakfast at the camp",
+          "Return by camel to Merzouga village",
+          "Visit a nomad family and local artisans",
+          "Drive back via scenic desert roads",
+          "Short stop at Ouarzazate or Skoura oasis",
+          "Arrive Marrakech approximately 20:00–21:00",
+          "Optional: continue to Fes instead (arrives ~22:00)"
+        ],
+        accommodation: "N/A (return day)",
+        meals: "Breakfast included",
+        distance: "≈ 560 km"
+      }
+    ],
+    included: [
+      "Private air-conditioned transport throughout",
+      "Professional licensed English/French guide",
+      "1 night guesthouse in Dades (breakfast + dinner)",
+      "1 night luxury desert camp (dinner + breakfast)",
+      "Sunset and sunrise camel treks in the Sahara",
+      "All entrance fees (Ait Benhaddou, etc.)",
+      "Bottled water throughout the tour",
+      "Berber music evening at desert camp",
+      "Hotel pickup and drop-off in Marrakech"
+    ],
+    notIncluded: [
+      "International flights to/from Morocco",
+      "Travel insurance (highly recommended)",
+      "Personal expenses and tips for guide/driver",
+      "Lunch on Day 1 and Day 3 (approx. €8–12)",
+      "Optional activities (quad biking, sandboarding)",
+      "Atlas Film Studios entrance (Day 1, optional)"
+    ],
+    reviews: [
+      { name: "Sarah Mitchell", country: "🇬🇧 London, UK", avatar: "https://i.pravatar.cc/100?img=47", rating: 5, tour: "3-Day Sahara Tour", date: "March 2025", text: "An absolutely magical experience! The camel trek at sunset and sleeping under a billion stars in the Sahara desert was something I'll treasure forever. Our guide Hassan was brilliant — knowledgeable, funny, and incredibly caring. 100% recommend this tour!" },
+      { name: "Pierre & Isabelle", country: "🇫🇷 Paris, France", avatar: "https://i.pravatar.cc/100?img=33", rating: 5, tour: "3-Day Sahara Tour", date: "February 2025", text: "Parfait de A à Z! The organisation was flawless, the desert camp was incredibly comfortable and the food was delicious. Watching the sunrise over the Erg Chebbi dunes was worth the early wake-up alone. We will definitely be back!" },
+      { name: "Tom & Lisa Watson", country: "🇦🇺 Sydney, Australia", avatar: "https://i.pravatar.cc/100?img=22", rating: 5, tour: "3-Day Tour", date: "January 2025", text: "We did this tour for our anniversary and it was perfect. The guide knew exactly where to take us for photos, the camp was luxurious and the stars at night were unlike anything we'd ever seen. Already recommending to everyone back home." }
+    ]
+  },
+
+  "4day-fes": {
+    title: "4-Day Fes to Marrakech",
+    subtitle: "via the Sahara Desert",
+    badge: "Popular", badgeClass: "popular",
+    duration: "4 Days / 3 Nights", durationDays: 4,
+    groupSize: "2–12 people", difficulty: "Easy",
+    price: "€349", startCity: "Fes", endCity: "Marrakech",
+    rating: 4.8, reviewCount: 89,
+    hero: "images/fes-tannery.jpg",
+    heroFallback: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=1600&q=80",
+    overview: "Connect Morocco's two greatest imperial cities while journeying through the spectacular Sahara. Departing Fes, you'll wind through the cedar forests of the Middle Atlas, cross the breathtaking Ziz Valley, and arrive at the legendary Erg Chebbi dunes in Merzouga. After a night under the desert stars, the return journey takes you through the Valley of Roses, Skoura palm grove, Dades Gorges, and the cinematic Kasbah landscapes of Ouarzazate — ending in magnificent Marrakech.",
+    highlights: [
+      "From Fes to Marrakech — two imperial cities in one tour",
+      "Cedar forests of the Middle Atlas and Barbary macaques",
+      "Sunset camel trek into the Erg Chebbi dunes",
+      "Overnight in luxury Berber desert camp",
+      "Valley of Roses and Skoura palm oasis",
+      "UNESCO Ait Benhaddou kasbah",
+      "Dades and Todra Gorges scenic stops",
+      "Small group, private vehicle, expert guide"
+    ],
+    days: [
+      {
+        label: "Day 1",
+        title: "Fes → Middle Atlas Mountains → Erfoud",
+        desc: "Departing the ancient medina of Fes, your journey south takes you through some of Morocco's most scenic landscapes — from cool cedar forests populated by wild Barbary macaques to the dramatic Ziz Gorges.",
+        activities: [
+          "08:00 – Pickup from your Fes hotel",
+          "Drive through Ifrane — the 'Switzerland of Morocco'",
+          "Cedar forest with wild Barbary macaques",
+          "Lunch stop in Midelt (apple country)",
+          "Ziz Valley and stunning Ziz Gorges viewpoint",
+          "Arrive Erfoud / Rissani area",
+          "Check in and dinner at hotel"
+        ],
+        accommodation: "Hotel in Erfoud",
+        meals: "Lunch + Dinner included",
+        distance: "≈ 340 km"
+      },
+      {
+        label: "Day 2",
+        title: "Rissani Market → Merzouga → Sahara Camp",
+        desc: "The morning begins with a visit to the ancient Rissani market before reaching the ocean of golden dunes. The afternoon is yours to explore Merzouga before the magical sunset camel trek departs.",
+        activities: [
+          "08:30 – Breakfast",
+          "Visit Rissani market — oldest in the Sahara region",
+          "Drive to Merzouga and your first view of Erg Chebbi",
+          "Free time: sandboarding or relaxing by the dunes",
+          "16:30 – Camel trek into the dunes at sunset",
+          "Arrive luxury desert camp at golden hour",
+          "Moroccan dinner and Berber music performance",
+          "Stargazing in the Saharan sky"
+        ],
+        accommodation: "Luxury Desert Camp",
+        meals: "Breakfast + Dinner included",
+        distance: "≈ 80 km"
+      },
+      {
+        label: "Day 3",
+        title: "Desert Sunrise → Dades & Todra Gorges → Ouarzazate",
+        desc: "Rise for a breathtaking desert sunrise, then embark on a scenic drive through Morocco's most dramatic canyon landscapes en route to Ouarzazate.",
+        activities: [
+          "06:00 – Sunrise and morning desert walk",
+          "Berber breakfast at the desert camp",
+          "Return camel trek to Merzouga village",
+          "Drive via Valley of Roses (Kelaat M'Gouna)",
+          "Skoura palm grove — ancient kasbah oasis",
+          "Visit Todra Gorges (impressive 300m rock walls)",
+          "Arrive Ouarzazate",
+          "Kasbah Taourirt visit",
+          "Dinner and overnight in Ouarzazate"
+        ],
+        accommodation: "Hotel in Ouarzazate",
+        meals: "Breakfast + Dinner included",
+        distance: "≈ 310 km"
+      },
+      {
+        label: "Day 4",
+        title: "Ait Benhaddou → Tizi N'Tichka → Marrakech",
+        desc: "The final day brings one of Morocco's greatest UNESCO sites and a spectacular mountain crossing before your arrival in the magical city of Marrakech.",
+        activities: [
+          "08:30 – Breakfast and check-out",
+          "Visit Ait Benhaddou (UNESCO World Heritage fortified village)",
+          "Drive over the High Atlas via Tizi N'Tichka pass",
+          "Scenic stop with panoramic mountain views",
+          "Arrive Marrakech approximately 16:00–17:00",
+          "Drop-off at hotel, riad or airport"
+        ],
+        accommodation: "N/A (arrival day)",
+        meals: "Breakfast included",
+        distance: "≈ 210 km"
+      }
+    ],
+    included: [
+      "Private air-conditioned vehicle throughout",
+      "Professional English/French/Spanish guide",
+      "3 nights accommodation (hotel + desert camp)",
+      "Daily breakfast and dinner as specified",
+      "Sunset and sunrise camel treks",
+      "All entrance fees (Ait Benhaddou, etc.)",
+      "Bottled water on all driving days",
+      "Hotel pickups in Fes and drop-off in Marrakech"
+    ],
+    notIncluded: [
+      "Flights to Fes / from Marrakech",
+      "Travel insurance",
+      "Lunches on all days (approx. €8–12 each)",
+      "Personal expenses and gratuities",
+      "Optional activities (quad biking, 4x4 safari)"
+    ],
+    reviews: [
+      { name: "Marco & Elena Rossi", country: "🇮🇹 Rome, Italy", avatar: "https://i.pravatar.cc/100?img=32", rating: 5, tour: "4-Day Fes → Marrakech", date: "April 2025", text: "We did this for our honeymoon and it was pure magic. The desert camp was absolutely breathtaking, the guide was knowledgeable and warm, and the views throughout the tour were stunning. Every detail was perfectly organised." },
+      { name: "Hannah Müller", country: "🇩🇪 Berlin, Germany", avatar: "https://i.pravatar.cc/100?img=44", rating: 5, tour: "4-Day Tour", date: "March 2025", text: "The perfect way to get between Fes and Marrakech! I was travelling solo and felt completely safe and welcome. The Barbary macaques in the cedar forest, the dunes at sunset, and Ait Benhaddou were the highlights — all in one tour!" },
+      { name: "James & Amy Chen", country: "🇺🇸 Boston, USA", avatar: "https://i.pravatar.cc/100?img=15", rating: 5, tour: "4-Day Desert Tour", date: "February 2025", text: "Exceeded all expectations. Our guide Youssef went above and beyond — explaining history, finding the best photo spots, and making sure everyone in our group was happy. The desert camp dinner under the stars was a dream." }
+    ]
+  },
+
+  "6day-imperial": {
+    title: "6-Day Imperial Cities & Desert",
+    subtitle: "Casablanca · Fes · Sahara · Marrakech",
+    badge: "New Route", badgeClass: "new",
+    duration: "6 Days / 5 Nights", durationDays: 6,
+    groupSize: "2–10 people", difficulty: "Easy–Moderate",
+    price: "€549", startCity: "Casablanca", endCity: "Marrakech",
+    rating: 4.9, reviewCount: 54,
+    hero: "images/marrakech.jpg",
+    heroFallback: "https://images.unsplash.com/photo-1597212618440-806262de4f2b?w=1600&q=80",
+    overview: "Morocco's greatest hits — all in one extraordinary journey. This 6-day route connects four of Morocco's most iconic destinations: the modern metropolis of Casablanca, the labyrinthine medieval medina of Fes, the immense Sahara Desert at Merzouga, and the magical city of Marrakech. Along the way you'll encounter ancient kasbahs, cedar forests, dramatic mountain passes, and the golden dunes of Erg Chebbi. A full 24 hours in the desert gives you time for camel treks at both sunrise and sunset.",
+    highlights: [
+      "Hassan II Mosque — one of the world's largest",
+      "Full-day guided tour of Fes medina (UNESCO)",
+      "Two sunsets AND sunrises in the Sahara Desert",
+      "4x4 dune bashing and sandboarding",
+      "Luxury desert camp — two nights",
+      "Ait Benhaddou UNESCO kasbah",
+      "All four of Morocco's imperial cities",
+      "Atlas Mountains crossing — Tizi N'Tichka pass"
+    ],
+    days: [
+      {
+        label: "Day 1",
+        title: "Casablanca → Rabat → Fes",
+        desc: "Your Morocco adventure begins with a visit to the magnificent Hassan II Mosque before driving north to the elegant capital Rabat and then to ancient Fes.",
+        activities: [
+          "Airport pickup and welcome briefing",
+          "Hassan II Mosque — exterior visit (3rd largest in world)",
+          "Drive to Rabat: Oudayas Kasbah, Mohammed V Mausoleum",
+          "Continue to Fes (4 hrs)",
+          "Evening stroll in illuminated Fes medina",
+          "Dinner at a traditional Moroccan restaurant"
+        ],
+        accommodation: "Riad in Fes medina",
+        meals: "Dinner included",
+        distance: "≈ 330 km"
+      },
+      {
+        label: "Day 2",
+        title: "Full Day in Fes — the Living Medieval City",
+        desc: "Fes el-Bali is the world's largest car-free urban area and a UNESCO World Heritage site. Today's guided tour reveals centuries of history, craftsmanship, and culture.",
+        activities: [
+          "09:00 – Guided medina tour begins",
+          "Chouara tanneries (best leather dyeing in the world)",
+          "Al-Qarawiyyin University — founded in 859 AD",
+          "Bou Inania Madrasa — stunning Islamic architecture",
+          "Traditional souk districts: brass, pottery, spices",
+          "Traditional Moroccan lunch inside the medina",
+          "Free afternoon for shopping or hammam",
+          "Dinner at your riad"
+        ],
+        accommodation: "Riad in Fes medina",
+        meals: "Breakfast + Lunch + Dinner included",
+        distance: "Walking day"
+      },
+      {
+        label: "Day 3",
+        title: "Fes → Middle Atlas → Merzouga (Sahara)",
+        desc: "Leaving Fes behind, the landscape transforms dramatically as you enter the Middle Atlas — lush cedar forests home to wild Barbary macaques — then descend into the pre-Saharan plains.",
+        activities: [
+          "08:00 – Depart Fes",
+          "Ifrane — charming Alpine-style town",
+          "Cedar forest: Barbary macaque monkeys",
+          "Midelt for lunch",
+          "Ziz Valley and gorges — spectacular scenery",
+          "Arrive Merzouga at sunset",
+          "First view of the majestic Erg Chebbi dunes"
+        ],
+        accommodation: "Hotel facing the Erg Chebbi dunes",
+        meals: "Breakfast + Lunch + Dinner included",
+        distance: "≈ 390 km"
+      },
+      {
+        label: "Day 4",
+        title: "Full Day in the Sahara Desert",
+        desc: "A full 24 hours immersed in the world's greatest desert. From sunrise camel treks to afternoon dune adventures and a magical sunset — this is what Morocco dreams are made of.",
+        activities: [
+          "06:00 – Sunrise camel trek over the dunes",
+          "Breakfast at the desert camp",
+          "Sandboarding on the Erg Chebbi dunes",
+          "Visit to a nomad Berber family home",
+          "4x4 off-road dune adventure (afternoon)",
+          "16:30 – Second sunset camel ride",
+          "Gourmet Moroccan dinner at luxury camp",
+          "Live Gnawa music and stargazing"
+        ],
+        accommodation: "Luxury Desert Camp (2nd night)",
+        meals: "Breakfast + Dinner included",
+        distance: "Desert day"
+      },
+      {
+        label: "Day 5",
+        title: "Desert → Valley of Roses → Ouarzazate",
+        desc: "Reluctantly leaving the desert behind, today's scenic drive takes you through some of Morocco's most beautiful and scented landscapes.",
+        activities: [
+          "07:30 – Breakfast and morning desert walk",
+          "Depart Merzouga",
+          "Skoura palm grove — ancient fortified granaries (agadirs)",
+          "Valley of Roses — especially stunning in April",
+          "Kelaat M'Gouna — rose water and oil market",
+          "Dades Gorges — dramatic canyon viewpoint",
+          "Arrive Ouarzazate",
+          "Dinner and rest"
+        ],
+        accommodation: "Hotel in Ouarzazate",
+        meals: "Breakfast + Dinner included",
+        distance: "≈ 320 km"
+      },
+      {
+        label: "Day 6",
+        title: "Ait Benhaddou → Atlas Pass → Marrakech",
+        desc: "The final morning brings Morocco's most famous UNESCO site before the dramatic crossing of the High Atlas Mountains and your triumphant arrival in Marrakech.",
+        activities: [
+          "08:30 – Visit Ait Benhaddou UNESCO kasbah",
+          "Atlas Film Studios (optional — extra cost)",
+          "Cross Tizi N'Tichka mountain pass (2,260m)",
+          "Arrive Marrakech approximately 16:00",
+          "Optional: guided evening in Djemaa el-Fna",
+          "Drop at hotel, riad or airport"
+        ],
+        accommodation: "N/A (arrival day)",
+        meals: "Breakfast included",
+        distance: "≈ 210 km"
+      }
+    ],
+    included: [
+      "Private air-conditioned transport throughout",
+      "Expert licensed guide for entire 6 days",
+      "5 nights accommodation: 1 Casablanca area, 1 riad Fes (×2), 1 hotel Merzouga, 1 luxury camp, 1 Ouarzazate",
+      "Daily breakfast and dinner as specified",
+      "Full-day Fes medina guided tour",
+      "Camel treks (sunset Day 3, sunrise Day 4, sunset Day 4)",
+      "4x4 dune safari in the Sahara",
+      "All entrance fees included",
+      "Bottled water throughout",
+      "Airport pickup and all hotel transfers"
+    ],
+    notIncluded: [
+      "International flights",
+      "Travel insurance (mandatory)",
+      "Lunches Days 1, 3, 5 (approx. €8–12)",
+      "Personal tips for guide and driver",
+      "Optional hammam or cooking class in Fes",
+      "Atlas Film Studios entrance fee"
+    ],
+    reviews: [
+      { name: "Sophie & David Laurent", country: "🇨🇦 Montreal, Canada", avatar: "https://i.pravatar.cc/100?img=29", rating: 5, tour: "6-Day Imperial Tour", date: "April 2025", text: "This tour is absolutely incredible value for money. In 6 days we saw more of Morocco than friends who spent 3 weeks. Two nights in the desert was the perfect decision — we had time to relax and really soak it in. The riad in Fes was stunning." },
+      { name: "Yuki Tanaka", country: "🇯🇵 Tokyo, Japan", avatar: "https://i.pravatar.cc/100?img=52", rating: 5, tour: "6-Day Tour", date: "March 2025", text: "As a solo female traveller I was a little nervous but the team made me feel completely safe and welcome. The Fes medina guide was exceptional — he knew every corner and every story. And the desert... there are no words for how beautiful it is." },
+      { name: "The Rodriguez Family", country: "🇪🇸 Madrid, Spain", avatar: "https://i.pravatar.cc/100?img=18", rating: 5, tour: "6-Day Family Tour", date: "February 2025", text: "We travelled with our three kids (ages 8, 11, 14) and they all loved it. The camel rides were a highlight for the whole family. The guide was wonderful with the children — patient, engaging, and full of fun stories. Highly recommended!" }
+    ]
+  },
+
+  "luxury-camp": {
+    title: "Luxury Sahara Desert Camp",
+    subtitle: "Stargazing · Camels · Gourmet Dining",
+    badge: "Luxury", badgeClass: "luxury",
+    duration: "2 Days / 1 Night", durationDays: 2,
+    groupSize: "2–8 people", difficulty: "Easy",
+    price: "€199", startCity: "Merzouga", endCity: "Merzouga",
+    rating: 5.0, reviewCount: 73,
+    hero: "images/stargazing.jpg",
+    heroFallback: "https://images.unsplash.com/photo-1539768942893-daf91f348b20?w=1600&q=80",
+    overview: "An exclusive luxury experience at the foot of the magnificent Erg Chebbi dunes in Merzouga. This boutique desert escape offers everything you'd expect from a world-class glamping experience — a sumptuous private tent with a king bed and en-suite bathroom, gourmet Moroccan cuisine, live Gnawa music, and professional stargazing with a telescope. The camel trek through the golden dunes at sunset is followed by a night of absolute silence and a billion stars. Perfect for couples, honeymoons, and anyone who wants the Sahara without compromise.",
+    highlights: [
+      "Private luxury tent with en-suite bathroom and king bed",
+      "Sunset and sunrise camel treks through Erg Chebbi",
+      "4-course gourmet Moroccan dinner by candlelight",
+      "Live Gnawa music performance around the campfire",
+      "Professional stargazing with telescope and guide",
+      "Sunrise photography session on the dunes",
+      "Traditional Moroccan breakfast in the desert",
+      "Ideal for couples, honeymooners, and special occasions"
+    ],
+    days: [
+      {
+        label: "Day 1",
+        title: "Merzouga → Camel Trek → Luxury Desert Camp",
+        desc: "The experience begins at your Merzouga hotel, where your camel handler — a third-generation Berber nomad — introduces you to your camel for the golden-hour trek into the heart of the Erg Chebbi dunes.",
+        activities: [
+          "15:00 – Pickup from your Merzouga hotel",
+          "Welcome tea and Berber robe fitting at camp reception",
+          "15:30 – Camel trek departs through the golden dunes",
+          "Champagne / welcome mocktail at sunset dune viewpoint",
+          "Arrive luxury camp as the stars begin to appear",
+          "Freshen up in your private en-suite desert tent",
+          "18:30 – Live Gnawa music and traditional attire photoshoot",
+          "20:00 – Gourmet 4-course Moroccan candlelight dinner",
+          "22:00 – Professional stargazing session with telescope",
+          "Retire to your luxury tent whenever you wish"
+        ],
+        accommodation: "Luxury Desert Camp — private tent with en-suite bathroom, king bed, electricity",
+        meals: "Dinner included",
+        distance: "≈ 5 km camel trek"
+      },
+      {
+        label: "Day 2",
+        title: "Sunrise Photography → Breakfast → Return",
+        desc: "Your guide wakes you gently before dawn for one of the most spectacular natural shows on earth — the Saharan sunrise over the dunes. After a leisurely breakfast, the morning is yours before returning to Merzouga.",
+        activities: [
+          "05:30 – Optional sunrise photography trek (highly recommended)",
+          "Watch the Sahara come alive in reds and golds",
+          "07:30 – Full traditional Moroccan breakfast",
+          "Free time: walk the dunes, meditate, read",
+          "09:30 – Return camel trek to Merzouga village",
+          "Optional: quad biking adventure in the dunes (extra cost)",
+          "Visit local fossil and Berber silver artisan workshops",
+          "11:30 – Return transfer to your Merzouga hotel"
+        ],
+        accommodation: "N/A (return day)",
+        meals: "Breakfast included",
+        distance: "≈ 5 km camel trek return"
+      }
+    ],
+    included: [
+      "Private luxury tent with king bed and en-suite bathroom",
+      "Electricity, charging points, and toiletries in tent",
+      "Sunset and sunrise camel treks with Berber guide",
+      "4-course gourmet Moroccan dinner by candlelight",
+      "Full traditional Moroccan breakfast",
+      "Live Gnawa music performance (approx. 1.5 hours)",
+      "Professional stargazing session with telescope",
+      "Welcome tea and Berber robe for photos",
+      "Pickup and return transfer within Merzouga",
+      "Bottled water and soft drinks throughout"
+    ],
+    notIncluded: [
+      "Transport to/from Merzouga",
+      "Alcoholic beverages (non-alcoholic available)",
+      "Gratuities for camp staff and camel guide",
+      "Quad biking (available at extra cost)",
+      "Travel insurance"
+    ],
+    reviews: [
+      { name: "Charlotte & Liam Hayes", country: "🇬🇧 Edinburgh, UK", avatar: "https://i.pravatar.cc/100?img=56", rating: 5, tour: "Luxury Desert Camp", date: "April 2025", text: "We booked this for our 10th anniversary and it was absolutely perfect. The tent was better than any hotel room — incredibly comfortable, beautifully decorated and with a proper bathroom. The dinner was outstanding, the music magical, and waking up to that sunrise... unforgettable." },
+      { name: "Amélie Dubois", country: "🇫🇷 Lyon, France", avatar: "https://i.pravatar.cc/100?img=38", rating: 5, tour: "Luxury Camp Experience", date: "March 2025", text: "I surprised my partner with this for his birthday and he was speechless. The team prepared a special birthday cake in the desert, decorated the tent with rose petals, and made the whole night feel like a dream. The stargazing with the telescope was mind-blowing." },
+      { name: "Kenji & Akari Nomura", country: "🇯🇵 Osaka, Japan", avatar: "https://i.pravatar.cc/100?img=67", rating: 5, tour: "Luxury Camp", date: "January 2025", text: "We chose this as our honeymoon experience and could not have chosen better. From the camel trek at sunset to the private dinner under a sky full of stars, every moment was perfectly orchestrated. The staff were warm, attentive and made us feel like royalty." }
+    ]
+  },
+
+  "8day-grand": {
+    title: "8-Day Grand Morocco Tour",
+    subtitle: "Chefchaouen · Fes · Sahara · Marrakech",
+    badge: "Grand Tour", badgeClass: "grand",
+    duration: "8 Days / 7 Nights", durationDays: 8,
+    groupSize: "2–14 people", difficulty: "Easy",
+    price: "€699", startCity: "Casablanca", endCity: "Marrakech",
+    rating: 4.9, reviewCount: 41,
+    hero: "images/atlas.jpg",
+    heroFallback: "https://images.unsplash.com/photo-1587135991058-8816b028691f?w=1600&q=80",
+    overview: "The definitive Morocco experience — 8 extraordinary days covering the very best of this endlessly fascinating country. From the blue-washed alleys of Chefchaouen to the ancient labyrinth of Fes, the infinite golden dunes of the Sahara, the dramatic kasbah landscapes of the south, and finally the sensory explosion of Marrakech. This is the tour for those who want to truly understand Morocco — its history, culture, landscapes, and people. Every day brings something completely different and utterly remarkable.",
+    highlights: [
+      "Chefchaouen — the legendary Blue City of Morocco",
+      "Complete 2-day Fes experience including medina tour",
+      "Full day in the Sahara: camels, 4x4, sandboarding",
+      "Overnight luxury desert camp under the stars",
+      "Chefchaouen blue alleys and Spanish quarter",
+      "Ait Benhaddou — Morocco's most famous UNESCO kasbah",
+      "Marrakech medina, Djemaa el-Fna, Majorelle Garden",
+      "8 nights accommodation including riad and desert camp"
+    ],
+    days: [
+      {
+        label: "Day 1",
+        title: "Casablanca Arrival & Welcome",
+        desc: "Welcome to Morocco! Your journey begins in Casablanca, Morocco's vibrant economic capital and home to one of the world's most awe-inspiring mosques.",
+        activities: [
+          "Airport pickup and transfer to hotel",
+          "Hassan II Mosque exterior (one of the world's largest)",
+          "Corniche and Old Medina walkthrough",
+          "Welcome dinner at a traditional Moroccan restaurant",
+          "Briefing on the adventure ahead"
+        ],
+        accommodation: "Hotel in Casablanca",
+        meals: "Dinner included",
+        distance: "Arrival day"
+      },
+      {
+        label: "Day 2",
+        title: "Casablanca → Rabat → Chefchaouen (Blue City)",
+        desc: "Driving north along the Atlantic coast, you visit Morocco's dignified capital Rabat before ascending into the Rif Mountains to reach the enchanting blue city of Chefchaouen.",
+        activities: [
+          "08:30 – Depart Casablanca",
+          "Rabat: Mohammed V Mausoleum, Oudayas Kasbah, Hassan Tower",
+          "Lunch near Rabat",
+          "Drive north to Chefchaouen",
+          "Arrive afternoon — explore the iconic blue-painted medina",
+          "Sunset from the Spanish Mosque viewpoint",
+          "Dinner and overnight in Chefchaouen"
+        ],
+        accommodation: "Riad in Chefchaouen",
+        meals: "Lunch + Dinner included",
+        distance: "≈ 360 km"
+      },
+      {
+        label: "Day 3",
+        title: "Chefchaouen → Fes",
+        desc: "A relaxed morning stroll through Chefchaouen's blue streets — genuinely one of the most photogenic places on earth — before the drive to Fes.",
+        activities: [
+          "Morning free in Chefchaouen (photography, shopping)",
+          "Kasbah Museum visit",
+          "Departure for Fes",
+          "Arrive Fes afternoon",
+          "Evening in the medina (self-guided or guided)",
+          "Traditional pastilla dinner (pigeon pie — a must try)"
+        ],
+        accommodation: "Riad in Fes medina",
+        meals: "Breakfast + Dinner included",
+        distance: "≈ 200 km"
+      },
+      {
+        label: "Day 4",
+        title: "Full Day Fes — the World's Oldest Living City",
+        desc: "An entire day dedicated to unlocking the secrets of Fes — a UNESCO World Heritage site and the most complete medieval city on earth.",
+        activities: [
+          "09:00 – Expert-guided medina tour",
+          "Chouara leather tanneries (rooftop viewing terrace)",
+          "Al-Qarawiyyin — the world's oldest university (859 AD)",
+          "Bou Inania Madrasa (stunning Islamic tile work)",
+          "Souk al-Attarine (perfume and spice market)",
+          "Traditional lunch inside the medina",
+          "Optional afternoon: Moroccan cooking class",
+          "Farewell dinner in Fes"
+        ],
+        accommodation: "Riad in Fes medina",
+        meals: "Breakfast + Lunch + Dinner included",
+        distance: "Walking day"
+      },
+      {
+        label: "Day 5",
+        title: "Fes → Ifrane → Ziz Valley → Merzouga",
+        desc: "The great desert road south — a full-day drive through changing landscapes that ends with your first sight of the Erg Chebbi dunes turning golden in the afternoon light.",
+        activities: [
+          "08:00 – Depart Fes",
+          "Ifrane Alpine town and cedar forests",
+          "Wild Barbary macaques photo stop",
+          "Midelt for lunch (famous for apples and lamb)",
+          "Spectacular Ziz Valley gorge viewpoint",
+          "Arrive Merzouga for sunset over the dunes",
+          "Overnight hotel with direct dune view"
+        ],
+        accommodation: "Hotel facing Erg Chebbi",
+        meals: "Breakfast + Lunch + Dinner included",
+        distance: "≈ 390 km"
+      },
+      {
+        label: "Day 6",
+        title: "Full Day in the Sahara Desert",
+        desc: "One unforgettable day entirely dedicated to the Sahara — from the first light of dawn to a sky full of stars.",
+        activities: [
+          "06:00 – Sunrise camel trek over the dunes",
+          "Breakfast at the desert camp",
+          "Sandboarding and 4x4 dune adventure",
+          "Visit a Berber nomad family",
+          "Afternoon rest and dune walking",
+          "16:30 – Sunset camel ride",
+          "Gourmet dinner and Gnawa music at luxury camp",
+          "Stargazing with telescope"
+        ],
+        accommodation: "Luxury Desert Camp",
+        meals: "Breakfast + Dinner included",
+        distance: "Desert day"
+      },
+      {
+        label: "Day 7",
+        title: "Desert → Ait Benhaddou → Marrakech",
+        desc: "The dramatic final drive takes you from the Sahara sands through the Draa Valley, past Morocco's most famous kasbah, and into the legendary city of Marrakech.",
+        activities: [
+          "07:00 – Final sunrise and breakfast at camp",
+          "Return camel trek to Merzouga",
+          "Drive via Draa Valley and Skoura oasis",
+          "Visit UNESCO Ait Benhaddou Kasbah",
+          "Cross Tizi N'Tichka mountain pass",
+          "Arrive Marrakech approximately 19:00",
+          "Evening at Djemaa el-Fna square — snake charmers, food stalls, musicians"
+        ],
+        accommodation: "Riad in Marrakech medina",
+        meals: "Breakfast + Dinner included",
+        distance: "≈ 560 km"
+      },
+      {
+        label: "Day 8",
+        title: "Marrakech Free Day → Departure",
+        desc: "A relaxed final morning to explore Marrakech on your own — or join an optional guided tour — before your transfer to the airport.",
+        activities: [
+          "Optional: Majorelle Garden (Yves Saint Laurent)",
+          "Optional: Marrakech medina souks (spices, leather, ceramics)",
+          "Optional: Saadian Tombs and Bahia Palace",
+          "Farewell lunch (own account)",
+          "Transfer to Marrakech airport / hotel / onward journey"
+        ],
+        accommodation: "Riad in Marrakech",
+        meals: "Breakfast included",
+        distance: "City day"
+      }
+    ],
+    included: [
+      "Private air-conditioned vehicle throughout",
+      "Expert licensed guide for all 8 days",
+      "7 nights accommodation: Casablanca hotel, Chefchaouen riad, Fes riad (×2), Merzouga hotel, luxury desert camp, Ouarzazate hotel, Marrakech riad",
+      "Daily breakfast and dinner as listed",
+      "All guided tours: Fes medina, Chefchaouen, Marrakech",
+      "Camel treks (sunrise + sunset in Sahara)",
+      "4x4 dune adventure and sandboarding",
+      "All entrance fees and transport",
+      "Airport pickup and drop-off"
+    ],
+    notIncluded: [
+      "International flights",
+      "Travel insurance (required)",
+      "Lunches on driving days (approx. €8–15)",
+      "Alcoholic beverages",
+      "Optional activities (cooking class, hammam)",
+      "Personal tips for guide and driver"
+    ],
+    reviews: [
+      { name: "Robert & Sandra Williams", country: "🇺🇸 Chicago, USA", avatar: "https://i.pravatar.cc/100?img=11", rating: 5, tour: "8-Day Grand Tour", date: "March 2025", text: "The perfect tour. 8 days and we saw absolutely everything — Chefchaouen blew us away, Fes was like stepping back 1000 years, and the Sahara was indescribable. Our guide Mohammed was exceptional — knowledgeable, patient, and a genuinely wonderful human being." },
+      { name: "Ingrid Larsen", country: "🇸🇪 Stockholm, Sweden", avatar: "https://i.pravatar.cc/100?img=41", rating: 5, tour: "8-Day Tour", date: "April 2025", text: "I have travelled extensively but Morocco on this itinerary was in a different league. The variety is astonishing — mountains, blue cities, medieval medinas, and the endless Sahara. The riads were gorgeous and every meal was a joy." },
+      { name: "Carlos & Maria Garcia", country: "🇧🇷 São Paulo, Brazil", avatar: "https://i.pravatar.cc/100?img=26", rating: 5, tour: "Grand Morocco Tour", date: "January 2025", text: "Viagem dos sonhos! From the blue streets of Chefchaouen to sleeping under a million stars in the Sahara — this 8-day tour gave us memories for a lifetime. Everything was seamlessly organised. We're already planning a return trip." }
+    ]
+  },
+
+  "custom": {
+    title: "Private Tailor-Made Tour",
+    subtitle: "Your Morocco, Your Way",
+    badge: "Custom", badgeClass: "custom",
+    duration: "Any Duration", durationDays: 0,
+    groupSize: "Any size", difficulty: "Your choice",
+    price: "Custom Quote", startCity: "Your choice", endCity: "Your choice",
+    rating: 5.0, reviewCount: 38,
+    hero: "images/ait-benhaddou.jpg",
+    heroFallback: "https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=1600&q=80",
+    overview: "No two travellers are the same — so why should your tour be? Our private tailor-made service lets you design every aspect of your Morocco experience from scratch. Whether you want to focus entirely on the Sahara, blend photography with culture, explore hidden kasbahs, or combine Morocco with other destinations — we build the perfect itinerary around you. Tell us your dates, budget, interests, and travel style, and our team will craft a personalised proposal within 24 hours.",
+    highlights: [
+      "100% personalised itinerary built around you",
+      "Choose your own dates, pace, and destinations",
+      "Private vehicle and dedicated guide throughout",
+      "Budget, comfort, or luxury accommodation options",
+      "Perfect for couples, families, groups, solo travellers",
+      "Photography tours, honeymoons, family trips, corporate",
+      "Free consultation and no-obligation quotation",
+      "24-hour response guarantee"
+    ],
+    days: [
+      {
+        label: "Example",
+        title: "Sample: Photography-Focused 5-Day Tour",
+        desc: "This is just one example of a custom itinerary we've created. Your tour can be completely different — this shows the level of detail and personalisation we provide.",
+        activities: [
+          "Day 1: Marrakech — sunrise at Djemaa el-Fna, medina photography walk",
+          "Day 2: Ait Benhaddou — golden hour shoot, overnight in kasbah",
+          "Day 3: Draa Valley — palm grove light, nomad portraits",
+          "Day 4: Merzouga — dune patterns, sunset and Milky Way",
+          "Day 5: Desert sunrise, return via Todra Gorges"
+        ],
+        accommodation: "Tailored to your preference and budget",
+        meals: "As per your custom package",
+        distance: "Varies"
+      },
+      {
+        label: "Example",
+        title: "Sample: 10-Day Family Adventure",
+        desc: "Another example showing how we customise for families with children — paced slower, with more interactive experiences and shorter driving days.",
+        activities: [
+          "Day 1–2: Marrakech — cooking class, souk treasure hunt for kids",
+          "Day 3: Ouzoud Waterfalls — swimming, Barbary macaques",
+          "Day 4: Atlas Mountains — mule trekking to Berber village",
+          "Day 5–6: Merzouga — camel riding, sandboarding, desert camp",
+          "Day 7: Dades Valley — family hike in the gorges",
+          "Day 8: Ouarzazate — film studio tour, kasbah",
+          "Day 9: Ait Benhaddou, return to Marrakech",
+          "Day 10: Marrakech free day, Majorelle Garden"
+        ],
+        accommodation: "Family rooms in riads and hotels",
+        meals: "As per custom package",
+        distance: "Paced for families"
+      }
+    ],
+    included: [
+      "Everything is customisable — your private quote will specify all inclusions",
+      "Private vehicle and dedicated guide for your group",
+      "Accommodation of your chosen standard (budget to luxury)",
+      "Meals as per your personalised package",
+      "All activities and entrance fees specified in your itinerary",
+      "24/7 support before and during your trip",
+      "Free pre-trip planning consultation"
+    ],
+    notIncluded: [
+      "International flights (we can advise on best connections)",
+      "Travel insurance",
+      "Personal expenses",
+      "Anything not listed in your agreed itinerary"
+    ],
+    reviews: [
+      { name: "The Thompson Family", country: "🇦🇺 Melbourne, Australia", avatar: "https://i.pravatar.cc/100?img=36", rating: 5, tour: "Custom Family Tour", date: "April 2025", text: "We asked for a tour that would work for our three kids aged 5, 9 and 12 — and the team delivered something beyond our wildest dreams. The pacing was perfect, every activity was age-appropriate, and our guide became like a member of the family. Absolutely faultless." },
+      { name: "Photographer Mark O'Brien", country: "🇮🇪 Dublin, Ireland", avatar: "https://i.pravatar.cc/100?img=59", rating: 5, tour: "Custom Photography Tour", date: "February 2025", text: "I requested a photography-focused tour and the team completely delivered. They knew all the best light spots, got up early for the golden hours, were patient during long shoots, and even arranged access to the Fes tannery rooftop exclusively for me. Outstanding." },
+      { name: "Andrea & Marco", country: "🇮🇹 Florence, Italy", avatar: "https://i.pravatar.cc/100?img=61", rating: 5, tour: "Custom Honeymoon Tour", date: "March 2025", text: "Our honeymoon tour was personalised with rose petals in every riad, surprise sunset champagne moments, and a private candlelit dinner in the Sahara. They thought of everything. A truly once-in-a-lifetime experience." }
+    ]
+  },
+
+  "10day-grand": {
+    title: "10-Day Grand Morocco Tour",
+    subtitle: "Complete Morocco Discovery",
+    badge: "Most Complete", badgeClass: "hot",
+    duration: "10 Days / 9 Nights", durationDays: 10,
+    groupSize: "2–14 people", difficulty: "Easy–Moderate",
+    price: "€849", startCity: "Casablanca", endCity: "Essaouira",
+    rating: 4.9, reviewCount: 62,
+    hero: "images/casablanca.jpg",
+    heroFallback: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80",
+    overview: "The most complete Morocco experience available — 10 days covering beaches, desert, mountains, imperial cities, and the Blue City. From the modern streets of Casablanca to the mystical blue alleys of Chefchaouen, the ancient medinas of Fes, the golden dunes of the Sahara, the magic of Marrakech, and the Atlantic breeze of Essaouira — this tour leaves nothing out. Ideal for first-time visitors who want to see everything Morocco has to offer in one unforgettable journey.",
+    highlights: [
+      "Casablanca's Hassan II Mosque — world's 3rd largest",
+      "Chefchaouen — Morocco's magical Blue City",
+      "Fes El Bali — the world's largest living medieval medina",
+      "Sahara Desert camel trek & luxury overnight camp",
+      "Stargazing over the Erg Chebbi dunes",
+      "Ait Benhaddou UNESCO kasbah & Ouarzazate",
+      "Marrakech — Djemaa el-Fna & the souks",
+      "Essaouira — Atlantic coast, ramparts & fresh seafood"
+    ],
+    days: [
+      { label: "Day 1", title: "Arrive Casablanca", desc: "Welcome to Morocco! Your guide meets you at Casablanca airport or hotel. Afternoon visit to the magnificent Hassan II Mosque — one of the world's largest mosques, built on the Atlantic Ocean. Evening stroll along the Corniche.", activities: ["Airport/hotel pickup in Casablanca", "Hassan II Mosque visit (exterior & optional interior)", "Stroll along Casablanca Corniche", "Welcome dinner at a local restaurant", "Overnight in Casablanca"], accommodation: "Hotel in Casablanca", meals: "Dinner included", distance: "City" },
+      { label: "Day 2", title: "Casablanca → Chefchaouen (Blue City)", desc: "Drive north through the Rif Mountains to one of Morocco's most photographed destinations — Chefchaouen, the Blue City. Wander the stunning blue-washed alleyways, discover hidden plazas, and photograph the blue staircases that have made this town world-famous.", activities: ["Morning departure from Casablanca (~4 hrs)", "Arrive Chefchaouen, check in to riad", "Guided walk through the blue medina", "Ras el-Ma waterfall & Spanish mosque sunset views", "Dinner in the medina — local mountain cuisine"], accommodation: "Riad in Chefchaouen", meals: "Breakfast + Dinner", distance: "≈ 330 km" },
+      { label: "Day 3", title: "Chefchaouen Free Day & Exploration", desc: "A free day to explore Chefchaouen at your own pace — the best photography light is in the early morning before the crowds arrive. Optionally hike to the Spanish Mosque for panoramic views of the blue city.", activities: ["Sunrise photography in the medina (optional early start)", "Explore local markets & artisan shops", "Visit Kasbah Museum", "Free afternoon for shopping & exploration", "Optional hike to Spanish Mosque viewpoint"], accommodation: "Riad in Chefchaouen", meals: "Breakfast included", distance: "City" },
+      { label: "Day 4", title: "Chefchaouen → Volubilis → Fes", desc: "Drive east with a stop at the ancient Roman ruins of Volubilis — one of Morocco's most impressive archaeological sites. Continue to Fes, Morocco's spiritual and intellectual capital, arriving in time for dinner in the medina.", activities: ["Morning checkout & depart Chefchaouen", "Stop at Roman ruins of Volubilis (UNESCO site)", "Arrive Fes — check in to traditional riad", "Evening stroll in Fes El Bali medina", "Traditional Moroccan dinner with live music"], accommodation: "Riad in Fes medina", meals: "Breakfast + Dinner", distance: "≈ 220 km" },
+      { label: "Day 5", title: "Full Day Fes Medina Exploration", desc: "A full day exploring Fes El Bali — the world's largest car-free urban area and one of the best-preserved medieval cities on earth. Your expert local guide navigates the 9,000+ alleyways, revealing hidden gems that most visitors never find.", activities: ["Al-Qarawiyyin University — founded 859 AD, world's oldest", "Chouara Tannery — best rooftop view of the leather dyeing pits", "Bou Inania Madrassa — stunning Moroccan architecture", "Nejjarine Fountain & woodworking museum", "Lunch in a traditional riad restaurant", "Afternoon: spice souk, pottery workshops, mellah (Jewish quarter)"], accommodation: "Riad in Fes medina", meals: "Breakfast + Lunch", distance: "City" },
+      { label: "Day 6", title: "Fes → Atlas Mountains → Merzouga Sahara", desc: "A dramatic day's drive south through the Middle Atlas Mountains — cedar forests, Barbary macaques, and the mountain town of Ifrane (Morocco's Switzerland). Descend into the desert as the landscape transforms from green to gold.", activities: ["Early departure from Fes", "Ifrane — the alpine town & Barbary macaques in Azrou cedar forest", "Midelt — lunch stop in the apple region", "Cross the Ziz Valley and date palm oases", "Arrive Merzouga as the sun sets over the dunes", "Camel trek into Erg Chebbi desert camp"], accommodation: "Luxury desert camp", meals: "Breakfast + Dinner", distance: "≈ 480 km" },
+      { label: "Day 7", title: "Sahara Desert Day — Merzouga", desc: "A full day in the Sahara. Wake before sunrise for the most spectacular dune panoramas. After breakfast, explore the desert village of Merzouga, visit a local Gnawa musician family, and enjoy a free afternoon to sandboard or simply relax in the dunes.", activities: ["04:30 – Sunrise over the Erg Chebbi dunes", "Berber breakfast at the camp", "Merzouga village & local Gnawa music visit", "Optional: sandboarding, quad biking (extra cost)", "Afternoon free — relax, explore, photography", "Sunset camel ride & second night in desert camp"], accommodation: "Luxury desert camp", meals: "Breakfast + Dinner", distance: "Local" },
+      { label: "Day 8", title: "Merzouga → Todra Gorge → Ouarzazate", desc: "Leave the desert heading west through the dramatic Todra Gorge — 300-metre-high canyon walls that are world-famous for rock climbing. Continue to Ouarzazate, the 'Hollywood of Africa', where dozens of international films have been shot.", activities: ["Sunrise farewell & camel ride back from camp", "Drive through Erfoud & Rissani date markets", "Todra Gorge — walk through the dramatic canyon", "Drive through Dades Valley & rose fields", "Arrive Ouarzazate — visit Atlas Film Studios (optional)", "Kasbah Taourirt visit"], accommodation: "Hotel in Ouarzazate", meals: "Breakfast + Dinner", distance: "≈ 320 km" },
+      { label: "Day 9", title: "Ouarzazate → Ait Benhaddou → Marrakech", desc: "The final dramatic leg of the desert section. Stop at the UNESCO World Heritage site of Ait Benhaddou — a stunning ancient kasbah used in Game of Thrones, Gladiator, and The Mummy. Then cross back over the High Atlas to arrive in vibrant Marrakech.", activities: ["Morning at Ait Benhaddou UNESCO kasbah", "Cross Tizi N'Tichka pass (2,260m) — photo stops", "Arrive Marrakech early afternoon", "Djemaa el-Fna square & the souks (guided or free)", "Evening: Marrakech rooftop dinner"], accommodation: "Riad in Marrakech medina", meals: "Breakfast + Dinner", distance: "≈ 260 km" },
+      { label: "Day 10", title: "Marrakech → Essaouira (Atlantic Coast)", desc: "The perfect finale: trade the desert heat for the cool Atlantic breeze of Essaouira — a stunning blue-and-white coastal city with a UNESCO-listed medina, fresh seafood, and a relaxed surf culture. Return to Marrakech for evening flights.", activities: ["Morning drive to Essaouira (~3 hrs)", "Walk the historic ramparts over the Atlantic", "Explore the blue fishing port & seafood market", "Lunch: fresh grilled fish with ocean views", "Free time — beach, artisan shops, medina", "Late afternoon return to Marrakech for flights"], accommodation: "N/A (departure day)", meals: "Breakfast + Lunch", distance: "≈ 190 km" }
+    ],
+    included: [
+      "9 nights accommodation (riads, hotels & luxury desert camp)",
+      "Daily breakfast throughout",
+      "Dinners on Days 1–9 as per itinerary",
+      "Private air-conditioned vehicle throughout",
+      "Expert English/French-speaking guide all 10 days",
+      "Camel trek & desert camp (2 nights)",
+      "All entrance fees: Volubilis, tannery viewpoints, medinas",
+      "Airport pickups and drop-offs",
+      "24/7 support line"
+    ],
+    notIncluded: [
+      "International flights",
+      "Travel insurance (strongly recommended)",
+      "Lunches on most days (budget €5–12/person)",
+      "Optional activities: quad biking, sandboarding, hammam",
+      "Personal expenses & tips",
+      "Visa fees (if applicable)"
+    ],
+    reviews: [
+      { name: "Catherine & David Hall", country: "🇬🇧 Edinburgh, UK", avatar: "https://i.pravatar.cc/100?img=25", rating: 5, tour: "10-Day Grand Morocco Tour", date: "March 2025", text: "This tour was worth every penny. In 10 days we saw the Blue City, the Sahara, the ancient medina of Fes, and ended on the Atlantic coast — all seamlessly organised. Our guide Youssef was exceptional. The Sahara camp night was the highlight of our lives." },
+      { name: "Luisa Fernandez", country: "🇪🇸 Madrid, Spain", avatar: "https://i.pravatar.cc/100?img=48", rating: 5, tour: "10-Day Grand Morocco Tour", date: "April 2025", text: "Perfectamente organizado de principio a fin. Chefchaouen me robó el corazón, pero la noche en el desierto fue mágica. 10/10, repetiría sin dudarlo." },
+      { name: "James & Kelly Wong", country: "🇺🇸 San Francisco, USA", avatar: "https://i.pravatar.cc/100?img=19", rating: 5, tour: "10-Day Grand Morocco Tour", date: "February 2025", text: "We did this for our 10th anniversary and it was the best decision we ever made. Every single day had something amazing. Morocco is extraordinary and this tour shows you why." }
+    ]
+  },
+
+  "2day-fes-merzouga": {
+    title: "2-Day Fes to Merzouga Desert Tour",
+    subtitle: "Quick Sahara Adventure",
+    badge: "Quick Escape", badgeClass: "new",
+    duration: "2 Days / 1 Night", durationDays: 2,
+    groupSize: "2–12 people", difficulty: "Easy",
+    price: "€149", startCity: "Fes", endCity: "Fes or Marrakech",
+    rating: 4.8, reviewCount: 44,
+    hero: "images/camels.jpg",
+    heroFallback: "https://images.unsplash.com/photo-1548013146-72479768bada?w=1600&q=80",
+    overview: "The fastest route from Fes to the Sahara Desert — a perfectly paced 2-day adventure that takes you from the ancient medina of Fes through the Middle Atlas Mountains and down into the legendary golden dunes of Erg Chebbi near Merzouga. You'll trek by camel at sunset, spend the night in a genuine Berber desert camp under a million stars, and return refreshed with memories that last a lifetime. Ideal for travellers short on time who still want the full Sahara experience.",
+    highlights: [
+      "Drive through the cedar forests of the Middle Atlas",
+      "Barbary macaques at Azrou forest",
+      "Camel trek into the Erg Chebbi dunes at sunset",
+      "Overnight in a luxury Berber desert camp",
+      "Stargazing in the Sahara's dark skies",
+      "Traditional Berber dinner with live music",
+      "Sunrise photography over the dunes",
+      "Return to Fes or continue to Marrakech"
+    ],
+    days: [
+      { label: "Day 1", title: "Fes → Middle Atlas → Merzouga Desert", desc: "Depart Fes early morning and drive south through the stunning Middle Atlas Mountains. Stop in the Azrou cedar forest where wild Barbary macaques roam free. Pass through Ifrane (Morocco's alpine town), Midelt, and the Ziz Valley before arriving at the Sahara just in time for the famous golden-hour camel trek.", activities: ["07:00 – Pickup from your Fes hotel", "Ifrane alpine town stop & Barbary macaques in Azrou forest", "Midelt lunch stop (apple region of Morocco)", "Ziz Valley & date palm oasis drive", "Arrive Merzouga — first view of the mighty Erg Chebbi", "16:30 – Camel trek into the Sahara as the sun sets", "Arrive desert camp — mint tea welcome ceremony", "Berber dinner under the stars", "Live music & storytelling around the fire"], accommodation: "Luxury Berber desert camp", meals: "Lunch + Dinner included", distance: "≈ 480 km" },
+      { label: "Day 2", title: "Sunrise Sahara → Return to Fes or Marrakech", desc: "Rise before the sun for the most extraordinary light of your life — the Sahara at sunrise is an experience no photograph can fully capture. After breakfast at the camp, ride your camel back and choose your return: back to Fes, or continue onwards to Marrakech.", activities: ["05:00 – Optional sunrise walk/camel ride on the dunes", "Saharan sunrise — the most spectacular sky you'll ever see", "Berber breakfast at the camp", "09:30 – Camel ride back to the village", "Depart Merzouga after check-out", "Return drive to Fes (arriving ~18:00) OR continue to Marrakech", "Stop at Todra Gorge or Ziz Valley en route (time permitting)"], accommodation: "N/A (travel day)", meals: "Breakfast included", distance: "≈ 480 km back" }
+    ],
+    included: [
+      "Private air-conditioned vehicle & driver/guide",
+      "1 night in luxury Berber desert camp",
+      "Camel trek at sunset (both days)",
+      "Dinner & breakfast at the camp",
+      "Lunch on Day 1",
+      "All fuel and toll charges",
+      "Hotel pickup and drop-off in Fes",
+      "24/7 support during your tour"
+    ],
+    notIncluded: [
+      "Accommodation in Fes (before/after the tour)",
+      "Travel insurance",
+      "Personal expenses",
+      "Optional activities (sandboarding, quad biking)",
+      "Gratuities for your guide (appreciated)"
+    ],
+    reviews: [
+      { name: "Sophie Laurent", country: "🇫🇷 Lyon, France", avatar: "https://i.pravatar.cc/100?img=41", rating: 5, tour: "2-Day Fes to Merzouga", date: "April 2025", text: "Parfait pour un week-end! Le guide Mohammed était fantastique, le camp dans le désert était magique, et le lever du soleil sur les dunes... je n'ai pas de mots. Je recommande à 100%." },
+      { name: "Tom & Sarah Jennings", country: "🇨🇦 Toronto, Canada", avatar: "https://i.pravatar.cc/100?img=22", rating: 5, tour: "2-Day Fes to Merzouga", date: "March 2025", text: "We only had 2 days and the team made every minute count. The camp was beautiful, the camel ride was unforgettable, and we were both moved to tears by the sunrise. Worth every dirham." },
+      { name: "Lucas & Mia Bauer", country: "🇩🇪 Munich, Germany", avatar: "https://i.pravatar.cc/100?img=17", rating: 5, tour: "2-Day Fes to Merzouga", date: "May 2025", text: "Wir hatten nur 2 Tage und dachten das reicht kaum — aber die Tour war so gut organisiert dass wir das volle Sahara-Erlebnis hatten. Der Guide war ausgezeichnet!" }
+    ]
+  },
+
+  "chefchaouen-daytrip": {
+    title: "Chefchaouen Day Trip from Fes",
+    subtitle: "Morocco's Blue City",
+    badge: "Photography", badgeClass: "new",
+    duration: "1 Day", durationDays: 1,
+    groupSize: "2–10 people", difficulty: "Easy",
+    price: "€35", startCity: "Fes", endCity: "Fes",
+    rating: 4.9, reviewCount: 58,
+    hero: "images/chefchaouen.jpg",
+    heroFallback: "https://images.unsplash.com/photo-1558618047-f4e80e886f17?w=1600&q=80",
+    overview: "Discover Chefchaouen — Morocco's legendary Blue City — on this full-day trip from Fes. Tucked in the Rif Mountains, this magical town is painted entirely in shades of blue and white. Every alleyway is a photograph. Walk with your guide through the medieval medina, explore the main square, and climb to the Spanish Mosque for panoramic views. One of Morocco's most unique and beautiful destinations.",
+    highlights: [
+      "Explore the blue-washed medina of Chefchaouen",
+      "Photography in the iconic blue alleys and staircases",
+      "Uta el-Hammam square — the heart of the city",
+      "Kasbah museum visit",
+      "Hike to the Spanish Mosque for panoramic views",
+      "Ras el-Ma waterfall & natural spring",
+      "Shop for local crafts and Rif Mountain products",
+      "Return to Fes by evening"
+    ],
+    days: [
+      { label: "Day 1", title: "Fes → Chefchaouen → Fes", desc: "Depart Fes early morning for the 3-hour scenic drive through the Rif Mountains. Arrive in Chefchaouen for a full 4–5 hours of exploration. Your guide will take you through the most photogenic spots before you have free time to explore independently.", activities: ["07:00 – Pickup from your Fes hotel", "Scenic 3-hr drive through Rif Mountains", "Arrive Chefchaouen — guided medina walk", "Iconic blue alleys, staircases & photography spots", "Uta el-Hammam square & Kasbah", "Lunch in a rooftop medina restaurant (included)", "Hike to Spanish Mosque (optional)", "Ras el-Ma waterfall visit", "16:30 – Depart for Fes, arrive ~19:30"], accommodation: "Day trip — no overnight", meals: "Lunch included", distance: "≈ 200 km each way" }
+    ],
+    included: ["Private vehicle & experienced guide", "Lunch in Chefchaouen", "All transport & fuel", "Hotel pickup and drop-off in Fes"],
+    notIncluded: ["Personal shopping", "Optional entrance fees", "Gratuities"],
+    reviews: [
+      { name: "Emma Clarke", country: "🇬🇧 Bristol, UK", avatar: "https://i.pravatar.cc/100?img=52", rating: 5, tour: "Chefchaouen Day Trip", date: "April 2025", text: "The most photogenic place I have ever visited. The guide knew all the best hidden spots to photograph. Absolutely breathtaking and the day trip from Fes was perfectly organised." }
+    ]
+  },
+
+  "volubilis-meknes": {
+    title: "Volubilis & Meknes Day Trip",
+    subtitle: "Best Historical Tour from Fes",
+    badge: "History", badgeClass: "hot",
+    duration: "1 Day", durationDays: 1,
+    groupSize: "2–12 people", difficulty: "Easy",
+    price: "€30", startCity: "Fes", endCity: "Fes",
+    rating: 4.8, reviewCount: 73,
+    hero: "images/volubilis.jpg",
+    heroFallback: "https://images.unsplash.com/photo-1548013146-72479768bada?w=1600&q=80",
+    overview: "A fascinating journey through 2,000 years of history in a single day. Visit the remarkably preserved Roman ruins of Volubilis — a UNESCO World Heritage site with stunning mosaics and triumphal arches — then explore the imperial city of Meknes with its magnificent Bab Mansour gate, the mausoleum of Sultan Moulay Ismail, and the vast royal stables. A perfect day for history lovers.",
+    highlights: [
+      "Volubilis — UNESCO Roman ruins with stunning mosaic floors",
+      "Triumphal Arch of Caracalla",
+      "Ancient olive presses and Roman baths",
+      "Bab Mansour gate — one of Africa's most beautiful gates",
+      "Moulay Ismail Mausoleum",
+      "Royal stables & granaries (Heri es-Souani)",
+      "Meknes medina & traditional souks",
+      "Moroccan history & culture deep-dive"
+    ],
+    days: [
+      { label: "Day 1", title: "Fes → Volubilis → Meknes → Fes", desc: "Drive west from Fes to the extraordinary Roman ruins of Volubilis — walk among 2,000-year-old mosaics, columns, and arches. Then continue to Meknes, the least-visited imperial city and one of Morocco's hidden gems.", activities: ["08:00 – Pickup from your Fes hotel", "Drive to Volubilis (1 hr)", "2-hr guided tour of Roman ruins & mosaics", "Visit the Triumphal Arch & ancient Forum", "Drive to Meknes (30 mins)", "Bab Mansour gate & Place el-Hedim", "Moulay Ismail Mausoleum visit", "Royal stables & underground granaries", "Meknes medina & souk exploration", "Lunch in Meknes (included)", "Return to Fes (~1 hr), arrive ~18:00"], accommodation: "Day trip — no overnight", meals: "Lunch included", distance: "≈ 60–80 km" }
+    ],
+    included: ["Private vehicle & expert history guide", "All entrance fees (Volubilis, Mausoleum)", "Lunch in Meknes", "Hotel pickup and drop-off in Fes"],
+    notIncluded: ["Personal shopping", "Gratuities", "Optional additional sites"],
+    reviews: [
+      { name: "Professor David Klein", country: "🇩🇪 Berlin, Germany", avatar: "https://i.pravatar.cc/100?img=33", rating: 5, tour: "Volubilis & Meknes Day Trip", date: "March 2025", text: "As a history teacher, I was blown away by Volubilis. The mosaics are extraordinary and our guide's knowledge was exceptional. Meknes is criminally underrated — far less crowded than Fes and genuinely beautiful." }
+    ]
+  },
+
+  "sefrou-bhalil": {
+    title: "Sefrou & Bhalil Day Trip",
+    subtitle: "Hidden Gems Near Fes",
+    badge: "Authentic", badgeClass: "new",
+    duration: "1 Day", durationDays: 1,
+    groupSize: "2–10 people", difficulty: "Easy",
+    price: "€25", startCity: "Fes", endCity: "Fes",
+    rating: 4.7, reviewCount: 29,
+    hero: "images/fes.jpg",
+    heroFallback: "https://images.unsplash.com/photo-1579961339940-8f5792aaeb5d?w=1600&q=80",
+    overview: "Escape the tourist trail on this off-the-beaten-path day trip to two of Morocco's most authentic destinations near Fes. Bhalil is famous for its unique cave houses carved into the mountain — some inhabited for centuries — while Sefrou is a charming walled town with a beautiful waterfall, a historic mellah (Jewish quarter), and one of Morocco's most genuine market days. Discover the real Morocco away from the crowds.",
+    highlights: [
+      "Cave houses of Bhalil — unique troglodyte dwellings",
+      "Meet local Berber families in their traditional homes",
+      "Waterfalls of Sefrou — a stunning natural oasis",
+      "Sefrou medina & ancient Jewish mellah",
+      "Local Berber lifestyle & culture",
+      "Authentic Moroccan market (Friday market)",
+      "Cedar forest drive with Barbary macaques",
+      "Far from the tourist crowds — genuine Morocco"
+    ],
+    days: [
+      { label: "Day 1", title: "Fes → Bhalil → Sefrou → Fes", desc: "A relaxed day discovering two remarkable towns just outside Fes that most visitors never find. Perfect for travellers who want authentic cultural encounters rather than tourist sites.", activities: ["09:00 – Pickup from your Fes hotel", "Drive to Bhalil (40 mins)", "Guided walk through the cave house village", "Optional: visit a family inside their cave home", "Drive to Sefrou (30 mins)", "Sefrou waterfall visit & walk", "Explore the medina and mellah", "Traditional lunch in a local family home (included)", "Cedar forest stop — optional Barbary macaque encounter", "Return to Fes ~17:00"], accommodation: "Day trip — no overnight", meals: "Lunch included", distance: "≈ 30–50 km" }
+    ],
+    included: ["Private vehicle & local guide", "Authentic home-cooked lunch", "All transport", "Hotel pickup and drop-off in Fes"],
+    notIncluded: ["Optional family visit donations", "Personal purchases", "Gratuities"],
+    reviews: [
+      { name: "Nadia & Pierre Moreau", country: "🇫🇷 Paris, France", avatar: "https://i.pravatar.cc/100?img=29", rating: 5, tour: "Sefrou & Bhalil Day Trip", date: "May 2025", text: "This was our favourite day in Morocco — and we were not expecting it! Bhalil's cave houses are surreal and the family lunch was the most authentic meal we had. Highly recommend if you want real Morocco." }
+    ]
+  },
+
+  "ouzoud-waterfalls": {
+    title: "Ouzoud Waterfalls Day Trip",
+    subtitle: "Most Booked Day Trip from Marrakech",
+    badge: "Most Booked", badgeClass: "hot",
+    duration: "1 Day", durationDays: 1,
+    groupSize: "2–12 people", difficulty: "Easy",
+    price: "€35", startCity: "Marrakech", endCity: "Marrakech",
+    rating: 4.9, reviewCount: 112,
+    hero: "images/ouzoud.jpg",
+    heroFallback: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1600&q=80",
+    overview: "The Ouzoud Waterfalls are the most spectacular natural attraction near Marrakech — a stunning 110-metre cascade surrounded by olive trees, Barbary macaques, and dramatic canyon scenery. Located in the Middle Atlas foothills, this is one of the highest waterfalls in Morocco and a favourite escape from the heat and noise of Marrakech. Swim in the natural pools, take a traditional boat ride, and encounter wild monkeys in their natural habitat.",
+    highlights: [
+      "110-metre Ouzoud Waterfalls — Morocco's most impressive",
+      "Wild Barbary macaque monkeys in natural habitat",
+      "Boat ride in the mist of the falls",
+      "Natural swimming pools (seasonal)",
+      "Traditional Berber villages along the route",
+      "Scenic Middle Atlas mountain drive",
+      "Rainbow views in the waterfall mist",
+      "Fresh waterfall-side lunch"
+    ],
+    days: [
+      { label: "Day 1", title: "Marrakech → Ouzoud Waterfalls → Marrakech", desc: "Drive 3 hours through the Middle Atlas foothills to reach one of Morocco's most breathtaking natural wonders. Spend 4–5 hours exploring the falls, swimming (in season), encountering monkeys, and enjoying a relaxed lunch before the return journey.", activities: ["08:00 – Pickup from your Marrakech hotel/riad", "Scenic 3-hr drive through olive groves & Berber villages", "Arrive Ouzoud — guided walk down to the base of the falls", "Barbary macaque encounters along the trail", "Optional: traditional boat ride near the falls (small extra cost)", "Natural swimming pools (June–September)", "Lunch at a waterfall-side Berber restaurant (included)", "Free exploration time", "16:30 – Depart for Marrakech, arrive ~19:30"], accommodation: "Day trip — no overnight", meals: "Lunch included", distance: "≈ 160 km each way" }
+    ],
+    included: ["Private vehicle & guide", "Lunch at the waterfall", "Hotel pickup and drop-off in Marrakech", "All transport & fuel"],
+    notIncluded: ["Boat ride (optional, ~50 MAD)", "Swimwear & towel (bring your own)", "Gratuities"],
+    reviews: [
+      { name: "Lisa & Ben Thompson", country: "🇦🇺 Sydney, Australia", avatar: "https://i.pravatar.cc/100?img=38", rating: 5, tour: "Ouzoud Waterfalls Day Trip", date: "April 2025", text: "Absolutely spectacular! The falls were breathtaking, the monkeys came right up to us, and lunch in front of the waterfalls was magical. Our driver was brilliant. The best day trip we've ever done." }
+    ]
+  },
+
+  "essaouira-daytrip": {
+    title: "Essaouira Day Trip from Marrakech",
+    subtitle: "Atlantic Coast Escape",
+    badge: "Very Popular", badgeClass: "hot",
+    duration: "1 Day", durationDays: 1,
+    groupSize: "2–10 people", difficulty: "Easy",
+    price: "€30", startCity: "Marrakech", endCity: "Marrakech",
+    rating: 4.8, reviewCount: 86,
+    hero: "images/essaouira-port.jpg",
+    heroFallback: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80",
+    overview: "Trade the heat and bustle of Marrakech for a refreshing day on the Atlantic coast. Essaouira is one of Morocco's most charming cities — a UNESCO-listed medina of blue and white walls, a lively fishing port, fresh ocean breeze, and one of Africa's best windsurfing beaches. Stroll the ancient ramparts, eat the freshest seafood in Morocco, browse artisan workshops, and let the Atlantic restore your soul.",
+    highlights: [
+      "Essaouira's UNESCO-listed blue & white medina",
+      "Walk the historic sea ramparts over the Atlantic",
+      "Fresh seafood lunch at the fishing port (included)",
+      "Explore artisan workshops: thuya wood, silver, fabrics",
+      "Essaouira beach & wind-swept dunes",
+      "Skala de la Ville fortress & cannons",
+      "Mellah (Jewish quarter) & spice souks",
+      "Relaxed coastal atmosphere — total contrast to Marrakech"
+    ],
+    days: [
+      { label: "Day 1", title: "Marrakech → Essaouira → Marrakech", desc: "A perfect day balancing history, culture, seafood, and sea air. The 3-hour drive through argan forest is scenic in itself. Essaouira rewards slow exploration — let the ocean breeze and the blue medina work their magic.", activities: ["08:00 – Pickup from your Marrakech hotel", "Scenic drive through argan tree forest (spot wild goats in trees!)", "Arrive Essaouira — guided medina walk", "Skala de la Ville ramparts & Atlantic views", "Fishing port & fresh seafood market", "Lunch: grilled fresh fish at the port (included)", "Free afternoon — beach, shopping, argan cooperative", "Mellah & artisan wood workshops", "17:00 – Depart for Marrakech, arrive ~20:00"], accommodation: "Day trip — no overnight", meals: "Lunch included", distance: "≈ 190 km each way" }
+    ],
+    included: ["Private vehicle & guide", "Seafood lunch at the port", "Hotel pickup and drop-off in Marrakech", "All transport & fuel"],
+    notIncluded: ["Shopping & personal purchases", "Entrance to optional sites", "Gratuities"],
+    reviews: [
+      { name: "Charlotte & Remy Dubois", country: "🇫🇷 Bordeaux, France", avatar: "https://i.pravatar.cc/100?img=45", rating: 5, tour: "Essaouira Day Trip", date: "March 2025", text: "Essaouira est un coup de cœur total. La médina bleue et blanche, le vent de l'Atlantique, les fruits de mer... La journée s'est passée parfaitement. Le guide était excellent." }
+    ]
+  },
+
+  "agafay-desert": {
+    title: "Agafay Desert Day Trip",
+    subtitle: "Trending Desert Experience near Marrakech",
+    badge: "Trending", badgeClass: "hot",
+    duration: "1 Day", durationDays: 1,
+    groupSize: "2–12 people", difficulty: "Easy",
+    price: "€65", startCity: "Marrakech", endCity: "Marrakech",
+    rating: 4.8, reviewCount: 67,
+    hero: "images/camel-ride-group.jpg",
+    heroFallback: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1600&q=80",
+    overview: "Get a full desert experience just 40 minutes from Marrakech — without the long drive to the Sahara. The Agafay Desert is a stunning rocky desert plateau with views of the snow-capped Atlas Mountains, luxury camps, camel rides, quad biking, and spectacular sunset dinners. Perfect for travellers who want the desert atmosphere but are short on time, or as a memorable addition to a Marrakech stay.",
+    highlights: [
+      "Camel ride through the rocky desert landscape",
+      "Quad biking on the desert plateau",
+      "Luxury desert camp with Atlas Mountains views",
+      "Sunset dinner with live Moroccan music",
+      "Panoramic Atlas Mountains backdrop",
+      "Only 40 minutes from Marrakech",
+      "Traditional Berber mint tea & welcome",
+      "Stargazing after dinner (evening packages)"
+    ],
+    days: [
+      { label: "Day 1", title: "Marrakech → Agafay Desert → Marrakech", desc: "A perfect half-day or full-day escape that combines adrenaline activities with luxury relaxation in a dramatic desert setting. The contrast of rocky desert and snowy Atlas peaks in the background creates unforgettable photo opportunities.", activities: ["10:00 – Pickup from your Marrakech hotel", "40-min drive to Agafay Desert", "Welcome with Berber mint tea at the camp", "Camel ride through the desert (30 mins)", "Quad biking adventure (1 hour)", "Free time to explore & photograph", "Luxury sunset dinner at the camp (included)", "Live Gnawa music performance", "Optional stargazing after dark (add-on available)", "Return to Marrakech ~21:00"], accommodation: "Day trip — no overnight (overnight add-on available)", meals: "Dinner included", distance: "≈ 40 km each way" }
+    ],
+    included: ["Private transfer to/from Marrakech", "Camel ride (30 mins)", "Quad biking (1 hour)", "Sunset dinner at luxury camp", "Live music entertainment", "Berber mint tea welcome"],
+    notIncluded: ["Overnight stay (available as add-on)", "Alcohol", "Personal expenses", "Gratuities"],
+    reviews: [
+      { name: "Aisha & Mohammed Al-Rashid", country: "🇸🇦 Riyadh, Saudi Arabia", avatar: "https://i.pravatar.cc/100?img=57", rating: 5, tour: "Agafay Desert Day Trip", date: "April 2025", text: "An amazing experience so close to Marrakech! The camel ride at sunset with the Atlas Mountains behind us was a dream. The dinner in the desert camp was delicious and the music was fantastic." }
+    ]
+  }
+};
+
+// ===================== RENDER LOGIC =====================
+const params = new URLSearchParams(window.location.search);
+const id = params.get('id') || '3day-marrakech';
+const tour = TOURS[id] || TOURS['3day-marrakech'];
+
+// Page title & meta
+document.getElementById('pageTitle').textContent = `${tour.title} | Majestic Morocco Trips`;
+document.getElementById('pageDesc').content = tour.overview.substring(0, 160);
+
+// Hero — test local image first, fallback to remote
+function setHeroBg(url) {
+  document.getElementById('tourHeroBg').style.background =
+    `linear-gradient(135deg,rgba(28,20,16,.7) 0%,rgba(139,26,26,.4) 60%,rgba(200,112,42,.3) 100%), url('${url}') center/cover no-repeat`;
+}
+if (tour.hero && tour.hero.startsWith('images/')) {
+  const testImg = new Image();
+  testImg.onload = () => setHeroBg(tour.hero);
+  testImg.onerror = () => setHeroBg(tour.heroFallback || tour.hero);
+  testImg.src = tour.hero;
+} else {
+  setHeroBg(tour.hero);
+}
+document.getElementById('breadcrumbTitle').textContent = tour.title;
+document.getElementById('heroBadge').className = `tour-hero-badge badge-${tour.badgeClass}`;
+document.getElementById('heroBadge').innerHTML = `<i class="fas fa-award"></i> ${tour.badge}`;
+document.getElementById('heroTitle').innerHTML = `${tour.title}<br><span style="color:var(--gold);font-size:.7em">${tour.subtitle}</span>`;
+document.getElementById('heroMeta').innerHTML = `
+  <span><i class="fas fa-clock"></i> ${tour.duration}</span>
+  <span><i class="fas fa-users"></i> ${tour.groupSize}</span>
+  <span><i class="fas fa-signal"></i> ${tour.difficulty}</span>
+  <span><i class="fas fa-map-marker-alt"></i> ${tour.startCity} → ${tour.endCity}</span>`;
+const starsHtml = Array.from({length:5},(_,i)=>
+  `<i class="fas fa-star${i<Math.floor(tour.rating)?'':tour.rating%1>.4?' fa-star-half-alt':'-o'}"></i>`).join('');
+document.getElementById('heroStars').innerHTML = starsHtml;
+document.getElementById('heroRating').textContent = `${tour.rating}/5 · ${tour.reviewCount} reviews`;
+
+// Quick facts
+document.getElementById('quickFacts').innerHTML = [
+  {icon:'fa-clock',label:'Duration',val:tour.duration},
+  {icon:'fa-users',label:'Group Size',val:tour.groupSize},
+  {icon:'fa-signal',label:'Difficulty',val:tour.difficulty},
+  {icon:'fa-map-marker-alt',label:'Start City',val:tour.startCity},
+  {icon:'fa-flag-checkered',label:'End City',val:tour.endCity},
+  {icon:'fa-tag',label:'From',val:tour.price+' /person'},
+].map(f=>`
+  <div class="fact-item">
+    <div class="fact-icon"><i class="fas ${f.icon}"></i></div>
+    <div class="fact-info"><span>${f.label}</span><strong>${f.val}</strong></div>
+  </div>`).join('');
+
+// Overview
+document.getElementById('overviewText').textContent = tour.overview;
+document.getElementById('highlightsGrid').innerHTML = tour.highlights.map(h=>
+  `<div class="highlight-item"><i class="fas fa-check-circle"></i><span>${h}</span></div>`).join('');
+
+// Timeline
+document.getElementById('timeline').innerHTML = tour.days.map((day,i)=>`
+  <div class="tl-day">
+    <div class="tl-dot"><span>Day</span><strong>${i+1}</strong></div>
+    <div class="tl-card">
+      <div class="tl-card-header">
+        <div class="tl-day-label">${day.label}</div>
+        <h3 class="tl-title">${day.title}</h3>
+      </div>
+      <p class="tl-desc">${day.desc}</p>
+      <div class="tl-activities">
+        ${day.activities.map(a=>`<div class="tl-activity"><i class="fas fa-circle"></i><span>${a}</span></div>`).join('')}
+      </div>
+      <div class="tl-footer">
+        <div class="tl-tag"><i class="fas fa-bed"></i> ${day.accommodation}</div>
+        <div class="tl-tag"><i class="fas fa-utensils"></i> ${day.meals}</div>
+        ${day.distance?`<div class="tl-tag"><i class="fas fa-road"></i> ${day.distance}</div>`:''}
+      </div>
+    </div>
+  </div>`).join('');
+
+// Included / Not Included
+document.getElementById('includedList').innerHTML = tour.included.map(item=>
+  `<div class="inc-item yes"><i class="fas fa-check-circle"></i><span>${item}</span></div>`).join('');
+document.getElementById('notIncludedList').innerHTML = tour.notIncluded.map(item=>
+  `<div class="inc-item no"><i class="fas fa-times-circle"></i><span>${item}</span></div>`).join('');
+
+// Reviews
+document.getElementById('reviewsGrid').innerHTML = tour.reviews.map(r=>`
+  <div class="review-card">
+    <div class="review-top">
+      <div class="review-avatar"><img src="${r.avatar}" alt="${r.name}" /></div>
+      <div class="review-info">
+        <div class="review-stars">${Array.from({length:r.rating},()=>'<i class="fas fa-star"></i>').join('')}</div>
+        <div class="review-name">${r.name}</div>
+        <div class="review-meta">${r.country} <span>·</span> ${r.tour} <span>·</span> ${r.date}</div>
+      </div>
+    </div>
+    <p class="review-text">"${r.text}"</p>
+  </div>`).join('');
+
+// Sidebar
+document.getElementById('sidebarPrice').textContent = tour.price;
+document.getElementById('sidebarFacts').innerHTML = [
+  {icon:'fa-clock',label:'Duration',val:tour.duration},
+  {icon:'fa-users',label:'Group Size',val:tour.groupSize},
+  {icon:'fa-signal',label:'Difficulty',val:tour.difficulty},
+  {icon:'fa-map-marker-alt',label:'Start / End',val:tour.startCity+' / '+tour.endCity},
+].map(f=>`
+  <div class="sf-row">
+    <span class="sf-label"><i class="fas ${f.icon}"></i>${f.label}</span>
+    <span class="sf-val">${f.val}</span>
+  </div>`).join('');
+
+// Related tours
+const related = Object.entries(TOURS).filter(([k])=>k!==id).slice(0,3);
+const relatedImgs = {
+  '3day-marrakech':     { local:'images/camel-caravan.jpg',   fb:'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=500&q=70' },
+  '4day-fes':           { local:'images/fes-tannery.jpg',    fb:'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=500&q=70' },
+  '6day-imperial':      { local:'images/marrakech.jpg',      fb:'https://images.unsplash.com/photo-1597212618440-806262de4f2b?w=500&q=70' },
+  'luxury-camp':        { local:'images/stargazing.jpg',     fb:'https://images.unsplash.com/photo-1539768942893-daf91f348b20?w=500&q=70' },
+  '8day-grand':         { local:'images/atlas.jpg',          fb:'https://images.unsplash.com/photo-1587135991058-8816b028691f?w=500&q=70' },
+  'custom':             { local:'images/ait-benhaddou.jpg',  fb:'https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=500&q=70' },
+  '10day-grand':        { local:'images/casablanca.jpg',     fb:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=70' },
+  '2day-fes-merzouga':  { local:'images/camels.jpg',         fb:'https://images.unsplash.com/photo-1548013146-72479768bada?w=500&q=70' },
+  'chefchaouen-daytrip':{ local:'images/chefchaouen.jpg',    fb:'https://images.unsplash.com/photo-1558618047-f4e80e886f17?w=500&q=70' },
+  'volubilis-meknes':   { local:'images/volubilis.jpg',      fb:'https://images.unsplash.com/photo-1548013146-72479768bada?w=500&q=70' },
+  'sefrou-bhalil':      { local:'images/fes.jpg',            fb:'https://images.unsplash.com/photo-1579961339940-8f5792aaeb5d?w=500&q=70' },
+  'ouzoud-waterfalls':  { local:'images/ouzoud.jpg',         fb:'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=500&q=70' },
+  'essaouira-daytrip':  { local:'images/essaouira-port.jpg', fb:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=70' },
+  'agafay-desert':      { local:'images/camel-ride-group.jpg', fb:'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=500&q=70' }
+};
+document.getElementById('relatedGrid').innerHTML = related.map(([k,t])=>`
+  <a href="tour.html?id=${k}" class="related-card">
+    <div class="related-img"><img src="${relatedImgs[k].local}" onerror="this.src='${relatedImgs[k].fb}'" alt="${t.title}" loading="lazy" /></div>
+    <div class="related-body">
+      <div class="related-name">${t.title}</div>
+      <div style="font-size:.82rem;color:var(--text-light)">${t.duration} · ${t.startCity}</div>
+      <div class="related-footer">
+        <span class="related-price">${t.price}</span>
+        <span class="related-link">View Tour <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </div>
+  </a>`).join('');
+
+// ===================== UI INTERACTIONS =====================
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', ()=> navbar.classList.toggle('scrolled', window.scrollY > 50));
+navbar.classList.add('scrolled'); // always scrolled on tour page
+
+// Hamburger
+document.getElementById('hamburgerBtn').addEventListener('click', ()=>
+  document.getElementById('mobileMenu').classList.toggle('open'));
+function closeMobile(){ document.getElementById('mobileMenu').classList.remove('open') }
+
+// Tabs
+function switchTab(name, btn){
+  document.querySelectorAll('.tab-panel').forEach(p=> p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=> b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
+

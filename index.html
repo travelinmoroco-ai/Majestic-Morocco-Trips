@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Majestic Morocco Trips – Professional guided desert tours from Marrakech, Fes & Casablanca. Sahara desert camps, camel treks & cultural experiences." />
+  <meta name="keywords" content="Morocco desert tours, Sahara tours, Merzouga tours, Marrakech tours, Morocco travel, desert camp Morocco, Agafay desert, Chefchaouen tours, Essaouira day trip, Fes tours, camel trek Morocco, Morocco private tours" />
+  <title>Majestic Morocco Trips | Sahara Tours & Travel</title>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristInformationCenter",
+    "name": "Majestic Morocco Trips",
+    "description": "Professional guided desert tours from Marrakech, Fes and Casablanca. Sahara desert camps, camel treks and cultural experiences.",
+    "url": "https://moroccodesertadventure.com",
+    "telephone": "+212674768328",
+    "email": "travelinmoroco@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Marrakech",
+      "addressCountry": "MA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 31.6295,
+      "longitude": -7.9811
+    },
+    "sameAs": [
+      "https://wa.me/212674768328"
+    ],
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "08:00",
+      "closes": "22:00"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "500",
+      "bestRating": "5"
+    }
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ===== VARIABLES ===== */
+    :root {
+      --primary:   #C8702A;
+      --primary-dark: #A0561A;
+      --secondary: #8B1A1A;
+      --gold:      #E8A830;
+      --dark:      #1C1410;
+      --dark2:     #2D2016;
+      --light:     #FFF8F0;
+      --cream:     #F5ECD8;
+      --text:      #3A2E22;
+      --text-light:#7A6A58;
+      --white:     #FFFFFF;
+      --shadow:    0 4px 24px rgba(28,20,16,.12);
+      --shadow-lg: 0 12px 48px rgba(28,20,16,.18);
+      --radius:    12px;
+      --radius-lg: 20px;
+      --transition: .3s ease;
+      --hero-bg: url('https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1600&q=80');
+      --why-bg:  url('https://images.unsplash.com/photo-1539768942893-daf91f348b20?w=1400&q=60');
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ===== UTILITIES ===== */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .section-tag { display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); background: rgba(200,112,42,.1); padding: 6px 16px; border-radius: 50px; margin-bottom: 12px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; color: var(--dark2); line-height: 1.2; margin-bottom: 16px; }
+    .section-sub { font-size: 1rem; color: var(--text-light); line-height: 1.7; max-width: 560px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 30px; border-radius: 50px; font-weight: 600; font-size: .95rem; transition: var(--transition); }
+    .btn-primary { background: var(--primary); color: var(--white); }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,112,42,.4); }
+    .btn-outline { border: 2px solid var(--white); color: var(--white); }
+    .btn-outline:hover { background: var(--white); color: var(--primary); }
+    .btn-dark { background: var(--dark2); color: var(--white); }
+    .btn-dark:hover { background: var(--primary); transform: translateY(-2px); }
+    .star { color: var(--gold); }
+
+    /* ===== NAVBAR ===== */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      transition: background var(--transition), box-shadow var(--transition);
+      padding: 18px 0;
+    }
+    #navbar.scrolled {
+      background: rgba(28,20,16,.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,.25);
+      padding: 12px 0;
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-img { height: 56px; width: auto; display: block; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a { color: rgba(255,255,255,.88); font-size: .9rem; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: var(--transition); }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,.12); }
+    .nav-cta { background: var(--primary); color: var(--white) !important; padding: 9px 20px !important; border-radius: 50px !important; }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--dark2) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--transition); }
+    .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: rgba(28,20,16,.98); padding: 20px; flex-direction: column; gap: 4px; backdrop-filter: blur(12px); z-index: 999; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: var(--white); font-size: 1rem; font-weight: 500; padding: 12px 16px; border-radius: 8px; transition: var(--transition); }
+    .mobile-menu a:hover { background: rgba(255,255,255,.1); color: var(--gold); }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, rgba(28,20,16,.75) 0%, rgba(139,26,26,.5) 50%, rgba(200,112,42,.4) 100%),
+                  var(--hero-bg) center/cover no-repeat;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+      background: linear-gradient(to top, var(--white), transparent);
+    }
+    .hero-content { position: relative; z-index: 2; padding: 100px 0 80px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); color: var(--white); padding: 8px 18px; border-radius: 50px; font-size: .85rem; font-weight: 500; margin-bottom: 24px; backdrop-filter: blur(8px); }
+    .hero-badge i { color: var(--gold); }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6vw, 4.8rem); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 22px; }
+    .hero-title span { color: var(--gold); display: block; }
+    .hero-desc { font-size: clamp(1rem, 2vw, 1.15rem); color: rgba(255,255,255,.88); line-height: 1.7; max-width: 540px; margin-bottom: 36px; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 48px; }
+    .hero-stats { display: flex; flex-wrap: wrap; gap: 32px; }
+    .hero-stat { color: var(--white); }
+    .hero-stat strong { display: block; font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold); }
+    .hero-stat span { font-size: .85rem; color: rgba(255,255,255,.75); }
+    .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,.6); font-size: .8rem; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: bounce 2s infinite; z-index: 2; }
+    .hero-scroll i { font-size: 1.2rem; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+    /* ===== TRUST BAR ===== */
+    #trust { background: var(--dark2); padding: 20px 0; }
+    .trust-inner { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px 48px; }
+    .trust-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.75); font-size: .9rem; font-weight: 500; }
+    .trust-item i { color: var(--gold); font-size: 1.1rem; }
+
+    /* ===== ABOUT ===== */
+    #about { padding: 100px 0; background: var(--light); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-imgs { position: relative; }
+    .about-img-main { border-radius: var(--radius-lg); overflow: hidden; height: 480px; }
+    .about-img-main img { width: 100%; height: 100%; object-fit: cover; }
+    .about-img-small { position: absolute; bottom: -30px; right: -30px; width: 220px; height: 220px; border-radius: var(--radius); overflow: hidden; border: 6px solid var(--white); box-shadow: var(--shadow-lg); }
+    .about-img-small img { width: 100%; height: 100%; object-fit: cover; }
+    .about-badge { position: absolute; top: 24px; left: 24px; background: var(--primary); color: var(--white); padding: 12px 18px; border-radius: var(--radius); font-weight: 700; font-size: .9rem; box-shadow: var(--shadow); }
+    .about-badge strong { font-size: 1.6rem; display: block; line-height: 1; }
+    .about-text .section-sub { margin-bottom: 28px; }
+    .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; }
+    .about-feat { display: flex; align-items: center; gap: 10px; font-size: .9rem; font-weight: 500; color: var(--text); }
+    .about-feat i { color: var(--primary); width: 20px; }
+
+    /* ===== TOURS ===== */
+    #tours { padding: 100px 0; background: var(--white); }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-header .section-sub { margin: 0 auto; }
+    .tours-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .tour-card { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); background: var(--white); }
+    .tour-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+    .tour-img { position: relative; height: 220px; overflow: hidden; }
+    .tour-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .tour-card:hover .tour-img img { transform: scale(1.08); }
+    .tour-badge { position: absolute; top: 14px; left: 14px; background: var(--primary); color: var(--white); font-size: .75rem; font-weight: 600; padding: 5px 12px; border-radius: 50px; }
+    .tour-badge.hot { background: var(--secondary); }
+    .tour-badge.new { background: var(--gold); color: var(--dark2); }
+    .tour-duration { position: absolute; bottom: 14px; right: 14px; background: rgba(28,20,16,.8); color: var(--white); font-size: .8rem; padding: 5px 12px; border-radius: 50px; backdrop-filter: blur(4px); }
+    .tour-body { padding: 22px; }
+    .tour-location { display: flex; align-items: center; gap: 6px; font-size: .8rem; color: var(--text-light); margin-bottom: 8px; }
+    .tour-location i { color: var(--primary); }
+    .tour-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--dark2); margin-bottom: 10px; line-height: 1.3; }
+    .tour-rating { display: flex; align-items: center; gap: 6px; font-size: .85rem; color: var(--text-light); margin-bottom: 14px; }
+    .tour-rating strong { color: var(--dark2); }
+    .tour-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--cream); }
+    .tour-price { font-family: 'Playfair Display', serif; }
+    .tour-price span { font-size: .75rem; color: var(--text-light); display: block; }
+    .tour-price strong { font-size: 1.4rem; color: var(--primary); }
+    .tour-btn { background: var(--cream); color: var(--primary); font-size: .85rem; font-weight: 600; padding: 9px 18px; border-radius: 50px; transition: var(--transition); }
+    .tour-btn:hover { background: var(--primary); color: var(--white); }
+    .tours-more { text-align: center; margin-top: 48px; }
+
+    /* ===== DAY TRIPS ===== */
+    #daytrips { padding: 100px 0; background: var(--cream); }
+    .daytrip-group { margin-bottom: 64px; }
+    .daytrip-group-header { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; padding-bottom: 18px; border-bottom: 2px solid rgba(200,112,42,.2); }
+    .daytrip-group-icon { width: 48px; height: 48px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.3rem; flex-shrink: 0; }
+    .daytrip-group-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--dark2); }
+    .daytrip-group-sub { font-size: .85rem; color: var(--text-light); margin-top: 2px; }
+    .daytrip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .daytrip-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); cursor: pointer; }
+    .daytrip-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .daytrip-img { position: relative; height: 190px; overflow: hidden; }
+    .daytrip-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .daytrip-card:hover .daytrip-img img { transform: scale(1.06); }
+    .daytrip-badge { position: absolute; top: 14px; left: 14px; background: var(--primary); color: var(--white); font-size: .72rem; font-weight: 700; padding: 4px 12px; border-radius: 50px; letter-spacing: .5px; }
+    .daytrip-price-tag { position: absolute; top: 14px; right: 14px; background: var(--dark2); color: var(--white); font-size: .85rem; font-weight: 700; padding: 4px 12px; border-radius: 50px; }
+    .daytrip-body { padding: 22px 24px; }
+    .daytrip-from { font-size: .78rem; color: var(--text-light); display: flex; align-items: center; gap: 5px; margin-bottom: 6px; }
+    .daytrip-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--dark2); margin-bottom: 10px; line-height: 1.3; }
+    .daytrip-highlights { list-style: none; margin-bottom: 16px; }
+    .daytrip-highlights li { font-size: .82rem; color: var(--text-light); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+    .daytrip-highlights li::before { content: '✓'; color: var(--primary); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .daytrip-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--cream); }
+    .daytrip-duration { font-size: .8rem; color: var(--text-light); display: flex; align-items: center; gap: 5px; }
+    .daytrip-btn { background: var(--primary); color: var(--white); font-size: .82rem; font-weight: 600; padding: 8px 18px; border-radius: 50px; transition: var(--transition); }
+    .daytrip-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+    /* ===== WHY US ===== */
+    #why { padding: 100px 0; background: var(--dark2); position: relative; overflow: hidden; }
+    #why::before { content: ''; position: absolute; inset: 0; background: var(--why-bg) center/cover; opacity: .08; }
+    .why-inner { position: relative; z-index: 1; }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .why-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-lg); padding: 32px 28px; transition: var(--transition); }
+    .why-card:hover { background: rgba(255,255,255,.1); transform: translateY(-4px); }
+    .why-icon { width: 60px; height: 60px; background: rgba(200,112,42,.2); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: var(--gold); margin-bottom: 20px; }
+    .why-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .why-desc { font-size: .9rem; color: rgba(255,255,255,.65); line-height: 1.7; }
+    #why .section-header { text-align: center; margin-bottom: 56px; }
+    #why .section-title { color: var(--white); }
+    #why .section-sub { color: rgba(255,255,255,.65); margin: 0 auto; }
+
+    /* ===== GALLERY ===== */
+    #gallery { padding: 100px 0; background: var(--light); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 240px); gap: 14px; }
+    .gallery-item { border-radius: var(--radius); overflow: hidden; position: relative; cursor: pointer; }
+    .gallery-item:first-child { grid-column: span 2; grid-row: span 2; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-overlay { position: absolute; inset: 0; background: rgba(28,20,16,0); display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+    .gallery-overlay i { color: var(--white); font-size: 2rem; opacity: 0; transform: scale(.7); transition: var(--transition); }
+    .gallery-item:hover .gallery-overlay { background: rgba(28,20,16,.45); }
+    .gallery-item:hover .gallery-overlay i { opacity: 1; transform: scale(1); }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonials { padding: 100px 0; background: var(--white); }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .testi-card { background: var(--light); border-radius: var(--radius-lg); padding: 32px 28px; position: relative; transition: var(--transition); }
+    .testi-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .testi-quote { font-size: 3rem; color: var(--primary); opacity: .25; font-family: serif; line-height: .8; margin-bottom: 16px; }
+    .testi-text { font-size: .95rem; color: var(--text); line-height: 1.75; margin-bottom: 24px; font-style: italic; }
+    .testi-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .testi-author { display: flex; align-items: center; gap: 14px; }
+    .testi-avatar { width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 2px solid var(--primary); }
+    .testi-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .testi-name { font-weight: 700; font-size: .95rem; color: var(--dark2); }
+    .testi-origin { font-size: .8rem; color: var(--text-light); }
+
+    /* ===== BOOKING STRIP ===== */
+    #booking-strip { background: var(--primary); padding: 64px 0; }
+    .strip-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 28px; }
+    .strip-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--white); margin-bottom: 8px; }
+    .strip-text p { color: rgba(255,255,255,.8); font-size: 1rem; }
+    .strip-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-white { background: var(--white); color: var(--primary); font-weight: 700; }
+    .btn-white:hover { background: var(--gold); color: var(--dark2); transform: translateY(-2px); }
+    .btn-ghost { border: 2px solid rgba(255,255,255,.6); color: var(--white); font-weight: 600; }
+    .btn-ghost:hover { background: rgba(255,255,255,.15); }
+
+    /* ===== CONTACT ===== */
+    #contact { padding: 100px 0; background: var(--light); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; align-items: start; }
+    .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--dark2); margin-bottom: 16px; }
+    .contact-info p { color: var(--text-light); line-height: 1.7; margin-bottom: 32px; }
+    .contact-items { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 16px; }
+    .contact-icon { width: 46px; height: 46px; min-width: 46px; background: rgba(200,112,42,.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.1rem; }
+    .contact-detail strong { display: block; font-weight: 600; color: var(--dark2); margin-bottom: 2px; }
+    .contact-detail span { font-size: .9rem; color: var(--text-light); }
+    .contact-form { background: var(--white); padding: 40px; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: .85rem; font-weight: 600; color: var(--dark2); margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 12px 16px; border: 1.5px solid var(--cream); border-radius: 10px;
+      font-family: inherit; font-size: .9rem; color: var(--text); background: var(--light);
+      transition: var(--transition); outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--primary); background: var(--white); box-shadow: 0 0 0 3px rgba(200,112,42,.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit { width: 100%; padding: 15px; background: var(--primary); color: var(--white); border-radius: 50px; font-size: 1rem; font-weight: 700; transition: var(--transition); }
+    .form-submit:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,112,42,.35); }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--dark); color: rgba(255,255,255,.7); }
+    .footer-main { padding: 64px 0 40px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+    .footer-brand .logo { margin-bottom: 18px; }
+    .footer-brand p { font-size: .9rem; line-height: 1.7; margin-bottom: 24px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .social-btn { width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.7); font-size: .95rem; transition: var(--transition); }
+    .social-btn:hover { background: var(--primary); color: var(--white); }
+    .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 18px; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: .88rem; color: rgba(255,255,255,.6); transition: var(--transition); }
+    .footer-col ul li a:hover { color: var(--gold); padding-left: 4px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 20px 0; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .83rem; color: rgba(255,255,255,.45); }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a:hover { color: var(--gold); }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.6rem; box-shadow: 0 4px 20px rgba(37,211,102,.5); animation: pulse 2.5s infinite; transition: transform var(--transition); }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    @keyframes pulse { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.5)} 50%{box-shadow:0 4px 32px rgba(37,211,102,.8)} }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .tours-grid, .why-grid, .testi-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(4, 200px); }
+      .gallery-item:first-child { grid-column: span 2; grid-row: span 1; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .about-grid { gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img-small { right: 0; bottom: -20px; width: 160px; height: 160px; }
+      .tours-grid, .why-grid, .testi-grid, .daytrip-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(5, 180px); }
+      .gallery-item:first-child { grid-column: span 2; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .strip-inner { flex-direction: column; text-align: center; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
+      .hero-btns { flex-direction: column; }
+      .hero-stats { gap: 20px; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .gallery-item, .gallery-item:first-child { grid-column: span 1; grid-row: span 1; height: 200px; }
+      .about-img-small { display: none; }
+    }
+
+    /* ===== BLOG ===== */
+    #blog { padding: 100px 0; background: var(--light); }
+    .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .blog-card { border-radius: var(--radius-lg); overflow: hidden; background: var(--white); box-shadow: var(--shadow); transition: var(--transition); display: block; text-decoration: none; }
+    .blog-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+    .blog-card-img { position: relative; height: 230px; overflow: hidden; }
+    .blog-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .blog-card:hover .blog-card-img img { transform: scale(1.07); }
+    .blog-cat { position: absolute; top: 14px; left: 14px; background: var(--primary); color: var(--white); font-size: .75rem; font-weight: 600; padding: 5px 12px; border-radius: 50px; }
+    .blog-card-body { padding: 22px 24px; }
+    .blog-meta { font-size: .8rem; color: var(--text-light); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .blog-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-light); display: inline-block; }
+    .blog-card-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--dark2); margin-bottom: 10px; line-height: 1.35; }
+    .blog-card-excerpt { font-size: .9rem; color: var(--text-light); line-height: 1.65; margin-bottom: 16px; }
+    .blog-read-more { font-size: .85rem; font-weight: 600; color: var(--primary); display: inline-flex; align-items: center; gap: 6px; transition: gap .2s; }
+    .blog-card:hover .blog-read-more { gap: 10px; }
+    @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <img src="images/logo.png" alt="Majestic Morocco Trips" class="logo-img" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#tours">Tours</a></li>
+        <li><a href="#daytrips">Day Trips</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#contact" class="nav-cta">Book Now</a></li>
+      </ul>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMobile()">Home</a>
+  <a href="#tours" onclick="closeMobile()">Tours</a>
+  <a href="#daytrips" onclick="closeMobile()">Day Trips</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="blog.html" onclick="closeMobile()">Blog</a>
+  <a href="#contact" onclick="closeMobile()">Book Now</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-award"></i> #1 Rated Morocco Desert Tours</div>
+      <h1 class="hero-title">
+        Explore the Magic of <span>Morocco's Sahara</span>
+      </h1>
+      <p class="hero-desc">
+        Unforgettable desert adventures — camel treks at sunset, luxury desert camps under the stars, and authentic Moroccan culture awaiting you.
+      </p>
+      <div class="hero-btns">
+        <a href="#tours" class="btn btn-primary"><i class="fas fa-compass"></i> Explore Tours</a>
+        <a href="#contact" class="btn btn-outline"><i class="fas fa-phone"></i> Get Free Quote</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>1,500+</strong><span>Happy Travelers</span></div>
+        <div class="hero-stat"><strong>12+</strong><span>Years Experience</span></div>
+        <div class="hero-stat"><strong>4.9★</strong><span>Average Rating</span></div>
+        <div class="hero-stat"><strong>50+</strong><span>Tour Routes</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><i class="fas fa-chevron-down"></i></div>
+</section>
+
+<!-- ===== TRUST BAR ===== -->
+<div id="trust">
+  <div class="container">
+    <div class="trust-inner">
+      <div class="trust-item"><i class="fas fa-shield-alt"></i> Licensed & Certified Tour Operator</div>
+      <div class="trust-item"><i class="fas fa-star"></i> 4.9/5 on TripAdvisor & Google</div>
+      <div class="trust-item"><i class="fas fa-headset"></i> 24/7 Customer Support</div>
+      <div class="trust-item"><i class="fas fa-lock"></i> Secure & Easy Booking</div>
+      <div class="trust-item"><i class="fas fa-undo"></i> Free Cancellation Available</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-imgs">
+        <div class="about-img-main">
+          <img src="images/berber-camel.jpg" onerror="this.src='https://images.unsplash.com/photo-1548013146-72479768bada?w=700&q=80'" alt="Sahara Desert camel trek Morocco" loading="lazy" />
+        </div>
+        <div class="about-img-small">
+          <img src="images/fes.jpg" onerror="this.src='https://images.unsplash.com/photo-1579961339940-8f5792aaeb5d?w=400&q=80'" alt="Morocco Fes medina" loading="lazy" />
+        </div>
+        <div class="about-badge"><strong>12+</strong> Years of Excellence</div>
+      </div>
+      <div class="about-text">
+        <span class="section-tag">About Us</span>
+        <h2 class="section-title">Your Local Morocco Adventure Experts</h2>
+        <p class="section-sub">
+          We are a passionate team of local Moroccan guides with over 12 years of experience crafting extraordinary desert journeys. From the golden dunes of Merzouga to the ancient medinas of Fes and Marrakech, we bring you authentic, immersive experiences that last a lifetime.
+        </p>
+        <div class="about-features">
+          <div class="about-feat"><i class="fas fa-check-circle"></i> Certified Local Guides</div>
+          <div class="about-feat"><i class="fas fa-check-circle"></i> Private & Group Tours</div>
+          <div class="about-feat"><i class="fas fa-check-circle"></i> Luxury Desert Camps</div>
+          <div class="about-feat"><i class="fas fa-check-circle"></i> Custom Itineraries</div>
+          <div class="about-feat"><i class="fas fa-check-circle"></i> Small Group Sizes</div>
+          <div class="about-feat"><i class="fas fa-check-circle"></i> Best Price Guarantee</div>
+        </div>
+        <a href="#contact" class="btn btn-dark"><i class="fas fa-arrow-right"></i> Plan Your Trip</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOURS ===== -->
+<section id="tours">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Our Tours</span>
+      <h2 class="section-title">Most Popular Desert Tours</h2>
+      <p class="section-sub">Choose from our hand-crafted itineraries — from short escapes to grand expeditions across Morocco's most breathtaking landscapes.</p>
+    </div>
+    <div class="tours-grid">
+
+      <!-- Tour 1 -->
+      <div class="tour-card" onclick="location.href='tour.html?id=3day-marrakech'" style="cursor:pointer">
+        <div class="tour-img">
+          <img src="images/camel-caravan.jpg" onerror="this.src='https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=600&q=80'" alt="3 Day Sahara Desert Tour Merzouga" loading="lazy" />
+          <span class="tour-badge hot">Best Seller</span>
+          <span class="tour-duration"><i class="fas fa-clock"></i> 3 Days</span>
+        </div>
+        <div class="tour-body">
+          <div class="tour-location"><i class="fas fa-map-marker-alt"></i> Marrakech → Merzouga</div>
+          <h3 class="tour-name">3-Day Sahara Desert Adventure from Marrakech</h3>
+          <div class="tour-rating">
+            <span class="star">★★★★★</span>
+            <strong>4.9</strong> (127 reviews)
+          </div>
+          <div class="tour-footer">
+            <div class="tour-price"><span>From</span><strong>€299</strong></div>
+            <a href="tour.html?id=3day-marrakech" class="tour-btn" onclick="event.stopPropagation()">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tour 2 -->
+      <div class="tour-card" onclick="location.href='tour.html?id=4day-fes'" style="cursor:pointer">
+        <div class="tour-img">
+          <img src="images/fes-tannery.jpg" onerror="this.src='https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&q=80'" alt="4 Day Fes to Marrakech Desert Tour" loading="lazy" />
+          <span class="tour-badge">Popular</span>
+          <span class="tour-duration"><i class="fas fa-clock"></i> 4 Days</span>
+        </div>
+        <div class="tour-body">
+          <div class="tour-location"><i class="fas fa-map-marker-alt"></i> Fes → Sahara → Marrakech</div>
+          <h3 class="tour-name">4-Day Fes to Marrakech via Sahara Desert</h3>
+          <div class="tour-rating">
+            <span class="star">★★★★★</span>
+            <strong>4.8</strong> (89 reviews)
+          </div>
+          <div class="tour-footer">
+            <div class="tour-price"><span>From</span><strong>€349</strong></div>
+            <a href="tour.html?id=4day-fes" class="tour-btn" onclick="event.stopPropagation()">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tour 3 -->
+      <div class="tour-card" onclick="location.href='tour.html?id=6day-imperial'" style="cursor:pointer">
+        <div class="tour-img">
+          <img src="images/marrakech.jpg" onerror="this.src='https://images.unsplash.com/photo-1597212618440-806262de4f2b?w=600&q=80'" alt="6 Day Imperial Cities Morocco Tour" loading="lazy" />
+          <span class="tour-badge new">New</span>
+          <span class="tour-duration"><i class="fas fa-clock"></i> 6 Days</span>
+        </div>
+        <div class="tour-body">
+          <div class="tour-location"><i class="fas fa-map-marker-alt"></i> Casablanca → Fes → Sahara → Marrakech</div>
+          <h3 class="tour-name">6-Day Imperial Cities & Desert Experience</h3>
+          <div class="tour-rating">
+            <span class="star">★★★★★</span>
+            <strong>4.9</strong> (54 reviews)
+          </div>
+          <div class="tour-footer">
+            <div class="tour-price"><span>From</span><strong>€549</strong></div>
+            <a href="tour.html?id=6day-imperial" class="tour-btn" onclick="event.stopPropagation()">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tour 4 -->
+      <div class="tour-card" onclick="location.href='tour.html?id=luxury-camp'" style="cursor:pointer">
+        <div class="tour-img">
+          <img src="images/stargazing.jpg" onerror="this.src='https://images.unsplash.com/photo-1539768942893-daf91f348b20?w=600&q=80'" alt="Luxury Desert Camp Morocco" loading="lazy" />
+          <span class="tour-badge hot">Luxury</span>
+          <span class="tour-duration"><i class="fas fa-clock"></i> 2 Days</span>
+        </div>
+        <div class="tour-body">
+          <div class="tour-location"><i class="fas fa-map-marker-alt"></i> Merzouga Desert Camp</div>
+          <h3 class="tour-name">Luxury Sahara Desert Camp Experience — Stargazing & Camels</h3>
+          <div class="tour-rating">
+            <span class="star">★★★★★</span>
+            <strong>5.0</strong> (73 reviews)
+          </div>
+          <div class="tour-footer">
+            <div class="tour-price"><span>From</span><strong>€199</strong></div>
+            <a href="tour.html?id=luxury-camp" class="tour-btn" onclick="event.stopPropagation()">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tour 5 -->
+      <div class="tour-card" onclick="location.href='tour.html?id=8day-grand'" style="cursor:pointer">
+        <div class="tour-img">
+          <img src="images/atlas.jpg" onerror="this.src='https://images.unsplash.com/photo-1587135991058-8816b028691f?w=600&q=80'" alt="8 Day Grand Morocco Tour" loading="lazy" />
+          <span class="tour-badge">Grand Tour</span>
+          <span class="tour-duration"><i class="fas fa-clock"></i> 8 Days</span>
+        </div>
+        <div class="tour-body">
+          <div class="tour-location"><i class="fas fa-map-marker-alt"></i> Full Morocco Circuit</div>
+          <h3 class="tour-name">8-Day Grand Morocco Desert & Culture Tour</h3>
+          <div class="tour-rating">
+            <span class="star">★★★★★</span>
+            <strong>4.9</strong> (41 reviews)
+          </div>
+          <div class="tour-footer">
+            <div class="tour-price"><span>From</span><strong>€699</strong></div>
+            <a href="tour.html?id=8day-grand" class="tour-btn" onclick="event.stopPropagation()">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tour 6 -->
+      <div class="tour-card" onclick="location.href='tour.html?id=custom'" style="cursor:pointer">
+        <div class="tour-img">
+          <img src="images/ait-benhaddou.jpg" onerror="this.src='https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=600&q=80'" alt="Custom Private Morocco Tour" loading="lazy" />
+          <span class="tour-badge new">Custom</span>
+          <span class="tour-duration"><i class="fas fa-clock"></i> Any Duration</span>
+        </div>
+        <div class="tour-body">
+          <div class="tour-location"><i class="fas fa-map-marker-alt"></i> Your Choice of Route</div>
+          <h3 class="tour-name">Private Tailor-Made Morocco Tour — Your Way</h3>
+          <div class="tour-rating">
+            <span class="star">★★★★★</span>
+            <strong>5.0</strong> (38 reviews)
+          </div>
+          <div class="tour-footer">
+            <div class="tour-price"><span>From</span><strong>€Custom</strong></div>
+            <a href="tour.html?id=custom" class="tour-btn" onclick="event.stopPropagation()">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tour 7 -->
+      <div class="tour-card" onclick="location.href='tour.html?id=10day-grand'" style="cursor:pointer">
+        <div class="tour-img">
+          <img src="images/casablanca.jpg" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80'" alt="10 Day Grand Morocco Tour" loading="lazy" />
+          <span class="tour-badge hot">Most Complete</span>
+          <span class="tour-duration"><i class="fas fa-clock"></i> 10 Days</span>
+        </div>
+        <div class="tour-body">
+          <div class="tour-location"><i class="fas fa-map-marker-alt"></i> Casablanca → Chefchaouen → Fes → Sahara → Marrakech → Essaouira</div>
+          <h3 class="tour-name">10-Day Grand Morocco Tour — Complete Discovery</h3>
+          <div class="tour-rating">
+            <span class="star">★★★★★</span>
+            <strong>4.9</strong> (62 reviews)
+          </div>
+          <div class="tour-footer">
+            <div class="tour-price"><span>From</span><strong>€849</strong></div>
+            <a href="tour.html?id=10day-grand" class="tour-btn" onclick="event.stopPropagation()">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tour 8 -->
+      <div class="tour-card" onclick="location.href='tour.html?id=2day-fes-merzouga'" style="cursor:pointer">
+        <div class="tour-img">
+          <img src="images/berber-camel.jpg" onerror="this.src='https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80'" alt="2 Day Fes to Merzouga Desert Tour" loading="lazy" />
+          <span class="tour-badge new">Quick Escape</span>
+          <span class="tour-duration"><i class="fas fa-clock"></i> 2 Days</span>
+        </div>
+        <div class="tour-body">
+          <div class="tour-location"><i class="fas fa-map-marker-alt"></i> Fes → Merzouga Sahara</div>
+          <h3 class="tour-name">2-Day Fes to Merzouga Desert Tour</h3>
+          <div class="tour-rating">
+            <span class="star">★★★★★</span>
+            <strong>4.8</strong> (44 reviews)
+          </div>
+          <div class="tour-footer">
+            <div class="tour-price"><span>From</span><strong>€149</strong></div>
+            <a href="tour.html?id=2day-fes-merzouga" class="tour-btn" onclick="event.stopPropagation()">View Details</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="tours-more">
+      <a href="#contact" class="btn btn-primary"><i class="fas fa-list"></i> View All Tours</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAY TRIPS ===== -->
+<section id="daytrips">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Day Trips</span>
+      <h2 class="section-title">Best Day Trips from Fes & Marrakech</h2>
+      <p class="section-sub">Short on time? Our expertly guided day trips let you discover Morocco's most iconic destinations and return the same evening.</p>
+    </div>
+
+    <!-- FROM FES -->
+    <div class="daytrip-group">
+      <div class="daytrip-group-header">
+        <div class="daytrip-group-icon"><i class="fas fa-mosque"></i></div>
+        <div>
+          <div class="daytrip-group-title">Day Trips from Fes</div>
+          <div class="daytrip-group-sub">Explore the region around Morocco's ancient imperial city</div>
+        </div>
+      </div>
+      <div class="daytrip-grid">
+
+        <div class="daytrip-card" onclick="location.href='tour.html?id=chefchaouen-daytrip'">
+          <div class="daytrip-img">
+            <img src="images/chefchaouen.jpg" onerror="this.src='https://images.unsplash.com/photo-1558618047-f4e80e886f17?w=600&q=80'" alt="Chefchaouen Day Trip from Fes" loading="lazy" />
+            <span class="daytrip-badge">Photography</span>
+            <span class="daytrip-price-tag">From €35</span>
+          </div>
+          <div class="daytrip-body">
+            <div class="daytrip-from"><i class="fas fa-map-marker-alt"></i> From Fes · Full Day</div>
+            <h3 class="daytrip-name">Chefchaouen Day Trip — Morocco's Blue City</h3>
+            <ul class="daytrip-highlights">
+              <li>Explore the iconic blue-washed medina</li>
+              <li>Amazing photography spots</li>
+              <li>Spanish Mosque panoramic views</li>
+              <li>Ras el-Ma waterfall visit</li>
+            </ul>
+            <div class="daytrip-footer">
+              <span class="daytrip-duration"><i class="fas fa-clock"></i> ~12 hours</span>
+              <a href="tour.html?id=chefchaouen-daytrip" class="daytrip-btn" onclick="event.stopPropagation()">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="daytrip-card" onclick="location.href='tour.html?id=volubilis-meknes'">
+          <div class="daytrip-img">
+            <img src="images/volubilis.jpg" onerror="this.src='https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80'" alt="Volubilis Meknes Day Trip" loading="lazy" />
+            <span class="daytrip-badge" style="background:var(--secondary)">Best Historical</span>
+            <span class="daytrip-price-tag">From €30</span>
+          </div>
+          <div class="daytrip-body">
+            <div class="daytrip-from"><i class="fas fa-map-marker-alt"></i> From Fes · Full Day</div>
+            <h3 class="daytrip-name">Volubilis & Meknes — Roman Ruins & Imperial City</h3>
+            <ul class="daytrip-highlights">
+              <li>UNESCO Roman ruins of Volubilis</li>
+              <li>Bab Mansour gate & Meknes medina</li>
+              <li>Moulay Ismail Mausoleum</li>
+              <li>Best for history lovers</li>
+            </ul>
+            <div class="daytrip-footer">
+              <span class="daytrip-duration"><i class="fas fa-clock"></i> ~10 hours</span>
+              <a href="tour.html?id=volubilis-meknes" class="daytrip-btn" onclick="event.stopPropagation()">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="daytrip-card" onclick="location.href='tour.html?id=sefrou-bhalil'">
+          <div class="daytrip-img">
+            <img src="images/fes-tannery.jpg" onerror="this.src='https://images.unsplash.com/photo-1579961339940-8f5792aaeb5d?w=600&q=80'" alt="Sefrou Bhalil Day Trip" loading="lazy" />
+            <span class="daytrip-badge" style="background:#2D9E4F">Authentic</span>
+            <span class="daytrip-price-tag">From €25</span>
+          </div>
+          <div class="daytrip-body">
+            <div class="daytrip-from"><i class="fas fa-map-marker-alt"></i> From Fes · Full Day</div>
+            <h3 class="daytrip-name">Sefrou & Bhalil — Hidden Gems Near Fes</h3>
+            <ul class="daytrip-highlights">
+              <li>Cave houses of Bhalil</li>
+              <li>Waterfalls of Sefrou</li>
+              <li>Local Berber lifestyle</li>
+              <li>Authentic Moroccan experience</li>
+            </ul>
+            <div class="daytrip-footer">
+              <span class="daytrip-duration"><i class="fas fa-clock"></i> ~8 hours</span>
+              <a href="tour.html?id=sefrou-bhalil" class="daytrip-btn" onclick="event.stopPropagation()">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FROM MARRAKECH -->
+    <div class="daytrip-group">
+      <div class="daytrip-group-header">
+        <div class="daytrip-group-icon"><i class="fas fa-star-and-crescent"></i></div>
+        <div>
+          <div class="daytrip-group-title">Day Trips from Marrakech</div>
+          <div class="daytrip-group-sub">The best excursions from the Red City</div>
+        </div>
+      </div>
+      <div class="daytrip-grid">
+
+        <div class="daytrip-card" onclick="location.href='tour.html?id=ouzoud-waterfalls'">
+          <div class="daytrip-img">
+            <img src="images/ouzoud.jpg" onerror="this.src='https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80'" alt="Ouzoud Waterfalls Day Trip" loading="lazy" />
+            <span class="daytrip-badge hot">Most Booked</span>
+            <span class="daytrip-price-tag">From €35</span>
+          </div>
+          <div class="daytrip-body">
+            <div class="daytrip-from"><i class="fas fa-map-marker-alt"></i> From Marrakech · Full Day</div>
+            <h3 class="daytrip-name">Ouzoud Waterfalls — Morocco's Highest Falls</h3>
+            <ul class="daytrip-highlights">
+              <li>110-metre spectacular waterfalls</li>
+              <li>Boat ride near the falls</li>
+              <li>Wild Barbary monkeys</li>
+              <li>Traditional Berber villages</li>
+            </ul>
+            <div class="daytrip-footer">
+              <span class="daytrip-duration"><i class="fas fa-clock"></i> ~12 hours</span>
+              <a href="tour.html?id=ouzoud-waterfalls" class="daytrip-btn" onclick="event.stopPropagation()">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="daytrip-card" onclick="location.href='tour.html?id=essaouira-daytrip'">
+          <div class="daytrip-img">
+            <img src="images/essaouira-port.jpg" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80'" alt="Essaouira Day Trip from Marrakech" loading="lazy" />
+            <span class="daytrip-badge" style="background:var(--secondary)">Very Popular</span>
+            <span class="daytrip-price-tag">From €30</span>
+          </div>
+          <div class="daytrip-body">
+            <div class="daytrip-from"><i class="fas fa-map-marker-alt"></i> From Marrakech · Full Day</div>
+            <h3 class="daytrip-name">Essaouira Day Trip — Atlantic Coast Escape</h3>
+            <ul class="daytrip-highlights">
+              <li>Atlantic Ocean views & sea ramparts</li>
+              <li>Historic UNESCO medina</li>
+              <li>Fresh seafood lunch at the port</li>
+              <li>Beach & artisan shops</li>
+            </ul>
+            <div class="daytrip-footer">
+              <span class="daytrip-duration"><i class="fas fa-clock"></i> ~12 hours</span>
+              <a href="tour.html?id=essaouira-daytrip" class="daytrip-btn" onclick="event.stopPropagation()">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="daytrip-card" onclick="location.href='tour.html?id=agafay-desert'">
+          <div class="daytrip-img">
+            <img src="images/camel-ride-group.jpg" onerror="this.src='https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=600&q=80'" alt="Agafay Desert Day Trip Marrakech" loading="lazy" />
+            <span class="daytrip-badge" style="background:var(--gold);color:var(--dark2)">Trending</span>
+            <span class="daytrip-price-tag">From €65</span>
+          </div>
+          <div class="daytrip-body">
+            <div class="daytrip-from"><i class="fas fa-map-marker-alt"></i> From Marrakech · Full Day</div>
+            <h3 class="daytrip-name">Agafay Desert — Camel, Quad & Sunset Dinner</h3>
+            <ul class="daytrip-highlights">
+              <li>Camel ride & quad biking</li>
+              <li>Luxury desert camp experience</li>
+              <li>Sunset dinner with live music</li>
+              <li>Only 40 min from Marrakech</li>
+            </ul>
+            <div class="daytrip-footer">
+              <span class="daytrip-duration"><i class="fas fa-clock"></i> ~11 hours</span>
+              <a href="tour.html?id=agafay-desert" class="daytrip-btn" onclick="event.stopPropagation()">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== WHY US ===== -->
+<section id="why">
+  <div class="why-inner container">
+    <div class="section-header">
+      <span class="section-tag">Why Choose Us</span>
+      <h2 class="section-title">The Majestic Morocco Trips Difference</h2>
+      <p class="section-sub">We go beyond sightseeing — we create transformative experiences with local expertise, genuine hospitality, and unmatched value.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-user-tie"></i></div>
+        <h3 class="why-title">Expert Local Guides</h3>
+        <p class="why-desc">Our Berber guides are born and raised in the Sahara — they bring the desert to life with stories, knowledge, and genuine passion for their homeland.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-map-marked-alt"></i></div>
+        <h3 class="why-title">Custom Itineraries</h3>
+        <p class="why-desc">Every traveler is different. We craft bespoke itineraries matching your budget, schedule, and travel style — group or private, budget or luxury.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-hotel"></i></div>
+        <h3 class="why-title">Premium Accommodations</h3>
+        <p class="why-desc">From authentic riads in ancient medinas to luxury glamping tents under a billion stars in the Sahara — we only partner with the best.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-tag"></i></div>
+        <h3 class="why-title">Best Price Guarantee</h3>
+        <p class="why-desc">Book directly with us and get the best price. No hidden fees, no commissions — just transparent, honest pricing for unforgettable adventures.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-headset"></i></div>
+        <h3 class="why-title">24/7 Support</h3>
+        <p class="why-desc">Our dedicated team is always just a WhatsApp message away — before, during, and after your tour. Your peace of mind is our priority.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-leaf"></i></div>
+        <h3 class="why-title">Responsible Tourism</h3>
+        <p class="why-desc">We support local communities, minimize environmental impact, and ensure your journey benefits the people and places you visit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Gallery</span>
+      <h2 class="section-title">Morocco Through Our Lens</h2>
+      <p class="section-sub">A glimpse of the breathtaking landscapes, vibrant culture, and unforgettable moments that await you in Morocco.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="images/camel-caravan.jpg" onerror="this.src='https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=800&q=80'" alt="Camel caravan Sahara Desert Morocco" loading="lazy" />
+        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/chefchaouen.jpg" onerror="this.src='https://images.unsplash.com/photo-1558618047-f4e80e886f17?w=500&q=80'" alt="Chefchaouen Blue City Morocco" loading="lazy" />
+        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/berber-camel.jpg" onerror="this.src='https://images.unsplash.com/photo-1548013146-72479768bada?w=500&q=80'" alt="Camel trek Sahara Morocco" loading="lazy" />
+        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/stargazing.jpg" onerror="this.src='https://images.unsplash.com/photo-1539768942893-daf91f348b20?w=500&q=80'" alt="Stargazing desert camp Morocco" loading="lazy" />
+        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/berber-sunrise.jpg" onerror="this.src='https://images.unsplash.com/photo-1579961339940-8f5792aaeb5d?w=500&q=80'" alt="Berber man desert sunrise Morocco" loading="lazy" />
+        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/ouzoud.jpg" onerror="this.src='https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=500&q=80'" alt="Ouzoud Waterfalls Morocco" loading="lazy" />
+        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/ait-benhaddou.jpg" onerror="this.src='https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=500&q=80'" alt="Ait Benhaddou kasbah Morocco" loading="lazy" />
+        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+      </div>
+      <div class="gallery-item">
+        <img src="images/essaouira-port.jpg" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80'" alt="Essaouira port fortress Morocco" loading="lazy" />
+        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Testimonials</span>
+      <h2 class="section-title">What Our Travelers Say</h2>
+      <p class="section-sub">Real experiences from real travelers — join the hundreds who have made their Moroccan dreams come true with us.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">
+          <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i>
+        </div>
+        <p class="testi-text">An absolutely magical experience! The 4-day desert tour from Fes was perfectly organized. Our guide Hassan was incredibly knowledgeable and the desert camp was breathtaking. Watching the sunrise over the Sahara dunes is something I'll never forget.</p>
+        <div class="testi-author">
+          <div class="testi-avatar"><img src="https://i.pravatar.cc/100?img=47" alt="Sarah Mitchell" /></div>
+          <div><div class="testi-name">Sarah Mitchell</div><div class="testi-origin">🇬🇧 London, UK</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">
+          <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i>
+        </div>
+        <p class="testi-text">We booked a private 8-day grand tour for our honeymoon and it exceeded every expectation. The riad in Marrakech was stunning, the desert camp was like nothing we'd ever seen, and the team took care of every single detail.</p>
+        <div class="testi-author">
+          <div class="testi-avatar"><img src="https://i.pravatar.cc/100?img=32" alt="Marco & Elena Rossi" /></div>
+          <div><div class="testi-name">Marco & Elena Rossi</div><div class="testi-origin">🇮🇹 Rome, Italy</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">
+          <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i>
+        </div>
+        <p class="testi-text">The 3-day Sahara tour from Marrakech was the highlight of our trip! The camel ride at sunset, sleeping in a luxury tent under a sky full of stars, and the warmth of the local people — Majestic Morocco Trips made it all perfect.</p>
+        <div class="testi-author">
+          <div class="testi-avatar"><img src="https://i.pravatar.cc/100?img=15" alt="James & Amy Chen" /></div>
+          <div><div class="testi-name">James & Amy Chen</div><div class="testi-origin">🇺🇸 New York, USA</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOG ===== -->
+<section id="blog">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Our Blog</span>
+      <h2 class="section-title">Travel Tips & Desert Stories</h2>
+      <p class="section-sub">Insider knowledge from our local Berber guides — everything you need to know before your Moroccan adventure.</p>
+    </div>
+    <div class="blog-grid">
+
+      <a href="blog-post.html?id=best-time-to-visit" class="blog-card">
+        <div class="blog-card-img">
+          <img src="images/dunes.jpg" onerror="this.src='https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=700&q=80'" alt="Best time to visit Sahara Desert" loading="lazy" />
+          <span class="blog-cat">Travel Tips</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta"><span>May 10, 2025</span><span class="blog-meta-dot"></span><span>6 min read</span></div>
+          <h3 class="blog-card-title">Best Time to Visit Morocco's Sahara Desert</h3>
+          <p class="blog-card-excerpt">Timing makes all the difference in the Sahara. Our local guides reveal the best months for perfect temperatures, stunning colors, and unforgettable stargazing.</p>
+          <span class="blog-read-more">Read Article <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="blog-post.html?id=what-to-pack" class="blog-card">
+        <div class="blog-card-img">
+          <img src="images/berber-camel.jpg" onerror="this.src='https://images.unsplash.com/photo-1548013146-72479768bada?w=700&q=80'" alt="Packing for Sahara desert tour" loading="lazy" />
+          <span class="blog-cat">Packing Guide</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta"><span>April 28, 2025</span><span class="blog-meta-dot"></span><span>5 min read</span></div>
+          <h3 class="blog-card-title">The Essential Packing List for Your Sahara Desert Tour</h3>
+          <p class="blog-card-excerpt">From clothing layers for dramatic temperature swings to camera gear for golden-hour shots — exactly what to bring and what to leave at home.</p>
+          <span class="blog-read-more">Read Article <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="blog-post.html?id=desert-camp-guide" class="blog-card">
+        <div class="blog-card-img">
+          <img src="images/camp.jpg" onerror="this.src='https://images.unsplash.com/photo-1539768942893-daf91f348b20?w=700&q=80'" alt="Luxury desert camp Morocco night" loading="lazy" />
+          <span class="blog-cat">Desert Life</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta"><span>April 15, 2025</span><span class="blog-meta-dot"></span><span>7 min read</span></div>
+          <h3 class="blog-card-title">A Night in a Luxury Desert Camp: The Complete Guide</h3>
+          <p class="blog-card-excerpt">What really happens at a luxury Sahara desert camp? From the camel trek arrival to stargazing at midnight — we reveal every magical detail.</p>
+          <span class="blog-read-more">Read Article <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="blog-post.html?id=merzouga-vs-zagora" class="blog-card">
+        <div class="blog-card-img">
+          <img src="images/dunes2.jpg" onerror="this.src='https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=700&q=80'" alt="Merzouga vs Zagora Morocco desert" loading="lazy" />
+          <span class="blog-cat">Destination Guide</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta"><span>March 22, 2025</span><span class="blog-meta-dot"></span><span>8 min read</span></div>
+          <h3 class="blog-card-title">Merzouga vs Zagora: Which Sahara Desert is Right for You?</h3>
+          <p class="blog-card-excerpt">Morocco has two main desert destinations and choosing between them can be confusing. Our honest, experience-based comparison helps you decide.</p>
+          <span class="blog-read-more">Read Article <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="blog.html" class="btn btn-primary"><i class="fas fa-newspaper"></i> View All Articles</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOOKING STRIP ===== -->
+<section id="booking-strip">
+  <div class="container">
+    <div class="strip-inner">
+      <div class="strip-text">
+        <h2>Ready to Explore the Sahara?</h2>
+        <p>Contact us today for a free, personalized quote — no commitment required.</p>
+      </div>
+      <div class="strip-btns">
+        <a href="#contact" class="btn btn-white"><i class="fas fa-envelope"></i> Get Free Quote</a>
+        <a href="https://wa.me/212674768328" class="btn btn-ghost" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Contact Us</span>
+      <h2 class="section-title">Plan Your Dream Morocco Tour</h2>
+      <p class="section-sub">Fill in the form below and our team will get back to you within 24 hours with a personalized itinerary and quote.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <p>We're available 7 days a week to help you plan the perfect Moroccan adventure. Reach us by phone, WhatsApp, or email.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-detail">
+              <strong>Phone / WhatsApp</strong>
+              <span>+212 674 768 328</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-detail">
+              <strong>Email</strong>
+              <span>info@moroccodesertadventure.com</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-detail">
+              <strong>Our Office</strong>
+              <span>Marrakech Medina, Derb Debachi, Morocco</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+            <div class="contact-detail">
+              <strong>Working Hours</strong>
+              <span>Every day: 8:00 AM – 10:00 PM (GMT+1)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form id="bookingForm" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name *</label>
+              <input type="text" id="fname" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name *</label>
+              <input type="text" id="lname" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" placeholder="john@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone / WhatsApp</label>
+              <input type="tel" id="phone" placeholder="+1 234 567 890" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tour">Interested Tour</label>
+              <select id="tour">
+                <option value="">Select a tour...</option>
+                <optgroup label="Multi-Day Tours">
+                  <option>3-Day Sahara Desert from Marrakech</option>
+                  <option>4-Day Fes to Marrakech via Sahara</option>
+                  <option>6-Day Imperial Cities &amp; Desert</option>
+                  <option>8-Day Grand Morocco Tour</option>
+                  <option>10-Day Ultimate Morocco Experience</option>
+                  <option>2-Day Fes to Merzouga Desert</option>
+                  <option>Luxury Desert Camp (2 Days)</option>
+                  <option>Custom Private Tour</option>
+                </optgroup>
+                <optgroup label="Day Trips">
+                  <option>Chefchaouen Day Trip (from Fes)</option>
+                  <option>Volubilis &amp; Meknes Day Trip (from Fes)</option>
+                  <option>Sefrou &amp; Bhalil Day Trip (from Fes)</option>
+                  <option>Ouzoud Waterfalls Day Trip (from Marrakech)</option>
+                  <option>Essaouira Day Trip (from Marrakech)</option>
+                  <option>Agafay Desert Day Trip (from Marrakech)</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="date">Travel Date</label>
+              <input type="date" id="date" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="travelers">Number of Travelers</label>
+            <select id="travelers">
+              <option>1 Person</option>
+              <option>2 People</option>
+              <option>3-4 People</option>
+              <option>5-8 People</option>
+              <option>Group (9+)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Special Requests / Message</label>
+            <textarea id="message" placeholder="Tell us about your dream Morocco experience, any special requests, dietary needs, etc."></textarea>
+          </div>
+          <button type="submit" class="form-submit"><i class="fas fa-paper-plane"></i> &nbsp;Send Booking Request</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <img src="images/logo.png" alt="Majestic Morocco Trips" class="logo-img" />
+          </a>
+          <p>Your trusted partner for authentic Moroccan desert experiences since 2012. Licensed tour operator based in Marrakech.</p>
+          <div class="footer-socials">
+            <a href="https://wa.me/212674768328" class="social-btn" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:travelinmoroco@gmail.com" class="social-btn" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Our Tours</h4>
+          <ul>
+            <li><a href="#tours">3-Day Sahara Tour</a></li>
+            <li><a href="#tours">4-Day Desert Tour</a></li>
+            <li><a href="#tours">6-Day Imperial Cities</a></li>
+            <li><a href="#tours">Luxury Desert Camp</a></li>
+            <li><a href="#tours">8-Day Grand Tour</a></li>
+            <li><a href="#tours">Custom Private Tours</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Destinations</h4>
+          <ul>
+            <li><a href="#contact">Marrakech</a></li>
+            <li><a href="#contact">Fes & Meknes</a></li>
+            <li><a href="#contact">Merzouga Sahara</a></li>
+            <li><a href="#contact">Ouarzazate</a></li>
+            <li><a href="#contact">Atlas Mountains</a></li>
+            <li><a href="#contact">Essaouira</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact">Book a Tour</a></li>
+            <li><a href="#contact">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 Majestic Morocco Trips. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/212674768328" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+  }
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', (e) => {
+    if (!navbar.contains(e.target) && !mobileMenu.contains(e.target)) {
+      mobileMenu.classList.remove('open');
+    }
+  });
+
+  // Form submission
+  function submitForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.innerHTML = '<i class="fas fa-check"></i> &nbsp;Message Sent! We\'ll reply within 24h';
+    btn.style.background = '#2D9E4F';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> &nbsp;Send Booking Request';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 4000);
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Animate elements on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.tour-card, .why-card, .testi-card, .gallery-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    observer.observe(el);
+  });
+
+  // Try local images for CSS backgrounds
+  function tryLocalBg(varName, localSrc) {
+    const img = new Image();
+    img.onload = () => document.documentElement.style.setProperty(varName, `url('${localSrc}')`);
+    img.src = localSrc;
+  }
+  tryLocalBg('--hero-bg', 'images/cover.jpg');
+  tryLocalBg('--why-bg',  'images/camp-drums.jpg');
+</script>
+</body>
+</html>
+

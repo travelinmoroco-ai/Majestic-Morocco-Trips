@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">Blog | Majestic Morocco Trips</title>
+  <meta name="description" id="pageDesc" content="Majestic Morocco Trips Blog" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root{--primary:#C8702A;--primary-dark:#A0561A;--secondary:#8B1A1A;--gold:#E8A830;--dark:#1C1410;--dark2:#2D2016;--light:#FFF8F0;--cream:#F5ECD8;--text:#3A2E22;--text-light:#7A6A58;--white:#FFFFFF;--shadow:0 4px 24px rgba(28,20,16,.12);--shadow-lg:0 12px 48px rgba(28,20,16,.18);--radius:12px;--radius-lg:20px;--tr:.3s ease}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
+    img{max-width:100%;height:auto;display:block}
+    a{text-decoration:none;color:inherit}
+    ul{list-style:none}
+    button{cursor:pointer;border:none;background:none;font-family:inherit}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+    /* NAV */
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(28,20,16,.97);box-shadow:0 2px 20px rgba(0,0,0,.25);padding:12px 0;backdrop-filter:blur(12px)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo-img{height:56px;width:auto;display:block;border-radius:8px;}
+    .nav-links{display:flex;align-items:center;gap:6px}
+    .nav-links a{color:rgba(255,255,255,.88);font-size:.9rem;font-weight:500;padding:8px 14px;border-radius:8px;transition:var(--tr)}
+    .nav-links a:hover{color:var(--white);background:rgba(255,255,255,.12)}
+    .nav-cta{background:var(--primary);color:var(--white)!important;padding:9px 20px!important;border-radius:50px!important}
+    .nav-cta:hover{background:var(--gold)!important;color:var(--dark2)!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;padding:8px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px}
+    .mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(28,20,16,.98);padding:20px;flex-direction:column;gap:4px;z-index:999}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{color:var(--white);padding:12px 16px;border-radius:8px;font-weight:500;transition:var(--tr)}
+    .mobile-menu a:hover{background:rgba(255,255,255,.1);color:var(--gold)}
+
+    /* ARTICLE HERO */
+    .article-hero{min-height:55vh;position:relative;display:flex;align-items:flex-end;overflow:hidden}
+    .article-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+    .article-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,20,16,.92) 0%,rgba(28,20,16,.5) 50%,rgba(28,20,16,.2) 100%)}
+    .article-hero-content{position:relative;z-index:2;padding:60px 0 44px;width:100%}
+    .breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:18px;font-size:.83rem;color:rgba(255,255,255,.6)}
+    .breadcrumb a{color:rgba(255,255,255,.6);transition:var(--tr)}
+    .breadcrumb a:hover{color:var(--gold)}
+    .breadcrumb i{font-size:.55rem}
+    .article-cat-badge{display:inline-flex;align-items:center;gap:6px;background:var(--primary);color:var(--white);font-size:.78rem;font-weight:600;padding:5px 14px;border-radius:50px;margin-bottom:14px}
+    .article-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4.5vw,3rem);font-weight:800;color:var(--white);line-height:1.2;margin-bottom:18px;max-width:760px}
+    .article-author-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    .author-av{width:44px;height:44px;border-radius:50%;overflow:hidden;border:2px solid var(--primary);flex-shrink:0}
+    .author-av img{width:100%;height:100%;object-fit:cover}
+    .author-meta strong{display:block;color:var(--white);font-size:.9rem}
+    .author-meta span{color:rgba(255,255,255,.65);font-size:.82rem}
+    .article-stats{display:flex;gap:16px;margin-left:auto;flex-wrap:wrap}
+    .article-stats span{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.7);font-size:.83rem}
+    .article-stats i{color:var(--gold)}
+
+    /* PROGRESS BAR */
+    .progress-bar{position:fixed;top:68px;left:0;height:3px;background:linear-gradient(to right,var(--primary),var(--gold));z-index:999;width:0%;transition:width .1s linear}
+
+    /* LAYOUT */
+    .article-wrap{padding:60px 0 80px;background:var(--light)}
+    .article-layout{display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:start}
+
+    /* ARTICLE BODY */
+    .article-body{background:var(--white);border-radius:var(--radius-lg);padding:44px;box-shadow:var(--shadow)}
+    .article-intro{font-size:1.1rem;color:var(--text);line-height:1.85;margin-bottom:36px;font-weight:500;padding-bottom:28px;border-bottom:2px solid var(--cream)}
+    .article-section{margin-bottom:36px}
+    .article-section h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--dark2);margin-bottom:16px;padding-left:16px;border-left:4px solid var(--primary)}
+    .article-section h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--dark2);margin-bottom:12px;margin-top:24px}
+    .article-section p{font-size:.97rem;color:var(--text);line-height:1.85;margin-bottom:14px}
+    .article-section ul{margin:12px 0 14px 4px}
+    .article-section ul li{font-size:.95rem;color:var(--text);line-height:1.7;padding:6px 0 6px 26px;position:relative;border-bottom:1px solid var(--cream)}
+    .article-section ul li:last-child{border-bottom:none}
+    .article-section ul li::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:var(--primary)}
+    .highlight-box{background:linear-gradient(135deg,rgba(200,112,42,.08),rgba(232,168,48,.08));border-left:4px solid var(--primary);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:24px 0}
+    .highlight-box strong{display:block;font-size:.9rem;color:var(--primary);font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+    .highlight-box p{font-size:.93rem;color:var(--text);line-height:1.7;margin:0}
+    .tip-box{background:linear-gradient(135deg,rgba(29,168,81,.06),rgba(29,168,81,.03));border-left:4px solid #2D9E4F;border-radius:0 var(--radius) var(--radius) 0;padding:18px 22px;margin:20px 0}
+    .tip-box strong{display:flex;align-items:center;gap:7px;color:#2D9E4F;font-size:.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+    .tip-box p{font-size:.92rem;color:var(--text);line-height:1.7;margin:0}
+    .comparison-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem}
+    .comparison-table th{background:var(--dark2);color:var(--white);padding:12px 16px;text-align:left;font-weight:600}
+    .comparison-table td{padding:11px 16px;border-bottom:1px solid var(--cream)}
+    .comparison-table tr:nth-child(even){background:var(--light)}
+    .comparison-table td:first-child{font-weight:600;color:var(--dark2)}
+    .inline-img{border-radius:var(--radius-lg);overflow:hidden;margin:24px 0}
+    .inline-img img{width:100%;height:280px;object-fit:cover}
+    .inline-img-cap{font-size:.8rem;color:var(--text-light);text-align:center;padding:8px 12px;background:var(--light);border-radius:0 0 var(--radius-lg) var(--radius-lg)}
+
+    /* TAGS & SHARE */
+    .article-footer{margin-top:36px;padding-top:28px;border-top:2px solid var(--cream);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
+    .article-tags{display:flex;flex-wrap:wrap;gap:8px}
+    .article-tag{padding:6px 14px;background:var(--light);color:var(--text-light);font-size:.82rem;border-radius:50px;transition:var(--tr)}
+    .article-tag:hover{background:var(--primary);color:var(--white)}
+    .share-row{display:flex;align-items:center;gap:10px}
+    .share-label{font-size:.83rem;color:var(--text-light);font-weight:600}
+    .share-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--white);transition:var(--tr)}
+    .share-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.2)}
+    .share-fb{background:#1877F2}.share-tw{background:#1DA1F2}.share-wa{background:#25D366}.share-li{background:#0A66C2}
+
+    /* AUTHOR BOX */
+    .author-box{margin-top:32px;background:var(--light);border-radius:var(--radius-lg);padding:28px;display:flex;gap:20px;align-items:flex-start}
+    .author-box-av{width:72px;height:72px;min-width:72px;border-radius:50%;overflow:hidden;border:3px solid var(--primary)}
+    .author-box-av img{width:100%;height:100%;object-fit:cover}
+    .author-box-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--dark2);margin-bottom:4px}
+    .author-box-role{font-size:.82rem;color:var(--primary);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+    .author-box-bio{font-size:.9rem;color:var(--text-light);line-height:1.7}
+
+    /* SIDEBAR */
+    .post-sidebar{position:sticky;top:90px}
+    .sidebar-widget{background:var(--white);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow);margin-bottom:24px}
+    .widget-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--dark2);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--cream)}
+    .toc-list{display:flex;flex-direction:column;gap:6px;counter-reset:toc}
+    .toc-item{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:8px;font-size:.88rem;color:var(--text);cursor:pointer;transition:var(--tr)}
+    .toc-item:hover{background:var(--light);color:var(--primary)}
+    .toc-item::before{counter-increment:toc;content:counter(toc);min-width:22px;height:22px;background:var(--cream);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--primary)}
+    .related-post{display:flex;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--cream)}
+    .related-post:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+    .rel-img{width:64px;height:64px;min-width:64px;border-radius:8px;overflow:hidden}
+    .rel-img img{width:100%;height:100%;object-fit:cover}
+    .rel-title{font-size:.84rem;font-weight:600;color:var(--dark2);line-height:1.35;margin-bottom:3px}
+    .rel-title a:hover{color:var(--primary)}
+    .rel-meta{font-size:.75rem;color:var(--text-light)}
+    .tour-cta-widget{background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:var(--radius-lg);padding:28px;text-align:center}
+    .tour-cta-widget h4{font-family:'Playfair Display',serif;color:var(--white);font-size:1.1rem;margin-bottom:8px}
+    .tour-cta-widget p{color:rgba(255,255,255,.8);font-size:.85rem;margin-bottom:18px;line-height:1.6}
+    .tour-cta-btn{display:block;padding:12px 20px;background:var(--white);color:var(--primary);border-radius:50px;font-weight:700;font-size:.9rem;transition:var(--tr)}
+    .tour-cta-btn:hover{background:var(--gold);color:var(--dark2)}
+
+    /* RELATED ARTICLES */
+    .related-section{padding:60px 0;background:var(--white)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+    .rel-card{border-radius:var(--radius-lg);overflow:hidden;background:var(--white);box-shadow:var(--shadow);transition:var(--tr);display:block}
+    .rel-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .rel-card-img{height:170px;overflow:hidden;position:relative}
+    .rel-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .rel-card:hover .rel-card-img img{transform:scale(1.07)}
+    .rel-card-body{padding:16px 18px}
+    .rel-card-cat{font-size:.72rem;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+    .rel-card-title{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--dark2);line-height:1.35}
+
+    .mini-footer{background:var(--dark);color:rgba(255,255,255,.5);text-align:center;padding:20px;font-size:.83rem}
+    .mini-footer a{color:var(--gold)}
+    .whatsapp-float{position:fixed;bottom:28px;right:28px;z-index:999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.6rem;box-shadow:0 4px 20px rgba(37,211,102,.5);animation:pulse 2.5s infinite;transition:transform var(--tr)}
+    .whatsapp-float:hover{transform:scale(1.1)}
+    @keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.5)}50%{box-shadow:0 4px 32px rgba(37,211,102,.8)}}
+
+    @media(max-width:1024px){.article-layout{grid-template-columns:1fr}.post-sidebar{position:static}.related-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.article-body{padding:24px 20px}.article-stats{display:none}.related-grid{grid-template-columns:1fr}.author-box{flex-direction:column}}
+  </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Majestic Morocco Trips" class="logo-img" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tours">Tours</a></li>
+        <li><a href="index.html#daytrips">Day Trips</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Book Now</a></li>
+      </ul>
+      <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="index.html#tours">Tours</a>
+  <a href="index.html#daytrips">Day Trips</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="blog.html">Blog</a>
+  <a href="index.html#contact">Book Now</a>
+</div>
+
+<!-- HERO (JS populated) -->
+<div class="article-hero" id="articleHero">
+  <div class="article-hero-bg" id="heroBg"></div>
+  <div class="container">
+    <div class="article-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><i class="fas fa-chevron-right"></i>
+        <a href="blog.html">Blog</a><i class="fas fa-chevron-right"></i>
+        <span id="breadcrumbCat"></span>
+      </div>
+      <div id="catBadge" class="article-cat-badge"></div>
+      <h1 id="articleTitle"></h1>
+      <div class="article-author-row">
+        <div class="author-av"><img id="authorImg" src="" alt="" /></div>
+        <div class="author-meta"><strong id="authorName"></strong><span id="authorMeta"></span></div>
+        <div class="article-stats" id="articleStats"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<div class="article-wrap">
+  <div class="container">
+    <div class="article-layout">
+      <!-- LEFT -->
+      <div>
+        <div class="article-body">
+          <p class="article-intro" id="articleIntro"></p>
+          <div id="articleContent"></div>
+          <div class="article-footer">
+            <div class="article-tags" id="articleTags"></div>
+            <div class="share-row">
+              <span class="share-label">Share:</span>
+              <a href="#" class="share-btn share-fb"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="share-btn share-tw"><i class="fab fa-twitter"></i></a>
+              <a href="https://wa.me/212674768328" class="share-btn share-wa"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="author-box">
+          <div class="author-box-av"><img id="authorBoxImg" src="" alt="" /></div>
+          <div>
+            <div class="author-box-name" id="authorBoxName"></div>
+            <div class="author-box-role" id="authorBoxRole"></div>
+            <div class="author-box-bio" id="authorBoxBio"></div>
+          </div>
+        </div>
+      </div>
+      <!-- SIDEBAR -->
+      <div class="post-sidebar">
+        <div class="sidebar-widget">
+          <h4 class="widget-title"><i class="fas fa-list" style="color:var(--primary);margin-right:6px"></i>In This Article</h4>
+          <div class="toc-list" id="tocList"></div>
+        </div>
+        <div class="sidebar-widget">
+          <h4 class="widget-title">Related Articles</h4>
+          <div id="relatedPosts"></div>
+        </div>
+        <div class="tour-cta-widget">
+          <h4>Ready for the Sahara?</h4>
+          <p>Browse our hand-crafted desert tours and book your adventure today.</p>
+          <a href="index.html#tours" class="tour-cta-btn"><i class="fas fa-compass"></i> View Our Tours</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RELATED -->
+<div class="related-section">
+  <div class="container">
+    <span style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--primary);background:rgba(200,112,42,.1);padding:5px 14px;border-radius:50px">Read Next</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--dark2);margin-top:8px">More From Our Blog</h2>
+    <div class="related-grid" id="relatedGrid"></div>
+  </div>
+</div>
+
+<div class="mini-footer">© 2026 <a href="index.html">Majestic Morocco Trips</a> · All rights reserved · <a href="index.html#contact">Contact Us</a></div>
+<a href="https://wa.me/212674768328" class="whatsapp-float" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+// ===== ALL BLOG POST DATA =====
+const POSTS = {
+
+  "best-time-to-visit": {
+    title: "Best Time to Visit Morocco's Sahara Desert",
+    category: "Travel Tips",
+    date: "May 10, 2025", readTime: "6 min read",
+    cover: "images/dunes.jpg",
+    coverFallback: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1400&q=80",
+    author: { name: "Hassan Benali", role: "Head Desert Guide", avatar: "https://i.pravatar.cc/100?img=12",
+      bio: "Hassan has guided desert tours in Morocco for over 15 years. Born near Merzouga, he has an encyclopaedic knowledge of the Sahara's seasons, secrets, and stories." },
+    intro: "The Sahara Desert is one of the most extraordinary places on earth — but when you visit makes an enormous difference to your experience. From the golden light of spring to the frozen silence of winter nights, each season offers something unique. Here is our local guide's honest, experience-based breakdown of the best time to plan your trip.",
+    toc: ["The Golden Season: Spring (March–May)", "The Extreme Season: Summer (June–August)", "The Comfortable Autumn (September–November)", "Winter: Cold Nights & Perfect Stars (December–February)", "Month-by-Month Quick Guide", "Our Local Recommendation"],
+    sections: [
+      { h2: "The Golden Season: Spring (March–May)",
+        content: `<p>Spring is almost universally considered the best time to visit Morocco's Sahara Desert, and for good reason. Daytime temperatures are warm and pleasant — typically 22–30°C — while nights cool to a comfortable 10–15°C, perfect for sleeping in a desert tent without shivering or sweating.</p>
+        <p>The light in spring is particularly beautiful for photography. The dunes glow with rich amber and copper tones, and the air is clear and dust-free after winter rains have settled the sand. If you're visiting in April, you may be lucky enough to witness the famous Valley of Roses in full bloom en route through Kelaat M'Gouna.</p>
+        <div class="highlight-box"><strong>Best for:</strong><p>First-time visitors, photographers, families, and anyone wanting the most comfortable weather conditions with the best light for the dunes.</p></div>
+        <h3>March: Perfect for Photography</h3>
+        <p>Early spring brings dramatic skies with occasional clouds that create stunning desert photography. Temperatures are cool enough for long walks on the dunes and the nights are spectacularly clear. Crowds are moderate — busy but not overwhelming.</p>
+        <h3>April: The Peak of Spring</h3>
+        <p>April is arguably the single best month to visit. The weather is ideal, the Valley of Roses is blooming, and the Easter holiday period brings a lively atmosphere at camps. Book early as accommodation fills quickly.</p>
+        <h3>May: Warm and Wildflower-Dotted</h3>
+        <p>Late spring brings warmer days but still comfortable nights. In good years, wildflowers dot the edges of the desert after winter rains — a remarkable sight against the golden sand.</p>`
+      },
+      { h2: "The Extreme Season: Summer (June–August)",
+        content: `<p>Summer in the Sahara is genuinely extreme. Daytime temperatures regularly reach 42–48°C in July and August, making midday outdoor activity inadvisable without careful preparation. The desert sun is ferocious and the sand can burn bare feet.</p>
+        <p>However, summer has its own brutal beauty. The dunes are deserted (apart from experienced travellers who understand the heat), the light at golden hour is extraordinary, and the nights — while warmer — are still cooler than the day. Temperatures drop to around 25–28°C at night.</p>
+        <div class="tip-box"><strong><i class="fas fa-thermometer-full"></i> Local Tip</strong><p>If you visit in summer, plan all outdoor activities (camel trekking, dune climbing) for the golden hour periods: 5:30–7:30 AM and 5:00–7:00 PM only. The midday heat is genuinely dangerous.</p></div>
+        <p>One genuine advantage of summer: tour prices are significantly lower and accommodation has more availability. If you're an experienced traveller who doesn't mind the heat and wants the dunes to yourself, it can actually be a rewarding time to visit.</p>`
+      },
+      { h2: "The Comfortable Autumn (September–November)",
+        content: `<p>Autumn is the second-best season for desert travel, and in some ways it surpasses spring. Temperatures begin cooling in September (still warm at 30–35°C) and reach perfect levels by October and November (22–28°C by day, 8–13°C at night).</p>
+        <p>The summer heat has baked the dunes into clean, photogenic shapes — pristine ripple patterns that haven't been disturbed by rain or wind. October light has a golden, warm quality that's different from spring and creates spectacular photography opportunities.</p>
+        <h3>October: Our Favourite Month</h3>
+        <p>Honestly, October might be our single favourite month in the desert. The temperature is perfect, the crowds have thinned since the summer rush, prices are reasonable, and the light is extraordinary. If you have flexibility, aim for mid-October.</p>
+        <div class="highlight-box"><strong>Hidden Advantage:</strong><p>October and November see fewer tourists than the spring peak but near-identical weather conditions. You'll often have entire sections of dune to yourself.</p></div>`
+      },
+      { h2: "Winter: Cold Nights & Perfect Stars (December–February)",
+        content: `<p>Winter in the Sahara surprises most visitors. The days can be pleasant and sunny (18–22°C), making camel treks and dune walks comfortable in light layers. But the nights are genuinely cold — temperatures drop to 0–5°C and occasionally below freezing, especially in January.</p>
+        <p>The trade-off is spectacular: winter has the clearest, darkest skies of the year. With no humidity and minimal dust, the Milky Way blazes across the night sky in a way that's difficult to describe. If stargazing is a priority, winter is the best season without question.</p>
+        <p>December brings a festive atmosphere to the desert, with many camps offering special Christmas and New Year programmes. January is the quietest month of the year — ideal if you want the desert entirely to yourself.</p>
+        <div class="tip-box"><strong><i class="fas fa-star"></i> Stargazing Peak</strong><p>January and February have the absolute best skies for stargazing. Bring a sleeping bag rated to -5°C if you want to sit outside at midnight — it will be cold, but the sky will be worth it.</p></div>`
+      },
+      { h2: "Month-by-Month Quick Guide",
+        content: `<table class="comparison-table"><thead><tr><th>Month</th><th>Day Temp</th><th>Night Temp</th><th>Crowds</th><th>Best For</th></tr></thead><tbody>
+        <tr><td>January</td><td>18°C</td><td>2°C</td><td>Low</td><td>Stargazing, solitude</td></tr>
+        <tr><td>February</td><td>20°C</td><td>5°C</td><td>Low</td><td>Stargazing, photography</td></tr>
+        <tr><td>March</td><td>25°C</td><td>10°C</td><td>Medium</td><td>Photography, hiking</td></tr>
+        <tr><td>April</td><td>28°C</td><td>13°C</td><td>High</td><td>Everything — peak season</td></tr>
+        <tr><td>May</td><td>32°C</td><td>16°C</td><td>Medium</td><td>Warm days, cool evenings</td></tr>
+        <tr><td>June</td><td>39°C</td><td>22°C</td><td>Low</td><td>Budget travel, hardy visitors</td></tr>
+        <tr><td>July</td><td>44°C</td><td>25°C</td><td>Very Low</td><td>Avoid (extreme heat)</td></tr>
+        <tr><td>August</td><td>45°C</td><td>26°C</td><td>Very Low</td><td>Avoid (extreme heat)</td></tr>
+        <tr><td>September</td><td>36°C</td><td>20°C</td><td>Low</td><td>Adventurous, hot days</td></tr>
+        <tr><td>October</td><td>28°C</td><td>13°C</td><td>Medium</td><td>Photography, all types</td></tr>
+        <tr><td>November</td><td>22°C</td><td>8°C</td><td>Low-Medium</td><td>Comfortable, uncrowded</td></tr>
+        <tr><td>December</td><td>18°C</td><td>4°C</td><td>Medium</td><td>Stargazing, Christmas</td></tr>
+        </tbody></table>`
+      },
+      { h2: "Our Local Recommendation",
+        content: `<p>If you ask our guides — people who live and breathe the desert year-round — the sweet spot is <strong>mid-October to mid-November</strong> for uncrowded perfection, or <strong>late March to late April</strong> for the most vibrant, lively experience with ideal weather.</p>
+        <p>For couples and honeymooners: January and February offer the most romantic stargazing, the most intimate desert atmosphere, and the lowest prices. Pack warm layers and you'll be rewarded with an experience most visitors never have.</p>
+        <div class="highlight-box"><strong>Our Top Pick:</strong><p>October 10 – November 10. Perfect temperatures, uncrowded dunes, extraordinary photography light, and comfortable prices. This is the month we recommend when friends and family ask.</p></div>`
+      }
+    ],
+    tags: ["Sahara", "Best Time to Visit", "Morocco Travel", "Desert Tips", "Weather Guide"],
+    related: ["what-to-pack", "desert-camp-guide", "merzouga-vs-zagora"]
+  },
+
+  "what-to-pack": {
+    title: "The Essential Packing List for Your Sahara Desert Tour",
+    category: "Packing Guide",
+    date: "April 28, 2025", readTime: "5 min read",
+    cover: "images/berber-camel.jpg",
+    coverFallback: "https://images.unsplash.com/photo-1548013146-72479768bada?w=1400&q=80",
+    author: { name: "Fatima Ait Ahmed", role: "Tour Operations Manager", avatar: "https://i.pravatar.cc/100?img=44",
+      bio: "Fatima coordinates logistics for hundreds of desert tours every year. She has compiled this packing list from real traveller feedback and years of experience preparing guests for the Sahara." },
+    intro: "The Moroccan desert will surprise you with its extremes. Daytime temperatures can hit 35°C while nights drop below 10°C — sometimes on the very same day. Packing the wrong things (or too many things) is one of the most common mistakes first-time desert travellers make. Here is the definitive list, built from years of experience and direct traveller feedback.",
+    toc: ["Clothing: Layers Are Everything", "Footwear", "Sun & Heat Protection", "Camera & Electronics", "Health & Hygiene", "Money & Documents", "What NOT to Bring"],
+    sections: [
+      { h2: "Clothing: Layers Are Everything",
+        content: `<p>The single most important principle for desert packing is layering. The Sahara has a temperature range of up to 35°C between day and night. You need clothes that work in both. Here's our tested list:</p>
+        <ul>
+          <li>2–3 lightweight, breathable long-sleeve shirts (linen or moisture-wicking synthetics)</li>
+          <li>1–2 pairs of lightweight trousers (avoid shorts — they offer no sun protection)</li>
+          <li>1 warm fleece or mid-layer jacket (essential for evenings and early mornings)</li>
+          <li>1 light down or synthetic jacket (for winter months, December–February)</li>
+          <li>Warm hat and gloves (for October–March)</li>
+          <li>Sun hat with full brim (mandatory — the Saharan sun is direct and relentless)</li>
+          <li>Lightweight scarf or shemagh (doubles as sun protection, sandstorm shield, and camp blanket)</li>
+          <li>Underwear: moisture-wicking synthetic preferred over cotton</li>
+          <li>Swimwear (for riad pools in Marrakech/Fes)</li>
+        </ul>
+        <div class="highlight-box"><strong>Local Tip:</strong><p>Many desert camps offer traditional Berber robes (djellabas) for photos. Wearing a long, loose robe actually keeps you cooler than shorts and a t-shirt by reflecting sun and allowing airflow. Try it — you'll be surprised.</p></div>`
+      },
+      { h2: "Footwear",
+        content: `<p>Your footwear choice can make or break a desert day. Here's what works and what doesn't:</p>
+        <ul>
+          <li><strong>Closed-toe walking shoes or light hiking boots</strong> — for dune walks and rocky terrain</li>
+          <li><strong>Sandals with ankle support</strong> (e.g. Tevas or Birkenstocks) — for casual wear and around camp</li>
+          <li><strong>Avoid:</strong> flip-flops for dune walking (sand gets in and burns), heavy boots (unnecessary weight)</li>
+        </ul>
+        <div class="tip-box"><strong><i class="fas fa-shoe-prints"></i> Sand Secret</strong><p>Many people choose to take their shoes off for the actual dune walk and walk barefoot or in socks. The sand is soft and the sensation is extraordinary — just check the temperature first with your hand before stepping out.</p></div>`
+      },
+      { h2: "Sun & Heat Protection",
+        content: `<p>The Saharan sun is not the same as a sunny day at home. At altitude and latitude, UV levels are significantly higher, and the sand reflects additional UV upward. Under-preparing for sun is the #1 mistake we see from travellers.</p>
+        <ul>
+          <li>SPF 50+ sunscreen — bring at least 200ml</li>
+          <li>UV-blocking sunglasses (wraparound style preferred)</li>
+          <li>Full-brim hat (baseball caps offer zero neck/ear protection)</li>
+          <li>Lip balm with SPF</li>
+          <li>Reusable water bottle — minimum 1.5L capacity</li>
+        </ul>
+        <p>We provide bottled water throughout our tours, but having your own bottle means you can top up at guesthouses and camps without generating single-use plastic waste.</p>`
+      },
+      { h2: "Camera & Electronics",
+        content: `<p>The Morocco desert is one of the world's great photography destinations. Be prepared:</p>
+        <ul>
+          <li>Camera body + wide-angle lens (for dune landscapes) + zoom lens (for camel portraits)</li>
+          <li>Extra batteries — cold nights drain camera batteries quickly</li>
+          <li>Memory cards — you will take more photos than you expect</li>
+          <li>Lens cloth and protective bag (sand gets into everything)</li>
+          <li>Portable power bank for phone charging</li>
+          <li>Universal adapter (Morocco uses type C/E plugs, 220V)</li>
+        </ul>
+        <div class="highlight-box"><strong>Photography Timing:</strong><p>Golden hour (30 min after sunrise and before sunset) produces the most dramatic dune photography. Set your alarm. The 06:00–07:00 window in particular is the most beautiful light of the day.</p></div>
+        <ul>
+          <li>Ziplock bags for dustproof camera storage in transit</li>
+          <li>Tripod (for night sky / Milky Way photography)</li>
+          <li>Headtorch/headlamp for camp use at night</li>
+        </ul>`
+      },
+      { h2: "Health & Hygiene",
+        content: `<p>Basic health preparation makes a big difference to your comfort:</p>
+        <ul>
+          <li>Personal prescription medications (bring more than you need)</li>
+          <li>Imodium / anti-diarrhoeal medication</li>
+          <li>Paracetamol and ibuprofen</li>
+          <li>Antihistamine (dust can trigger reactions in some people)</li>
+          <li>Electrolyte sachets (for staying hydrated in heat)</li>
+          <li>Hand sanitiser gel (essential between handwashing opportunities)</li>
+          <li>Wet wipes (luxury camps have facilities; basic camps may not)</li>
+          <li>Insect repellent (scorpions are rare but mosquitoes are possible near oases)</li>
+        </ul>
+        <div class="tip-box"><strong><i class="fas fa-first-aid"></i> Important</strong><p>Drink 3–4 litres of water per day in the desert, even if you don't feel thirsty. Dehydration in the Sahara happens faster than you expect and has serious consequences. Our guides always carry extra water.</p></div>`
+      },
+      { h2: "Money & Documents",
+        content: `<p>Practical essentials that many people forget:</p>
+        <ul>
+          <li>Cash in Moroccan Dirham (MAD) — ATMs are rare in desert towns</li>
+          <li>Small denomination notes for tips and small purchases</li>
+          <li>Passport (required for riad/hotel check-in)</li>
+          <li>Travel insurance documents (printed and digital)</li>
+          <li>Emergency contact list (separate from your phone)</li>
+        </ul>
+        <p>We recommend withdrawing cash in Marrakech or Fes before departure. ATMs exist in Erfoud and Ouarzazate, but Merzouga and smaller desert towns have very limited banking facilities.</p>`
+      },
+      { h2: "What NOT to Bring",
+        content: `<p>Overpacking is as problematic as underpacking. Our vehicles have limited luggage space and desert tracks are bumpy:</p>
+        <ul>
+          <li><strong>Large suitcases</strong> — bring a medium duffel or soft backpack instead</li>
+          <li><strong>Valuables</strong> — leave expensive jewellery and electronics you don't need at home</li>
+          <li><strong>High heels or dress shoes</strong> — useless in the desert</li>
+          <li><strong>Too many shoes</strong> — two pairs maximum: walking shoes + sandals</li>
+          <li><strong>Excessive toiletries</strong> — buy locally what you forget, and keep to TSA 100ml limits</li>
+          <li><strong>Drones</strong> — without a Moroccan drone permit (complex to obtain), drones are confiscated</li>
+        </ul>
+        <div class="highlight-box"><strong>Luggage Advice:</strong><p>A 40–50 litre backpack or soft duffel bag is ideal for a 3–8 day desert tour. Hard suitcases struggle on sandy tracks and take up vehicle space. Pack light — you're going to the desert, not a fashion show.</p></div>`
+      }
+    ],
+    tags: ["Packing", "Sahara Tips", "What to Wear", "Desert Gear", "Morocco Travel"],
+    related: ["best-time-to-visit", "desert-camp-guide", "merzouga-vs-zagora"]
+  },
+
+  "desert-camp-guide": {
+    title: "A Night in a Luxury Desert Camp: The Complete Guide",
+    category: "Desert Life",
+    date: "April 15, 2025", readTime: "7 min read",
+    cover: "images/camp.jpg",
+    coverFallback: "https://images.unsplash.com/photo-1539768942893-daf91f348b20?w=1400&q=80",
+    author: { name: "Hassan Benali", role: "Head Desert Guide", avatar: "https://i.pravatar.cc/100?img=12",
+      bio: "Hassan has guided desert tours in Morocco for over 15 years. Born near Merzouga, he has an encyclopaedic knowledge of the Sahara's seasons, secrets, and stories." },
+    intro: "You've seen the photos: a red carpet between rows of white tents, Moroccan lanterns casting golden light across the sand, a couple dining under a billion stars. But what really happens at a luxury Sahara desert camp? And how does it compare to the reality of a night in the world's greatest desert? Here is everything you need to know — from the camel trek arrival to the sunrise the next morning.",
+    toc: ["What is a Luxury Desert Camp?", "The Arrival: Camel Trek at Sunset", "Your Tent: What to Expect Inside", "Dinner Under the Stars", "Music, Fire & the Berber Evening", "Stargazing in the Sahara", "The Sunrise: Worth Every Early Alarm", "Practical Tips for Your Night"],
+    sections: [
+      { h2: "What is a Luxury Desert Camp?",
+        content: `<p>A luxury desert camp is a semi-permanent glamping installation set among the dunes of the Sahara — typically a 30–60 minute camel trek from the nearest village. Unlike basic tourist camps (which are essentially large tents divided into small cubicles), luxury camps offer private, hotel-quality ensuite tents with proper beds, electricity, private bathrooms, and gourmet dining.</p>
+        <p>The camp in our photos shows exactly what to expect from a premium experience: white canvas tents lining a red-carpeted walkway, ornate Moroccan lanterns (fanous) casting warm geometric patterns of light, and a dining area set beneath the open sky.</p>
+        <div class="highlight-box"><strong>What Makes a Camp 'Luxury'?</strong><p>A private tent (not shared), a real bed with quality linen, a private ensuite bathroom with running water, electricity and USB charging, quality Moroccan cuisine (not buffet-style), and small group sizes. If any of these are missing, it's a basic camp, not a luxury one.</p></div>`
+      },
+      { h2: "The Arrival: Camel Trek at Sunset",
+        content: `<p>The journey to the camp is part of the magic. Typically departing around 4:30–5:00 PM, you'll mount your camel at the edge of the Erg Chebbi dune field and begin the 45-minute trek through the dunes. Your guide leads you on foot or rides alongside.</p>
+        <p>The light during this journey is extraordinary. As the sun descends, the dunes transform through shades of amber, copper, and finally deep crimson. Every few minutes the shadows change and the scene becomes more dramatic.</p>
+        <div class="tip-box"><strong><i class="fas fa-camera"></i> Photography Tip</strong><p>Position yourself to the side or slightly behind the camel caravan for the classic silhouette shots. The 30-minute window before the sun hits the horizon produces the richest colours. Have your camera ready — don't pack it in your bag.</p></div>
+        <p>Arriving at camp to see the lanterns already lit, the red carpet glowing, and a glass of sweet mint tea waiting for you is an arrival experience unlike anything else in travel.</p>`
+      },
+      { h2: "Your Tent: What to Expect Inside",
+        content: `<p>Your private tent is larger and more comfortable than most people expect. In a quality luxury camp, each tent is approximately 25–35 square metres and contains:</p>
+        <ul>
+          <li>King or twin beds with quality mattresses and linens</li>
+          <li>Private ensuite bathroom with hot shower and toilet</li>
+          <li>Electricity, bedside lamps, and USB charging points</li>
+          <li>Traditional Moroccan decor: carved plaster, Berber rugs, coloured glass lanterns</li>
+          <li>A small private terrace or sitting area facing the dunes</li>
+        </ul>
+        <div class="inline-img"><img src="images/camp.jpg" onerror="this.src='https://images.unsplash.com/photo-1539768942893-daf91f348b20?w=800&q=80'" alt="Luxury desert camp tent interior at night" /><div class="inline-img-cap">The walkway of a luxury Saharan camp at twilight — lanterns lit, dinner being prepared, dunes visible in the distance.</div></div>
+        <p>One of the great pleasures is lying in bed and hearing absolute silence — no cars, no voices, no technology. The only sounds are occasional desert wind and, in the distance, the soft crackling of the campfire.</p>`
+      },
+      { h2: "Dinner Under the Stars",
+        content: `<p>Dinner at a luxury desert camp is typically served between 8:00 and 9:00 PM, after it has fully darkened and the stars have appeared. Tables are set in the open air — no tent ceiling between you and the Milky Way.</p>
+        <p>A quality camp serves a full Moroccan menu:</p>
+        <ul>
+          <li><strong>Harira soup</strong> — the traditional Moroccan lentil soup with tomatoes and spices</li>
+          <li><strong>Moroccan salads</strong> — typically three or four small dishes (zaalouk, taktouka, carrot salad)</li>
+          <li><strong>Main course tagine</strong> — lamb, chicken, or vegetarian option, slow-cooked with preserved lemon and olives</li>
+          <li><strong>Couscous</strong> — traditional Friday dish, often available on request any day</li>
+          <li><strong>Dessert</strong> — typically pastilla au lait (milk pastilla) or fresh fruit</li>
+          <li><strong>Moroccan mint tea ceremony</strong> — the essential finale, poured from height to create the famous foam</li>
+        </ul>
+        <p>All of this is prepared on-site by a camp cook using ingredients brought by 4x4 from the nearest town. The quality at good camps rivals Marrakech's better restaurants.</p>`
+      },
+      { h2: "Music, Fire & the Berber Evening",
+        content: `<p>After dinner, the real cultural experience begins. Your camp will typically offer a 60–90 minute Gnawa music performance around a central campfire. Gnawa is the traditional music of Morocco's Saharan people — a hypnotic combination of percussion, singing, and castanets that's been UNESCO-listed as an Intangible Cultural Heritage.</p>
+        <p>The musicians are usually local Berber men, some of whom are the same people who led your camel trek. The atmosphere is informal and participatory — guests are encouraged to clap, dance, and join in. Don't be shy.</p>
+        <div class="highlight-box"><strong>Cultural Note:</strong><p>Tipping the musicians at the end of the evening is customary and appreciated. A tip of 50–100 MAD (approx. €5–10) per group is appropriate and makes a real difference to the local families who depend on this work.</p></div>`
+      },
+      { h2: "Stargazing in the Sahara",
+        content: `<p>If you do one thing at the desert camp, let it be this: walk 200 metres away from the camp lights, lie down on the sand, and look up. Nothing in travel quite prepares you for what you see.</p>
+        <p>The Erg Chebbi desert near Merzouga is one of the world's best sites for naked-eye astronomy. With zero light pollution for hundreds of kilometres in every direction, and at an altitude that reduces atmospheric haze, the sky on a clear night is overwhelming.</p>
+        <p>Our luxury camp experience includes a guided stargazing session with a professional refracting telescope. Your guide will identify major constellations, show you planets, and explain Berber traditions associated with the night sky — navigation, seasons, spiritual significance.</p>
+        <ul>
+          <li>Best stargazing: new moon periods (check lunar calendar when booking)</li>
+          <li>Milky Way visible: May through September (highest in July)</li>
+          <li>Temperature: always bring a warm layer, even in summer</li>
+          <li>Camera: manual mode, ISO 3200, f/2.8, 20-second exposure for Milky Way shots</li>
+        </ul>`
+      },
+      { h2: "The Sunrise: Worth Every Early Alarm",
+        content: `<p>Your guide will wake you gently between 5:30 and 6:00 AM — about 30 minutes before sunrise. This is the moment many guests later describe as the highlight of their entire Morocco trip.</p>
+        <p>Walking to the top of the nearest high dune in the pre-dawn darkness, then watching the sky transform from deep navy to violet to pink to gold while the Sahara slowly illuminates below you — it's genuinely one of the most beautiful experiences available to a human being.</p>
+        <p>Photographs from this time are extraordinary. The soft, directional light sculpts the dune ridges into perfect graphic lines. The first camel silhouette crossing a dune at this light is the quintessential Sahara image.</p>
+        <div class="tip-box"><strong><i class="fas fa-clock"></i> Sunrise Logistics</strong><p>Set an alarm independent of your guide's wake-up call. If you want to be on top of the dune BEFORE sunrise (not climbing while it happens), you need to leave camp 25–30 minutes before the official sunrise time. Your guide can advise on timing the night before.</p></div>`
+      },
+      { h2: "Practical Tips for Your Night",
+        content: `<p>A few practical details that make the difference between a good experience and a perfect one:</p>
+        <ul>
+          <li><strong>Bring a headtorch</strong> — navigating to the bathroom at 2 AM in a dark camp without one is undignified</li>
+          <li><strong>Charge everything during the day</strong> — camp electricity typically runs from generator 6–11 PM only</li>
+          <li><strong>Keep shoes inside the tent</strong> — small scorpions occasionally venture near tent edges</li>
+          <li><strong>Sand gets everywhere</strong> — keep your camera bag zipped even inside the tent</li>
+          <li><strong>Drink water at dinner</strong> — dehydration from the day's sun affects sleep quality significantly</li>
+          <li><strong>The silence will wake you</strong> — some guests find it so quiet at 3 AM that it feels strange. This is normal. Enjoy it.</li>
+        </ul>
+        <div class="highlight-box"><strong>Final Thought:</strong><p>A luxury desert camp night is, without question, one of the most extraordinary experiences available to a traveller anywhere in the world. No amount of reading, photos, or videos truly prepares you for the scale, silence, and beauty of the Sahara after dark. Book it. Go. You will not regret a single moment.</p></div>`
+      }
+    ],
+    tags: ["Desert Camp", "Sahara", "Luxury Travel", "Glamping", "Morocco Night Sky", "Berber Culture"],
+    related: ["best-time-to-visit", "what-to-pack", "merzouga-vs-zagora"]
+  },
+
+  "merzouga-vs-zagora": {
+    title: "Merzouga vs Zagora: Which Sahara Desert is Right for You?",
+    category: "Destination Guide",
+    date: "March 22, 2025", readTime: "8 min read",
+    cover: "images/dunes2.jpg",
+    coverFallback: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=1400&q=80",
+    author: { name: "Youssef Aït Brahim", role: "Senior Desert Guide & Route Expert", avatar: "https://i.pravatar.cc/100?img=59",
+      bio: "Youssef has driven every road in Morocco's desert south and guided tours in both Merzouga and Zagora for 18 years. He offers this comparison from deep personal experience." },
+    intro: "Ask 'where is the Sahara Desert in Morocco?' and most people expect one answer. In reality, Morocco has two main desert destinations that are very different in character: Merzouga (Erg Chebbi) in the northeast and Zagora (Erg Chigaga / Erg Smar) in the south. Choosing between them depends on what experience you're looking for — and this guide will help you decide.",
+    toc: ["Quick Overview: The Key Differences", "Merzouga (Erg Chebbi): The Big Dunes", "Zagora: The Remote Desert", "Which is Better for Photography?", "Which is Better for Families?", "Which is Better for Couples & Honeymooners?", "Which Has Better Logistics?", "Our Recommendation"],
+    sections: [
+      { h2: "Quick Overview: The Key Differences",
+        content: `<table class="comparison-table"><thead><tr><th>Feature</th><th>Merzouga (Erg Chebbi)</th><th>Zagora (Erg Chigaga)</th></tr></thead><tbody>
+        <tr><td>Dune Height</td><td>Up to 150 metres</td><td>Up to 70 metres (Chigaga)</td></tr>
+        <tr><td>Dune Area</td><td>22 km × 5 km</td><td>Chigaga: 40+ km wide</td></tr>
+        <tr><td>Distance from Marrakech</td><td>~10 hrs drive</td><td>~7 hrs drive</td></tr>
+        <tr><td>Distance from Fes</td><td>~5 hrs drive</td><td>~8 hrs drive</td></tr>
+        <tr><td>Tourist Infrastructure</td><td>Well-developed</td><td>Underdeveloped (Chigaga)</td></tr>
+        <tr><td>Crowd Levels</td><td>Moderate to busy</td><td>Low (remote)</td></tr>
+        <tr><td>Access</td><td>Paved road</td><td>4x4 only (Chigaga)</td></tr>
+        <tr><td>Best For</td><td>First-timers, photography, comfort</td><td>Adventure, solitude, remoteness</td></tr>
+        </tbody></table>`
+      },
+      { h2: "Merzouga (Erg Chebbi): The Big Dunes",
+        content: `<p>Merzouga is the village at the edge of the Erg Chebbi dune field — the most famous and photogenic dunes in all of Morocco. These dunes are genuinely vast, rising up to 150 metres high and stretching 22 kilometres in length. When you see the iconic photos of a camel silhouette crossing a golden dune wall — that's almost certainly Erg Chebbi.</p>
+        <p><strong>Pros of Merzouga:</strong></p>
+        <ul>
+          <li>The most dramatic and photogenic dunes in Morocco</li>
+          <li>Accessible by normal car on paved road (no 4x4 required)</li>
+          <li>Wide range of accommodation options from budget to luxury</li>
+          <li>Well-established infrastructure: guides, camels, camps of all levels</li>
+          <li>Better on major tour circuits (Fes to Marrakech or Marrakech to Fes)</li>
+          <li>Fossil workshops, Gnawa musicians, nomad family visits</li>
+        </ul>
+        <p><strong>Cons of Merzouga:</strong></p>
+        <ul>
+          <li>More tourists than Zagora's Erg Chigaga</li>
+          <li>Long drive from Marrakech (~10 hours)</li>
+          <li>Some cheaper camps are overcrowded and disappointing</li>
+        </ul>
+        <div class="highlight-box"><strong>Bottom Line on Merzouga:</strong><p>The best choice for most travellers — especially first-timers, photographers, and those on a classic Fes–Marrakech circuit. The dunes are spectacular, the infrastructure is reliable, and the experience is well-established.</p></div>`
+      },
+      { h2: "Zagora: The Remote Desert",
+        content: `<p>Zagora is a town on the Draa Valley, south of which lies two desert options: the smaller Erg Smar (accessible easily from Zagora town) and the remote, vast Erg Chigaga (2 hours by 4x4 into the desert).</p>
+        <p>Erg Chigaga is Morocco's most remote and arguably most authentic desert experience. The dunes are lower than Erg Chebbi but the sense of being genuinely deep in the Sahara — with no villages visible in any direction — is unparalleled.</p>
+        <p><strong>Pros of Zagora / Erg Chigaga:</strong></p>
+        <ul>
+          <li>Far fewer tourists — you may have entire dune sections to yourself</li>
+          <li>More authentic, remote desert atmosphere</li>
+          <li>Closer to Marrakech (~7 hours vs 10 for Merzouga)</li>
+          <li>Draa Valley is among the most scenic drives in Morocco</li>
+          <li>Erg Chigaga is wider and more immersive in feel</li>
+        </ul>
+        <p><strong>Cons of Zagora:</strong></p>
+        <ul>
+          <li>Requires 4x4 for Erg Chigaga — adds cost and complexity</li>
+          <li>Lower and less dramatic dunes than Erg Chebbi</li>
+          <li>Less developed infrastructure — fewer quality camps</li>
+          <li>Not practical for Fes tours — adds too much distance</li>
+        </ul>`
+      },
+      { h2: "Which is Better for Photography?",
+        content: `<p><strong>Merzouga wins for dramatic dune photography.</strong> The sheer height and scale of the Erg Chebbi dunes creates the graphic, sculptural shapes that make for the most recognisable Sahara images. The dune ridges at sunrise are extraordinarily photogenic.</p>
+        <p>Zagora is more photogenic for wide, atmospheric landscape photography where you want to capture the feeling of remoteness and scale — vast expanses with very few human elements.</p>
+        <div class="tip-box"><strong><i class="fas fa-camera"></i> Photographer's Pick</strong><p>If you can only choose one: Merzouga for iconic dune photography. But if you want to photograph the feeling of true remoteness and have the dunes to yourself: Erg Chigaga.</p></div>`
+      },
+      { h2: "Which is Better for Families?",
+        content: `<p><strong>Merzouga is clearly better for families with children.</strong> The infrastructure is more developed, the journey is on paved roads (no bone-shaking 4x4 tracks), there are more accommodation options suitable for families, and the activities are more varied.</p>
+        <p>Children particularly love the camel ride, the sand dunes for sliding and rolling down, and the novelty of sleeping in a desert tent. The fossil workshops in Erfoud near Merzouga are also genuinely fascinating for curious kids.</p>`
+      },
+      { h2: "Which is Better for Couples & Honeymooners?",
+        content: `<p>Both destinations work beautifully for romantic experiences, but they offer different types of romance:</p>
+        <p><strong>Merzouga / Erg Chebbi:</strong> The luxury camp infrastructure is far more developed — you can find genuinely sumptuous private tents with proper bathrooms, gourmet dining, rose petal arrangements, and champagne sunsets. The backdrop of the massive orange dunes is the definitive romantic Sahara image.</p>
+        <p><strong>Erg Chigaga (Zagora):</strong> For couples who value isolation above luxury, Chigaga offers something no other desert camp can: the feeling of being the only two people in the Sahara. Basic to mid-range camps, but extraordinary solitude.</p>
+        <div class="highlight-box"><strong>Romantic Recommendation:</strong><p>For most honeymooners and anniversary couples, Merzouga provides the better overall experience: stunning dunes, the most developed luxury camps, and reliable logistics. Erg Chigaga is for adventurous couples who don't need marble bathrooms.</p></div>`
+      },
+      { h2: "Which Has Better Logistics?",
+        content: `<p>For most tour itineraries, Merzouga is the practical choice:</p>
+        <ul>
+          <li>Merzouga fits naturally on the Fes–Marrakech circuit (east-west route)</li>
+          <li>No 4x4 required — normal vehicles work fine</li>
+          <li>More reliable road conditions year-round</li>
+          <li>Wider range of accommodation for all budgets</li>
+        </ul>
+        <p>Zagora is best for travellers who are starting and ending in Marrakech and want a circular route through the south. It doesn't work well on the Fes–Marrakech transit that most tourists use.</p>`
+      },
+      { h2: "Our Recommendation",
+        content: `<p>After 18 years guiding in both deserts, our honest recommendation is:</p>
+        <p><strong>Choose Merzouga (Erg Chebbi) if:</strong> This is your first Morocco trip, you're on a Fes–Marrakech circuit, you want the most dramatic dunes, you value comfort and reliable infrastructure, or you're a photographer wanting the classic Sahara images.</p>
+        <p><strong>Choose Zagora / Erg Chigaga if:</strong> You've already visited Merzouga and want something different, you value solitude over spectacle, you're a serious adventurer, or you're based in Marrakech and want a southern Moroccan loop.</p>
+        <div class="highlight-box"><strong>The Best Answer:</strong><p>If your trip allows 8+ days, visit both. The Erg Chebbi → Draa Valley → Erg Chigaga route is one of the most extraordinary drives in the world. Our 8-day Grand Morocco Tour includes stops near both desert regions for exactly this reason.</p></div>`
+      }
+    ],
+    tags: ["Merzouga", "Zagora", "Erg Chebbi", "Sahara Desert", "Morocco Destinations", "Destination Comparison"],
+    related: ["best-time-to-visit", "desert-camp-guide", "what-to-pack"]
+  }
+};
+
+// ===== RELATED POST DATA (for sidebar/footer) =====
+const POST_PREVIEWS = {
+  "best-time-to-visit":  { title: "Best Time to Visit Morocco's Sahara",           img: "images/dunes.jpg",   imgFallback: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=200&q=70", date: "May 10, 2025" },
+  "what-to-pack":        { title: "Essential Packing List for Your Sahara Tour",   img: "images/berber-camel.jpg",  imgFallback: "https://images.unsplash.com/photo-1548013146-72479768bada?w=200&q=70", date: "April 28, 2025" },
+  "desert-camp-guide":   { title: "A Night in a Luxury Desert Camp",               img: "images/camp.jpg",    imgFallback: "https://images.unsplash.com/photo-1539768942893-daf91f348b20?w=200&q=70", date: "April 15, 2025" },
+  "merzouga-vs-zagora":  { title: "Merzouga vs Zagora: Which Sahara is Right for You?", img: "images/dunes2.jpg", imgFallback: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=200&q=70", date: "March 22, 2025" }
+};
+
+// ===== RENDER =====
+const id = new URLSearchParams(window.location.search).get('id') || 'desert-camp-guide';
+const post = POSTS[id] || POSTS['desert-camp-guide'];
+
+document.getElementById('pageTitle').textContent = post.title + ' | Majestic Morocco Trips';
+document.getElementById('pageDesc').content = post.intro.substring(0, 160);
+document.getElementById('breadcrumbCat').textContent = post.category;
+
+// Hero
+const heroBg = document.getElementById('heroBg');
+function setHero(url) {
+  heroBg.style.background = `url('${url}') center/cover no-repeat`;
+}
+if (post.cover && post.cover.startsWith('images/')) {
+  const t = new Image();
+  t.onload = () => setHero(post.cover);
+  t.onerror = () => setHero(post.coverFallback || post.cover);
+  t.src = post.cover;
+} else { setHero(post.cover); }
+
+document.getElementById('catBadge').innerHTML = `<i class="fas fa-tag"></i> ${post.category}`;
+document.getElementById('articleTitle').textContent = post.title;
+document.getElementById('authorImg').src = post.author.avatar;
+document.getElementById('authorImg').alt = post.author.name;
+document.getElementById('authorName').textContent = post.author.name;
+document.getElementById('authorMeta').textContent = post.author.role + ' · ' + post.date;
+document.getElementById('articleStats').innerHTML = `
+  <span><i class="fas fa-clock"></i> ${post.readTime}</span>
+  <span><i class="fas fa-calendar"></i> ${post.date}</span>`;
+
+// Content
+document.getElementById('articleIntro').textContent = post.intro;
+document.getElementById('articleContent').innerHTML = post.sections.map(s =>
+  `<div class="article-section"><h2>${s.h2}</h2>${s.content}</div>`
+).join('');
+
+// Tags
+document.getElementById('articleTags').innerHTML = post.tags.map(t =>
+  `<span class="article-tag">${t}</span>`).join('');
+
+// Author box
+document.getElementById('authorBoxImg').src = post.author.avatar;
+document.getElementById('authorBoxName').textContent = post.author.name;
+document.getElementById('authorBoxRole').textContent = post.author.role;
+document.getElementById('authorBoxBio').textContent = post.author.bio;
+
+// TOC
+document.getElementById('tocList').innerHTML = post.toc.map((item, i) =>
+  `<div class="toc-item" onclick="scrollToSection(${i})">${item}</div>`
+).join('');
+
+// Sidebar related
+document.getElementById('relatedPosts').innerHTML = post.related.slice(0,3).map(rid => {
+  const p = POST_PREVIEWS[rid]; if (!p) return '';
+  const imgAttr = p.imgFallback ? `onerror="this.src='${p.imgFallback}'"` : '';
+  return `<div class="related-post">
+    <div class="rel-img"><img src="${p.img}" ${imgAttr} alt="${p.title}" /></div>
+    <div><p class="rel-title"><a href="blog-post.html?id=${rid}">${p.title}</a></p><div class="rel-meta">${p.date}</div></div>
+  </div>`;
+}).join('');
+
+// Related grid
+const relKeys = Object.keys(POSTS).filter(k => k !== id).slice(0, 3);
+document.getElementById('relatedGrid').innerHTML = relKeys.map(k => {
+  const p = POSTS[k]; const prev = POST_PREVIEWS[k] || {};
+  const imgSrc = prev.img || p.cover;
+  const imgFallback = prev.imgFallback || p.coverFallback || '';
+  const imgAttr = imgFallback ? `onerror="this.src='${imgFallback}'"` : '';
+  return `<a href="blog-post.html?id=${k}" class="rel-card">
+    <div class="rel-card-img"><img src="${imgSrc}" ${imgAttr} alt="${p.title}" loading="lazy" /></div>
+    <div class="rel-card-body">
+      <div class="rel-card-cat">${p.category}</div>
+      <div class="rel-card-title">${p.title}</div>
+    </div>
+  </a>`;
+}).join('');
+
+// Scroll to section
+function scrollToSection(i) {
+  const sections = document.querySelectorAll('.article-section');
+  if (sections[i]) sections[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Progress bar
+window.addEventListener('scroll', () => {
+  const el = document.documentElement;
+  const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+});
+
+// Nav
+document.getElementById('hamburgerBtn').addEventListener('click', () =>
+  document.getElementById('mobileMenu').classList.toggle('open'));
+</script>
+</body>
+</html>
+
