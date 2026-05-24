@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://travelinmoroco-ai.github.io/Majestic-Morocco-Trips/sitemap.xml
