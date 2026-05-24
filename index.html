@@ -1099,7 +1099,7 @@
             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
             <div class="contact-detail">
               <strong>Email</strong>
-              <span>info@moroccodesertadventure.com</span>
+              <span><a href="mailto:majesticmoroccotrips@hotmail.com" style="color:inherit">majesticmoroccotrips@hotmail.com</a></span>
             </div>
           </div>
           <div class="contact-item">
@@ -1286,8 +1286,36 @@
   // Form submission
   function submitForm(e) {
     e.preventDefault();
+    const fname    = document.getElementById('fname').value.trim();
+    const lname    = document.getElementById('lname').value.trim();
+    const email    = document.getElementById('email').value.trim();
+    const phone    = document.getElementById('phone').value.trim();
+    const tour     = document.getElementById('tour').value;
+    const date     = document.getElementById('date').value;
+    const travelers = document.getElementById('travelers').value;
+    const message  = document.getElementById('message').value.trim();
+
+    const subject = `Booking Request – ${tour || 'Morocco Tour'} | ${fname} ${lname}`;
+    const body =
+      `New Booking Request from Majestic Morocco Trips Website\n` +
+      `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+      `Name:         ${fname} ${lname}\n` +
+      `Email:        ${email}\n` +
+      `Phone:        ${phone || 'Not provided'}\n` +
+      `Tour:         ${tour || 'Not specified'}\n` +
+      `Travel Date:  ${date || 'Not specified'}\n` +
+      `Travelers:    ${travelers}\n\n` +
+      `Message:\n${message || 'No message provided'}\n\n` +
+      `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+      `Sent from majesticmoroccotrips.com`;
+
+    window.location.href =
+      `mailto:majesticmoroccotrips@hotmail.com` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
+
     const btn = e.target.querySelector('.form-submit');
-    btn.innerHTML = '<i class="fas fa-check"></i> &nbsp;Message Sent! We\'ll reply within 24h';
+    btn.innerHTML = '<i class="fas fa-check"></i> &nbsp;Request Sent! Check your email app';
     btn.style.background = '#2D9E4F';
     btn.disabled = true;
     setTimeout(() => {
@@ -1295,7 +1323,7 @@
       btn.style.background = '';
       btn.disabled = false;
       e.target.reset();
-    }, 4000);
+    }, 5000);
   }
 
   // Smooth scroll for anchor links
